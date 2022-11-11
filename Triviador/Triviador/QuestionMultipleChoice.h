@@ -6,22 +6,38 @@ class QuestionMultipleChoice
 {
 public:
 	QuestionMultipleChoice();
-	QuestionMultipleChoice(std::string category,
-		std::string type,
-		std::string difficulty,
-		std::string question,
-		std::string correct_answer,
-		std::vector<std::string> incorrect_answers);
+	QuestionMultipleChoice(const std::string& category,
+		const std::string& type,
+		const std::string& difficulty,
+		const std::string& question,
+		const std::string& correct_answer,
+		const std::vector<std::string>& incorrect_answers);
 
 
-	void setCategory(const std::string& category);
-	void setType(const std::string& type);
-	void setDifficulty(const std::string& difficulty);
-	void setCorrectAnswer(const std::string& correct_answer);
-	void setIncorrectAnswers(const std::vector<std::string>& incorrect_answers);
-	void setQuestion(const std::string& question);
 
-	void addIncorrectAnswers(const std::string& incorrect_answer);
+	void SetCategory(const std::string& category);
+	std::string GetCategory()const;
+
+	void SetType(const std::string& type);
+	std::string GetType()const;
+
+	void SetDifficulty(const std::string& difficulty);
+	std::string GetDifficulty()const;
+
+	void SetCorrectAnswer(const std::string& correct_answer);
+	std::string GetCorrectAnswer()const;
+
+	void SetIncorrectAnswers(const std::vector<std::string>& incorrect_answers);
+	std::vector<std::string> GetIncorrectAnswers()const;
+
+	void SetQuestion(const std::string& question);
+	std::string GetQuestion()const;
+
+	void AddIncorrectAnswers(const std::string& incorrect_answer);
+
+
+
+
 
 	friend std::ostream& operator<<(std::ostream& os, const QuestionMultipleChoice& questionMultipleChoice);
 
