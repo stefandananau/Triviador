@@ -1,5 +1,6 @@
 #include "DataBase.h"
 
+DataBase* DataBase::singletonDataBase;
 
 DataBase::DataBase(std::string name) : m_dataBase(DB::CreateDatabase(name)) {}
 

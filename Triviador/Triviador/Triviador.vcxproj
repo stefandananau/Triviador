@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DataBase.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="QuestionMultipleChoice.cpp" />
     <ClCompile Include="QuestionNumeric.cpp" />
