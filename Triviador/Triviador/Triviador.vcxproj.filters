@@ -32,5 +32,11 @@
     <ClInclude Include="QuestionNumeric.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UserRecord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestionNumericRecord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

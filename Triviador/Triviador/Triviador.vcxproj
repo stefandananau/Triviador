@@ -134,6 +134,8 @@
   <ItemGroup>
     <ClInclude Include="QuestionMultipleChoice.h" />
     <ClInclude Include="QuestionNumeric.h" />
+    <ClInclude Include="QuestionNumericRecord.h" />
+    <ClInclude Include="UserRecord.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
