@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="QuestionMultipleChoice.h" />
+    <ClInclude Include="QuestionMultipleChoiceRecord.h" />
     <ClInclude Include="QuestionNumeric.h" />
     <ClInclude Include="QuestionNumericRecord.h" />
     <ClInclude Include="UserRecord.h" />
