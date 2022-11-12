@@ -1,6 +1,7 @@
 #include <iostream>
 #include "QuestionMultipleChoice.h"
 #include "QuestionNumeric.h"
+#include "Storage.h"
 
 
 int main()
@@ -23,7 +24,12 @@ int main()
 	std::cout << qmc<<std::endl<<qmc2;
 	
 	qn.SetQuestion("da");
-	
+
+	Storage db("testDB.sqlite");
+	db.Sync();
+	UserRecord u{ -1,"ceva@gmail.com","1234" };
+	db.AddUser(u);
+	db.PrintUsers();
 	std::cout << qn;
 	return 0;
 }
