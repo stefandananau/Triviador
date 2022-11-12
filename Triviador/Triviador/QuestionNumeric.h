@@ -25,7 +25,7 @@ public:
 	void SetQuestion(const std::string& question);
 
 	uint8_t GetCorrectAnswer() const;
-	void SetCorrectaAnswer(uint8_t correct_answer);
+	void SetCorrectAnswer(uint8_t correct_answer);
 
 	friend std::ostream& operator<<(std::ostream& os, const QuestionNumeric& question);
 

@@ -55,7 +55,7 @@ uint8_t QuestionNumeric::GetCorrectAnswer() const
     return m_correct_answer;
 }
 
-void QuestionNumeric::SetCorrectaAnswer(uint8_t correct_answer)
+void QuestionNumeric::SetCorrectAnswer(uint8_t correct_answer)
 {
     m_correct_answer = correct_answer;
 }

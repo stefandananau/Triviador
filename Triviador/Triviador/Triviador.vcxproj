@@ -128,12 +128,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Parser.cpp" />
     <ClCompile Include="QuestionMultipleChoice.cpp" />
     <ClCompile Include="QuestionNumeric.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataBase.h" />
+    <ClInclude Include="Parser.h" />
     <ClInclude Include="QuestionMultipleChoice.h" />
     <ClInclude Include="QuestionMultipleChoiceRecord.h" />
     <ClInclude Include="QuestionNumeric.h" />
