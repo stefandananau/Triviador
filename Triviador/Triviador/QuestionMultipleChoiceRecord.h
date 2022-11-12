@@ -9,5 +9,4 @@ struct QuestionMultipleChoiceRecord
 	std::string m_wrongAnswer1;
 	std::string m_wrongAnswer2;
 	std::string m_wrongAnswer3;
-
 };

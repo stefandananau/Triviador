@@ -29,14 +29,11 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, const QuestionNumeric& question);
 
-
 private:
 	std::string m_category;
 	std::string m_type;
 	std::string m_difficulty;
 	std::string m_question;
 	int m_correct_answer;
-
-
 };
 

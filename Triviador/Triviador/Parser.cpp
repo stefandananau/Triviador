@@ -1,4 +1,5 @@
 #include "Parser.h"
+
 std::vector<QuestionMultipleChoice> ParserJsonMultiple() {
 	std::ifstream f("dataMultipleChoice.json");
 
@@ -16,13 +17,11 @@ std::vector<QuestionMultipleChoice> ParserJsonMultiple() {
 		{
 			QuestionMultipleChoice currentQuestion;
 
-
 			for (const auto& val : obj.value().items())
 			{
 				if (val.key() == "category")
 				{
 					currentQuestion.SetCategory(val.value());
-
 				}
 				else if (val.key() == "type")
 				{
@@ -47,19 +46,14 @@ std::vector<QuestionMultipleChoice> ParserJsonMultiple() {
 				}
 			}
 			q_m_c.push_back(currentQuestion);
-
-
 		}
 		return  q_m_c;
 	}
 	else
 	{
 		throw std::out_of_range("Json file failed to open\nCheck if name is correct\n");
-
 	}
-
 }
-
 
 std::vector<QuestionNumeric> ParserJsonNumeric() {
 	std::ifstream f("dataNumeric.json");
@@ -78,13 +72,11 @@ std::vector<QuestionNumeric> ParserJsonNumeric() {
 		{
 			QuestionNumeric currentQuestion;
 
-
 			for (const auto& val : obj.value().items())
 			{
 				if (val.key() == "category")
 				{
 					currentQuestion.SetCategory(val.value());
-
 				}
 				else if (val.key() == "type")
 				{
@@ -98,18 +90,13 @@ std::vector<QuestionNumeric> ParserJsonNumeric() {
 				{
 					currentQuestion.SetCorrectAnswer(val.value());
 				}
-
 			}
 			q_n.push_back(currentQuestion);
-
-
 		}
 		return  q_n;
 	}
 	else
 	{
 		throw std::out_of_range("Json file failed to open\nCheck if name is correct\n");
-
 	}
-
 }
