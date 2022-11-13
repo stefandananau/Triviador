@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataBase.h" />
+    <ClInclude Include="LoginRegisterService.h" />
     <ClInclude Include="Parser.h" />
     <ClInclude Include="QuestionMultipleChoice.h" />
     <ClInclude Include="QuestionMultipleChoiceRecord.h" />
