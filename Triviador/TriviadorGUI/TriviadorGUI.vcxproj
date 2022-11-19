@@ -121,10 +121,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="LoginRegisterWindow.cpp" />
     <ClCompile Include="MainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameWindow.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="LoginRegisterWindow.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -133,12 +137,22 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GameWindow.resx">
+      <DependentUpon>GameWindow.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginRegisterWindow.resx">
       <DependentUpon>LoginRegisterWindow.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-2.png" />
+    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-3.png" />
+    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-4.png" />
+    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-5.png" />
+    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-6.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
