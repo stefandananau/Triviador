@@ -4,8 +4,8 @@
 #include "Storage.h"
 
 //
-//int main()
-//{	
+int main()
+{	
 //
 //	std::string category = "sports";
 //	std::string type = "sports";
@@ -32,4 +32,4 @@
 //	db.PrintUsers();
 //	std::cout << qn;
 //	return 0;
-//}
+}
