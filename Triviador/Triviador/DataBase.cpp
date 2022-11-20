@@ -26,3 +26,27 @@ std::vector<UserRecord> DataBase::GetUsers()
 {
     return m_dataBase.get_all<UserRecord>();
 }
+
+void DataBase::AddQuestionNumeric(const QuestionNumericRecord& questionNumeric)
+{
+	m_dataBase.insert(questionNumeric);
+}
+
+std::vector<QuestionNumericRecord> DataBase::GetQuestionNumeric()
+{
+	return  m_dataBase.get_all<QuestionNumericRecord>();
+}
+
+
+void DataBase::AddQuestionMultipleChoice(const QuestionMultipleChoiceRecord& questionMultipleChoiceRecord)
+{
+
+	m_dataBase.insert(questionMultipleChoiceRecord);
+
+}
+
+std::vector<QuestionMultipleChoiceRecord> DataBase::GetQuestionMultipleChoice()
+{
+	return 	  m_dataBase.get_all<QuestionMultipleChoiceRecord>();
+
+}

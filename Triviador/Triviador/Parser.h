@@ -8,5 +8,8 @@
 #include "QuestionNumeric.h"
 using json = nlohmann::json;
 
-std::vector<QuestionMultipleChoice> ParserJsonMultiple();
-std::vector<QuestionNumeric> ParserJsonNumeric();
+namespace parser {
+
+	std::vector<QuestionMultipleChoice> ParserJsonMultiple();
+	std::vector<QuestionNumeric> ParserJsonNumeric();
+};

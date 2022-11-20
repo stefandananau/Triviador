@@ -36,6 +36,14 @@ private:
 public:
 	static DataBase* GetInstance();
 	void AddUser(const UserRecord& user);
-	void Sync();
 	std::vector<UserRecord> GetUsers();
+
+	void AddQuestionNumeric(const QuestionNumericRecord& questionNumeric);
+	std::vector< QuestionNumericRecord> GetQuestionNumeric();
+
+	void AddQuestionMultipleChoice(const QuestionMultipleChoiceRecord& questionMultipleChoiceRecord);
+	std::vector<QuestionMultipleChoiceRecord>GetQuestionMultipleChoice();
+
+	void Sync();
+	
 };
