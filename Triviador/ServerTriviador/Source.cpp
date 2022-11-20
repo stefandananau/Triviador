@@ -8,12 +8,12 @@
 
 int main() {
 	DataBase *questionDataBase = DataBase::GetInstance();
-	//std::vector<QuestionNumeric> numericalQuestionsToAppend = parser::ParserJsonNumeric();
+	std::vector<QuestionNumeric> numericalQuestionsToAppend = parser::ParserJsonNumeric();
 
-	//for (const QuestionNumeric& question : numericalQuestionsToAppend) {
-	//	questionDataBase->AddQuestionNumeric(question);
-	//}
-	//questionDataBase->AddQuestionNumeric();
+	for (const QuestionNumeric& question : numericalQuestionsToAppend) {
+		questionDataBase->AddQuestionNumeric(question);
+	}
+	questionDataBase->AddQuestionNumeric();
 
 	crow::SimpleApp crowApp;
 	CROW_ROUTE(crowApp, "/database")([] {
