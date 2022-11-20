@@ -79,9 +79,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-
       <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -151,12 +149,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-2.png" />
-    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-3.png" />
-    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-4.png" />
-    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-5.png" />
-    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-6.png" />
-    <Image Include="..\..\..\..\..\Downloads\viking-helmet.png" />
+    <Image Include="images\shield1.png" />
+    <Image Include="images\shield2.png" />
+    <Image Include="images\shield3.png" />
+    <Image Include="images\shield4.png" />
+    <Image Include="images\water-2.png" />
+    <Image Include="images\water-3.png" />
+    <Image Include="images\water-4.png" />
+    <Image Include="images\water-5.png" />
+    <Image Include="images\water-6.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
