@@ -97,8 +97,8 @@ int main() {
 	std::ofstream outNumerical("dataNumerical.json");
 	std::ofstream outMultipleChoice("dataMultipleChoice.json");
 
-	outNumerical << "Number_of_questions: " << finalJsonNumerical["results"].size() << "\n";
-	outMultipleChoice << "Number_of_questions: " << finalJsonMultipleChoiceQuestions["results"].size() << "\n";
+	//outNumerical << "Number_of_questions: " << finalJsonNumerical["results"].size() << "\n";
+	//outMultipleChoice << "Number_of_questions: " << finalJsonMultipleChoiceQuestions["results"].size() << "\n";
 
 	outNumerical << finalJsonNumerical;
 	outMultipleChoice << finalJsonMultipleChoiceQuestions;

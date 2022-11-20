@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Triviador;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,7 +128,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Triviador\DataBase.cpp" />
+    <ClCompile Include="..\Triviador\Parser.cpp" />
+    <ClCompile Include="..\Triviador\QuestionMultipleChoice.cpp" />
+    <ClCompile Include="..\Triviador\QuestionNumeric.cpp" />
+    <ClCompile Include="..\Triviador\Storage.cpp" />
+    <ClCompile Include="Server.cpp" />
     <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Triviador\DataBase.h" />
+    <ClInclude Include="..\Triviador\LoginRegisterService.h" />
+    <ClInclude Include="..\Triviador\Parser.h" />
+    <ClInclude Include="..\Triviador\QuestionMultipleChoice.h" />
+    <ClInclude Include="..\Triviador\QuestionMultipleChoiceRecord.h" />
+    <ClInclude Include="..\Triviador\QuestionNumeric.h" />
+    <ClInclude Include="..\Triviador\QuestionNumericRecord.h" />
+    <ClInclude Include="Server.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

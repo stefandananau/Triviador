@@ -2,6 +2,7 @@
 #include "QuestionMultipleChoice.h"
 #include "QuestionNumeric.h"
 #include "Storage.h"
+#include "Parser.h"
 
 //
 int main()
@@ -32,4 +33,9 @@ int main()
 //	db.PrintUsers();
 //	std::cout << qn;
 //	return 0;
+
+	auto p = parser::ParserJsonMultiple();
+	for (const auto& q : p) {
+		std::cout << q << std::endl;
+	}
 }

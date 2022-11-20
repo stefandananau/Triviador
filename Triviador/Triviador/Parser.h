@@ -6,10 +6,10 @@
 #include <vector>
 #include "QuestionMultipleChoice.h"
 #include "QuestionNumeric.h"
+
 using json = nlohmann::json;
 
 namespace parser {
-
 	std::vector<QuestionMultipleChoice> ParserJsonMultiple();
 	std::vector<QuestionNumeric> ParserJsonNumeric();
 };

@@ -4,12 +4,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TriviadorGUI", "TriviadorGUI\TriviadorGUI.vcxproj", "{75EADD51-FED8-43B2-8AB7-D5E95B84FCF4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{79478560-0D32-4280-B576-E51A5667C197} = {79478560-0D32-4280-B576-E51A5667C197}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Triviador", "Triviador\Triviador.vcxproj", "{79478560-0D32-4280-B576-E51A5667C197}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Requester", "Requester\Requester.vcxproj", "{F98C005E-38EB-4ACB-A7A1-2B8ABF18517F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ServerTriviador", "ServerTriviador\ServerTriviador.vcxproj", "{698E7F65-ECCF-493D-B92F-478580BC297C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{79478560-0D32-4280-B576-E51A5667C197} = {79478560-0D32-4280-B576-E51A5667C197}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

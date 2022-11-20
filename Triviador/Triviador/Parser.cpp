@@ -56,7 +56,7 @@ std::vector<QuestionMultipleChoice>parser::ParserJsonMultiple() {
 }
 
 std::vector<QuestionNumeric> parser::ParserJsonNumeric() {
-	std::ifstream f("../Requester/dataNumeric.json");
+	std::ifstream f("../Requester/dataNumerical.json");
 
 	if (f.is_open())
 	{
