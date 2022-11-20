@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Triviador", "Triviador\Triv
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Requester", "Requester\Requester.vcxproj", "{F98C005E-38EB-4ACB-A7A1-2B8ABF18517F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ServerTriviador", "ServerTriviador\ServerTriviador.vcxproj", "{698E7F65-ECCF-493D-B92F-478580BC297C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{F98C005E-38EB-4ACB-A7A1-2B8ABF18517F}.Release|x64.Build.0 = Release|x64
 		{F98C005E-38EB-4ACB-A7A1-2B8ABF18517F}.Release|x86.ActiveCfg = Release|Win32
 		{F98C005E-38EB-4ACB-A7A1-2B8ABF18517F}.Release|x86.Build.0 = Release|Win32
+		{698E7F65-ECCF-493D-B92F-478580BC297C}.Debug|x64.ActiveCfg = Debug|x64
+		{698E7F65-ECCF-493D-B92F-478580BC297C}.Debug|x64.Build.0 = Debug|x64
+		{698E7F65-ECCF-493D-B92F-478580BC297C}.Debug|x86.ActiveCfg = Debug|Win32
+		{698E7F65-ECCF-493D-B92F-478580BC297C}.Debug|x86.Build.0 = Debug|Win32
+		{698E7F65-ECCF-493D-B92F-478580BC297C}.Release|x64.ActiveCfg = Release|x64
+		{698E7F65-ECCF-493D-B92F-478580BC297C}.Release|x64.Build.0 = Release|x64
+		{698E7F65-ECCF-493D-B92F-478580BC297C}.Release|x86.ActiveCfg = Release|Win32
+		{698E7F65-ECCF-493D-B92F-478580BC297C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
