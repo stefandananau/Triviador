@@ -79,10 +79,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-<<<<<<< Updated upstream
-=======
+
       <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
->>>>>>> Stashed changes
+
     </ClCompile>
     <Link>
       <AdditionalDependencies />
