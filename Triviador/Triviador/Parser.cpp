@@ -1,7 +1,7 @@
 #include "Parser.h"
 
 std::vector<QuestionMultipleChoice>parser::ParserJsonMultiple() {
-	std::ifstream f("dataMultipleChoice.json");
+	std::ifstream f("../Requester/dataMultipleChoice.json");
 
 	if (f.is_open())
 	{
@@ -56,7 +56,7 @@ std::vector<QuestionMultipleChoice>parser::ParserJsonMultiple() {
 }
 
 std::vector<QuestionNumeric> parser::ParserJsonNumeric() {
-	std::ifstream f("dataNumeric.json");
+	std::ifstream f("../Requester/dataNumeric.json");
 
 	if (f.is_open())
 	{

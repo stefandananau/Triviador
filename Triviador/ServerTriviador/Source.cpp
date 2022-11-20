@@ -9,11 +9,15 @@
 int main() {
 	DataBase *questionDataBase = DataBase::GetInstance();
 	std::vector<QuestionNumeric> numericalQuestionsToAppend = parser::ParserJsonNumeric();
+	std::vector<QuestionMultipleChoice> multipleChoiceQuestionsToAppend = parser::ParserJsonMultiple();
 
 	for (const QuestionNumeric& question : numericalQuestionsToAppend) {
 		questionDataBase->AddQuestionNumeric(question);
 	}
-	questionDataBase->AddQuestionNumeric();
+	for (const QuestionMultipleChoice& question : multipleChoiceQuestionsToAppend) {
+		questionDataBase->AddQuestionMultipleChoice(question);
+	}
+	
 
 	crow::SimpleApp crowApp;
 	CROW_ROUTE(crowApp, "/database")([] {
