@@ -12,7 +12,8 @@ struct QuestionMultipleChoiceRecord
 	std::string m_wrongAnswer2;
 	std::string m_wrongAnswer3;
 
-	QuestionMultipleChoiceRecord(const QuestionMultipleChoice& qmc ): m_question(qmc.GetQuestion()),
+	QuestionMultipleChoiceRecord(const QuestionMultipleChoice& qmc ):id(-1),
+		m_question(qmc.GetQuestion()),
 	m_type(qmc.GetType()),
 	m_correctAnswer(qmc.GetCorrectAnswer()),
 	m_wrongAnswer1(qmc.GetIncorrectAnswers()[0]),

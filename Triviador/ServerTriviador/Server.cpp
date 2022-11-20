@@ -2,18 +2,21 @@
 
 Server::Server() {
 	m_questionDataBase = DataBase::GetInstance();
+	m_questionDataBase->Sync();
 	m_numericalQuestionsToAppend = parser::ParserJsonNumeric();
 	m_multipleChoiceQuestionsToAppend = parser::ParserJsonMultiple();
 	PopulateServerDatabase();
+	m_questionDataBase->Sync();
 	SetupServer();
+	m_questionDataBase->Sync();
 }
 
 int Server::PopulateServerDatabase() {
 	for (const QuestionNumeric& question : m_numericalQuestionsToAppend) {
-		m_questionDataBase->AddQuestionNumeric(question);
+		m_questionDataBase->AddQuestionNumeric(QuestionNumericRecord(question));
 	}
 	for (const QuestionMultipleChoice& question : m_multipleChoiceQuestionsToAppend) {
-		m_questionDataBase->AddQuestionMultipleChoice(question);
+		m_questionDataBase->AddQuestionMultipleChoice(QuestionMultipleChoiceRecord(question));
 	}
 	return 0;
 }

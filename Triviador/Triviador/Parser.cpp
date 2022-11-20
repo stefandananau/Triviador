@@ -87,8 +87,9 @@ std::vector<QuestionNumeric> parser::ParserJsonNumeric() {
 					currentQuestion.SetQuestion(val.value());
 				}
 				else if (val.key() == "correct_answer")
-				{
-					currentQuestion.SetCorrectAnswer(val.value());
+				{	
+					
+					currentQuestion.SetCorrectAnswer(std::stoi(val.value().dump().substr(1, val.value().dump().size()-2)));
 				}
 			}
 			q_n.push_back(currentQuestion);
