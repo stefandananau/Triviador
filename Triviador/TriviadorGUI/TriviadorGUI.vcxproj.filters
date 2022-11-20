@@ -40,5 +40,20 @@
     <Image Include="..\..\..\..\..\Downloads\viking-helmet.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Downloads\MyFlow\water-6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
