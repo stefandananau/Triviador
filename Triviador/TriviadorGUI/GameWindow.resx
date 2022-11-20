@@ -118,33 +118,38 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>17, 17</value>
+  </data>
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        R0lGODdhIAAgAHcAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJRgAAACwAAAAAIAAgAIIAAAAAcsMAxfEA
-        l+z///9w1e2d7P8AAAAD6Ri6siowQDjqENXpYO9s31dh2TJI50CErFAUU9egXLUaxvTufDgqMgHOwCvy
-        cKJTzQMzOo85SgozIT6vSKkHgrt6o6RQcTgskK07EcU1PrvRr/WIvSMT3uU0iQOBDgl3ZGZ5cTNMdQaA
-        im6DXYUPdI14eIUYEpGTeIEwE5eImZOVl2ygmWmQdF2lZ2lzmKusnBZ9n2+Ab4Wzr2WrnFQjtZqBgmti
-        L5OLsTBbtMewjrlhBEfOpj0jc15tTmEWd9raUigXXZHgcSpKSy5ZviyFywQlJi31LRcbQHMMLBod+Usy
-        zADBr4M6BQkAACH5BAlGAAAALAAAAAAgACAAggAAAACX7AByw53s/wDF8f///3DV7QAAAAP+GLISzo9J
-        1WhbNgzHFyGRVIWjMAxf8QVf66pcZzWDQBSG0epfbqirDgZEMPV8SB7B5wJFiDZdcupSBh3OHXJg4CKb
-        zRh2uT2dqEuw+Ogzu9E5F4fddr+T5NaYXB8UCmZdXl9yNnRmf4BegXh6Hnx2kXeNDHyCkpFoGFF9l5iD
-        cUVDZZ+ZdRmQpaZtEwGkqmdblQ5JsJMnGa61tqAglXQ5gVyYTL6POn+knoiDHyNKP7uSf70xOpyWfX7U
-        1RwGFHnZwXZfMgLfPXlT66EPCq7gYOJ4LDPnT3zA9Coi93vyLrg4wbKJwjcxLOShQJGwn0EM9hCKEZHr
-        XL9WCEe4SwAAIfkECUYAAAAsAAAAACAAIACCAAAAAHLDAJfsAMXxcNXtnez/////AAAAA+8YEsoycDAW
-        5bTTrbkH+UQVCWSZNdwDgqL3QSV5KqXrrvhbPLKmQDlCIcjaDXqLB/D2KTiHwR3yBylEVs9n8CirVYGg
-        rDgX41atWPF4VX44wc2nwaCGhrokD1yYndehXAFHFTh/TnyHLyN7cYZZK4NUOY5rIZEkk4aIdpZ4aZSP
-        kEeSjUOgOaN5paV/ZBKqrH90iSwPNEygoSyDsLGakDW9jbN1omZeaXTElYsxvblFXEklUb8DVhA/GkpE
-        YZxC19JJg0zdOBXTGnvf3TAm6VfY2Iwj7xs0gm/ozvzpJxLZBInrsm3UjIMmLATscVBQAgAh+QQJRgAA
-        ACwAAAAAIAAgAIIAAAAAcsMAl+wAxfFw1e3///+d7P8AAAAD/xga0j5CjSEDbHRp1eR8GyN8ERFtJTER
-        rHM2rDqYgrkQgRnHE8mtO5+CptrJLpHRzAhZOIxMUqEYNBU4NWi0N9UKrkiWIWYY85Za2StLMLfL7nSw
-        E0HDy++7Ec9qMoBicHl3hHwXHmSEg4WCKmt2BgWMhZKGJxY7cJWTeJVHSmhvm5x6aj+ZpJM8dICpqqsQ
-        rYWLgnGOsZB6nFAfIrmufDEOIm6vtEG9SqiliY19hw0GoXlykUxJGNO2cshO01o93BlJ38hlbOAif2k9
-        AgbZ38kW6EtI0e49QO0cvmexNS7qzSAxQsSDfAVc0FFoT0MGXwwdekDiIQTDCRUtUHhYMQEBACH5BAlG
-        AAAALAAAAAAgACAAggAAAABywwCX7ADF8XDV7f///53s/wAAAAP7GLoSwyIG8dSI0lWFKfng8AUFtS3o
-        NBUiIXyta17vYNONOosm+L2+iI+gmtxsnqEyRhA9csmmz0BVNm2hJ8bJJFC/VR/2auxJY+ACeBhT0a5N
-        sEEtN1ibDRqzTpd72WVjIHWEayEYUh9VhXV/hzVoi4x+j1GKk4QweDVAdn6YVTcRPJeGoKF6iadzfV8w
-        ZoOrlHiCXrKGV7C2t3NZgq68S0B7t1kyd7uYSzwaxKdsSGSJf1RqjrtionA3sXYE1rEwFg2jIgHT3Ure
-        LRcaPdxdyAqveaNnTpohQ+ftKRNDLC4E4XZukxtRHXb86GBOBoQU5Y5gKOImD4cBCQAAOw==
+        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
+        rkJggg==
 </value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="water-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\Resurse\Testing\CLR background\CLR background\water-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="water-3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\Resurse\Testing\CLR background\CLR background\water-3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="water-4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\Resurse\Testing\CLR background\CLR background\water-4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="water-5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\Resurse\Testing\CLR background\CLR background\water-5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="water-6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\Resurse\Testing\CLR background\CLR background\water-6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
