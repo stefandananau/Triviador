@@ -144,6 +144,7 @@
     <ClInclude Include="QuestionNumeric.h" />
     <ClInclude Include="QuestionNumericRecord.h" />
     <ClInclude Include="Storage.h" />
+    <ClInclude Include="User.h" />
     <ClInclude Include="UserRecord.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

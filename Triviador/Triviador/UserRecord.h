@@ -7,6 +7,10 @@ struct UserRecord
 	std::string m_email;
 	std::string m_password;
 	
+	UserRecord() {
+
+	}
+
 	UserRecord(const User& user):
 		id(-1),
 		m_email(user.GetEmail()),

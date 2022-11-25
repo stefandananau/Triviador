@@ -36,6 +36,9 @@
     <ClCompile Include="..\Triviador\Storage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Triviador\User.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Server.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Triviador\QuestionNumericRecord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Triviador\UserRecord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
