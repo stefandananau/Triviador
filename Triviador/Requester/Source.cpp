@@ -6,18 +6,48 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <algorithm>
+#include <map>
+
 
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
-bool isNumber(const std::string& s_toCheck) {
-	for (const char& c : s_toCheck) {
-		if (!std::isdigit(c))
-			return false;
+namespace requester {
+	bool isNumber(const std::string& s_toCheck) {
+		for (const char& c : s_toCheck) {
+			if (!std::isdigit(c))
+				return false;
+		}
+		return true;
 	}
-	return true;
-}
+
+
+	//test
+	int toUTF8(std::string& s) {
+		size_t htmlPos = 0;
+		size_t entries = 0;
+		
+		std::map<std::string, char> htmlToUtf8_map;
+		htmlToUtf8_map.insert(std::make_pair("&quot;", '\"'));
+		htmlToUtf8_map.insert(std::make_pair("&#039;", '\''));
+
+
+
+		for (const auto& chr : htmlToUtf8_map) {
+			while (htmlPos = s.find(chr.first) != std::string::npos) {
+				s.replace(s.find(chr.first), chr.first.length(), std::string(1, chr.second));
+				htmlPos += chr.first.length();
+				entries++;
+			}
+
+		}
+		return entries;
+	}
+};
+
+
 
 int main() {
 
@@ -57,13 +87,18 @@ int main() {
 		readBuffer.clear();
 		readBuffer = response.text;
 
+		//JSON DOES NOT SUPPORT "\'" and "\"", DO NOT USE! >:(
+		//requester::toUTF8(readBuffer
+		//std::cout << readBuffer;
+		//PARSE OUT HTML CHARS WHEN PRINTING QUESTIONS TO GUY
+
 		readJson = json::parse(readBuffer);
 		if (readJson["response_code"] != 0) {
 			std::cout << "Please run the program again using a valid opentdb.com API URL!\nHead over to 'https://opentdb.com/api_config.php' and generate a valid API URL.\n";
 			exit(-1);
 		}	
 		for (int i = 0; i < 50; i++) {
-			if (isNumber(readJson["results"][i]["correct_answer"])) {
+			if (requester::isNumber(readJson["results"][i]["correct_answer"])) {
 				readJson["results"][i]["type"] = "numerical";
 			}
 		}
@@ -83,6 +118,7 @@ int main() {
 
 	finalJsonNumerical["response_code"] = curlReqCode;
 	finalJsonNumerical["results"] = numericalQuestions;
+
 
 	finalJsonMultipleChoiceQuestions["response_code"] = curlReqCode;
 	finalJsonMultipleChoiceQuestions["results"] = multipleChoiceQuestions;

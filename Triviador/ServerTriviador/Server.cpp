@@ -9,6 +9,7 @@ Server::Server() {
 	m_DataBase->Sync();
 	SetupServer();
 	m_DataBase->Sync();
+	
 }
 
 int Server::PopulateServerDatabase() {
