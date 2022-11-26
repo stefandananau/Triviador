@@ -3,10 +3,9 @@
 #include "QuestionMultipleChoiceRecord.h"
 #include "QuestionNumericRecord.h"
 #include "UserRecord.h"
-
 namespace DB {
 	inline auto CreateDatabase(const std::string& dbName)
-	{
+	{	
 		return sqlite_orm::make_storage(dbName,
 			sqlite_orm::make_table("User",
 				sqlite_orm::make_column("id", &UserRecord::id, sqlite_orm::primary_key()),
@@ -33,10 +32,11 @@ class DataBase {
 private:
 	static DataBase* singletonDataBase;
 	DB::SqlDataBase m_dataBase;
-	DataBase(std::string name = "DB");
+	DataBase(std::string  name = "DB");
 
 public:
 	static DataBase* GetInstance();
+
 	void AddUser(const UserRecord& user);
 	std::vector<UserRecord> GetUsers();
 
@@ -45,6 +45,9 @@ public:
 
 	void AddQuestionMultipleChoice(const QuestionMultipleChoiceRecord& questionMultipleChoiceRecord);
 	std::vector<QuestionMultipleChoiceRecord>GetQuestionMultipleChoice();
+
+
+
 
 	void Sync();
 	

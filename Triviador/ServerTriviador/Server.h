@@ -4,6 +4,7 @@
 #include <crow/http_server.h>
 #include <crow/app.h>
 #include <crow/json.h>
+#include <random>
 
 #include "DataBase.h"
 
@@ -14,6 +15,7 @@
 #include "QuestionNumericRecord.h";
 #include "QuestionMultipleChoiceRecord.h";
 #include "UserRecord.h"
+
 #include "Parser.h"
 class Server
 {
@@ -23,7 +25,7 @@ private:
 
 	std::vector<QuestionNumeric> m_numericalQuestionsToAppend;
 	std::vector<QuestionMultipleChoice> m_multipleChoiceQuestionsToAppend;
-	std::vector<User> m_Users;
+	std::vector<User> m_UsersToAppend;
 	int PopulateServerDatabase();
 	int SetupServer();
 public:

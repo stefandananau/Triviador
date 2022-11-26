@@ -68,5 +68,8 @@
     <ClInclude Include="..\Triviador\UserRecord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Triviador\User.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

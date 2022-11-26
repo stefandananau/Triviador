@@ -2,10 +2,10 @@
 
 DataBase* DataBase::singletonDataBase;
 
-DataBase::DataBase(std::string name) : m_dataBase(DB::CreateDatabase(name)) {}
+DataBase::DataBase(std::string name) : m_dataBase( DB::CreateDatabase(name)) {}
 
 DataBase* DataBase::GetInstance()
-{
+{	
 	if (singletonDataBase == nullptr) {
 		singletonDataBase = new DataBase();
 	}

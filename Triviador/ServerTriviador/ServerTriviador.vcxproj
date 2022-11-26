@@ -105,6 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Triviador;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,6 +146,7 @@
     <ClInclude Include="..\Triviador\QuestionMultipleChoiceRecord.h" />
     <ClInclude Include="..\Triviador\QuestionNumeric.h" />
     <ClInclude Include="..\Triviador\QuestionNumericRecord.h" />
+    <ClInclude Include="..\Triviador\User.h" />
     <ClInclude Include="..\Triviador\UserRecord.h" />
     <ClInclude Include="Server.h" />
   </ItemGroup>
