@@ -123,10 +123,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameWindo4players.cpp" />
+    <ClCompile Include="GameWindow3players.cpp" />
     <ClCompile Include="LoginRegisterWindow.cpp" />
     <ClCompile Include="MainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameWindow3players.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="GameWindow4players.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -138,6 +142,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GameWindow3players.resx">
+      <DependentUpon>GameWindow3players.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameWindow4players.resx">
       <DependentUpon>GameWindow4players.h</DependentUpon>
     </EmbeddedResource>
