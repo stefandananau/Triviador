@@ -21,7 +21,7 @@
     <ClCompile Include="LoginRegisterWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameWindow.cpp">
+    <ClCompile Include="GameWindo4players.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClInclude Include="LoginRegisterWindow.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameWindow.h">
+    <ClInclude Include="GameWindow4players.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
