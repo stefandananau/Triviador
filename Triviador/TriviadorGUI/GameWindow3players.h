@@ -387,6 +387,7 @@ namespace TriviadorGUI {
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"GameWindow3players";
 			this->Text = L"GameWindow3players";
+			this->Load += gcnew System::EventHandler(this, &GameWindow3players::GameWindow3players_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
@@ -445,5 +446,7 @@ private: System::Void pictureBox20_Click(System::Object^ sender, System::EventAr
 			break;
 		}
 	}
+private: System::Void GameWindow3players_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
