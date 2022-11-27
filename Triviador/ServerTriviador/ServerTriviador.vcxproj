@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_SILENCE_CXX20_CISO646_REMOVED_WARNING;_SILENCE_ALL_CXX20_DEPRECATION_WARNINGS;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;$(SolutionDir)Triviador;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -129,24 +129,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Triviador\DataBase.cpp" />
-    <ClCompile Include="..\Triviador\Parser.cpp" />
-    <ClCompile Include="..\Triviador\QuestionMultipleChoice.cpp" />
-    <ClCompile Include="..\Triviador\QuestionNumeric.cpp" />
-    <ClCompile Include="..\Triviador\User.cpp" />
+    <ClCompile Include="DataBase.cpp" />
+    <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="QuestionMultipleChoice.cpp" />
+    <ClCompile Include="QuestionNumeric.cpp" />
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Triviador\DataBase.h" />
-    <ClInclude Include="..\Triviador\Parser.h" />
-    <ClInclude Include="..\Triviador\QuestionMultipleChoice.h" />
-    <ClInclude Include="..\Triviador\QuestionMultipleChoiceRecord.h" />
-    <ClInclude Include="..\Triviador\QuestionNumeric.h" />
-    <ClInclude Include="..\Triviador\QuestionNumericRecord.h" />
-    <ClInclude Include="..\Triviador\User.h" />
-    <ClInclude Include="..\Triviador\UserRecord.h" />
+    <ClInclude Include="DataBase.h" />
+    <ClInclude Include="Parser.h" />
+    <ClInclude Include="QuestionMultipleChoice.h" />
+    <ClInclude Include="QuestionMultipleChoiceRecord.h" />
+    <ClInclude Include="QuestionNumeric.h" />
+    <ClInclude Include="QuestionNumericRecord.h" />
     <ClInclude Include="Server.h" />
+    <ClInclude Include="User.h" />
+    <ClInclude Include="UserRecord.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -16,7 +16,7 @@ Server::Server() {
 
 }
 
-int Server::PopulateServerDatabase() {
+void Server::PopulateServerDatabase() {
 
 	for (const QuestionNumeric& question : m_numericalQuestionsToAppend) {
 		m_DataBase->AddQuestionNumeric(QuestionNumericRecord(question));
@@ -29,7 +29,7 @@ int Server::PopulateServerDatabase() {
 	}
 	User u("admin@admin.com", "admin");
 	m_DataBase->AddUser(u);
-	return 0;
+	
 }
 
 void Server::wipeUsers()
@@ -42,7 +42,9 @@ void Server::wipeQuestions()
 	m_DataBase->WipeQuestions();
 }
 
-int Server::SetupServer() {
+
+
+void Server::SetupServer() {
 
 	std::cout << "admin email: admin@admin.com\n"
 		"admin password: admin\n\n"
@@ -58,7 +60,7 @@ int Server::SetupServer() {
 		"/authentication?(login or register)&email=<value1>&password=<value2>\n"
 		"	If login exists then\n"
 		"		If email and password is in User Table then the response is Ok else if password is incorrect response is Unauthorized\n"
-		"		If email is not in User Table then the response is Not Found"
+		"		If email is not in User Table then the response is Not Found\n"
 		"	If register exists then\n"
 		"		If email is in User Table then the response is Conflict else new user is added in User Table and response is Ok\n\n\n";
 		
@@ -90,7 +92,7 @@ int Server::SetupServer() {
 					{"wrong_answer3", question.m_wrongAnswer3}
 				};
 			}
-			database = { {"MulipleQuestionTable: ",x} };
+			database = { {"MulipleQuestionTable",x} };
 			x.clear();
 		}
 		else if (table == "QuestionNumeric") {
@@ -107,7 +109,7 @@ int Server::SetupServer() {
 
 				};
 			}
-			database = { {"NumericalQuestionTable: ",x} };
+			database = { {"NumericalQuestionTable",x} };
 			x.clear();
 		}
 		else if (std::string(table) == "User")
@@ -123,7 +125,7 @@ int Server::SetupServer() {
 					{"password", user.m_password},
 				};
 			}
-			database = { {"UserTabel: ",x} };
+			database = { {"UserTable",x} };
 			x.clear();
 
 
@@ -146,7 +148,7 @@ int Server::SetupServer() {
 				};
 
 			}
-			database[0] = { {"MulipleQuestionTable: ",x} };
+			database[0] = { {"MulipleQuestionTable ",x} };
 			x.clear();
 
 			std::vector<QuestionNumericRecord> pulledNumericalQuestions = m_DataBase->GetQuestionNumeric();
@@ -229,7 +231,6 @@ int Server::SetupServer() {
 	}
 	return crow::response(405);
 		});
-
 	CROW_ROUTE(m_crowApp, "/authentication")([this](const crow::request& req) {
 
 		std::vector<UserRecord> pulledUser = m_DataBase->GetUsers();
@@ -292,16 +293,28 @@ int Server::SetupServer() {
 	return crow::response(405);//Method Not Allowed
 		
 	});
+
 	m_crowApp.port(80);
 	m_crowApp.multithreaded();
-	m_crowApp.run();
+	m_crowApp.run_async();
 	m_crowApp.debug_print();
 
-	return 0;
+	
 }
 
 size_t Server::getNumberOfUserRecords()
 {
 	std::vector<UserRecord> userRecords = m_DataBase->GetUsers();
 	return userRecords.size();
+}
+size_t Server::getNumberOfQuestionMultipleChoiceRecords()
+{
+	std::vector<QuestionMultipleChoiceRecord> questionMultipleChoiceRecords = m_DataBase->GetQuestionMultipleChoice();
+	return questionMultipleChoiceRecords.size();
+}
+
+size_t Server::getNumberOfQuestionNumericRecords()
+{
+	std::vector<QuestionNumericRecord> questionMultipleChoiceRecords = m_DataBase->GetQuestionNumeric();
+	return questionMultipleChoiceRecords.size();
 }
