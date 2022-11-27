@@ -24,6 +24,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TriviaTesting", "TriviaTest
 		{F98C005E-38EB-4ACB-A7A1-2B8ABF18517F} = {F98C005E-38EB-4ACB-A7A1-2B8ABF18517F}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClientTriviador", "ClientTriviador\ClientTriviador.vcxproj", "{6DB98ED3-AB25-4C03-A33F-D7CBC0D8E45C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -72,6 +74,14 @@ Global
 		{5E3479E9-7304-4F09-B86E-18167E670AF0}.Release|x64.Build.0 = Release|x64
 		{5E3479E9-7304-4F09-B86E-18167E670AF0}.Release|x86.ActiveCfg = Release|Win32
 		{5E3479E9-7304-4F09-B86E-18167E670AF0}.Release|x86.Build.0 = Release|Win32
+		{6DB98ED3-AB25-4C03-A33F-D7CBC0D8E45C}.Debug|x64.ActiveCfg = Debug|x64
+		{6DB98ED3-AB25-4C03-A33F-D7CBC0D8E45C}.Debug|x64.Build.0 = Debug|x64
+		{6DB98ED3-AB25-4C03-A33F-D7CBC0D8E45C}.Debug|x86.ActiveCfg = Debug|Win32
+		{6DB98ED3-AB25-4C03-A33F-D7CBC0D8E45C}.Debug|x86.Build.0 = Debug|Win32
+		{6DB98ED3-AB25-4C03-A33F-D7CBC0D8E45C}.Release|x64.ActiveCfg = Release|x64
+		{6DB98ED3-AB25-4C03-A33F-D7CBC0D8E45C}.Release|x64.Build.0 = Release|x64
+		{6DB98ED3-AB25-4C03-A33F-D7CBC0D8E45C}.Release|x86.ActiveCfg = Release|Win32
+		{6DB98ED3-AB25-4C03-A33F-D7CBC0D8E45C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

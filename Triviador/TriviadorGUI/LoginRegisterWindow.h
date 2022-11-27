@@ -1,5 +1,5 @@
 #pragma once
-
+#include <msclr/marshal_cppstd.h>
 namespace TriviadorGUI {
 
 	using namespace System;
@@ -14,6 +14,7 @@ namespace TriviadorGUI {
 	/// </summary>
 	public ref class LoginRegisterWindow : public System::Windows::Forms::Form
 	{
+		
 	public:
 		LoginRegisterWindow(void)
 		{
@@ -69,7 +70,6 @@ namespace TriviadorGUI {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(123, 22);
 			this->textBox1->TabIndex = 0;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &LoginRegisterWindow::textBox1_TextChanged);
 			// 
 			// label1
 			// 
@@ -113,6 +113,7 @@ namespace TriviadorGUI {
 			this->button2->TabIndex = 5;
 			this->button2->Text = L"Register";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &LoginRegisterWindow::registerButton_Click);
 			// 
 			// LoginRegisterWindow
 			// 
@@ -125,7 +126,7 @@ namespace TriviadorGUI {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textBox1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"LoginRegisterWindow";
 			this->Text = L"LoginRegisterWindow";
 			this->Load += gcnew System::EventHandler(this, &LoginRegisterWindow::LoginRegisterWindow_Load);
@@ -136,7 +137,11 @@ namespace TriviadorGUI {
 #pragma endregion
 	private: System::Void LoginRegisterWindow_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	
+	private: System::Void registerButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		msclr::interop::marshal_context context;
+		std::string email = context.marshal_as<std::string>(textBox1->Text);
+		std::string password = context.marshal_as<std::string>(textBox2->Text);
 	}
-	};
+};
 }
