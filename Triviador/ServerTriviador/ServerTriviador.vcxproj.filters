@@ -21,19 +21,19 @@
     <ClCompile Include="Server.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Triviador\DataBase.cpp">
+    <ClCompile Include="DataBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Triviador\Parser.cpp">
+    <ClCompile Include="Parser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Triviador\QuestionMultipleChoice.cpp">
+    <ClCompile Include="QuestionMultipleChoice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Triviador\QuestionNumeric.cpp">
+    <ClCompile Include="QuestionNumeric.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Triviador\User.cpp">
+    <ClCompile Include="User.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,28 +41,28 @@
     <ClInclude Include="Server.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Triviador\DataBase.h">
+    <ClInclude Include="DataBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Triviador\Parser.h">
+    <ClInclude Include="Parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Triviador\QuestionMultipleChoice.h">
+    <ClInclude Include="QuestionMultipleChoice.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Triviador\QuestionMultipleChoiceRecord.h">
+    <ClInclude Include="QuestionMultipleChoiceRecord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Triviador\QuestionNumeric.h">
+    <ClInclude Include="QuestionNumeric.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Triviador\QuestionNumericRecord.h">
+    <ClInclude Include="QuestionNumericRecord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Triviador\UserRecord.h">
+    <ClInclude Include="User.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Triviador\User.h">
+    <ClInclude Include="UserRecord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

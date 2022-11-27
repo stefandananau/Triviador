@@ -1,6 +1,6 @@
 #pragma once
 
-#include <iostream>
+
 #include <crow/http_server.h>
 #include <crow/app.h>
 #include <crow/json.h>
@@ -26,13 +26,15 @@ private:
 	std::vector<QuestionNumeric> m_numericalQuestionsToAppend;
 	std::vector<QuestionMultipleChoice> m_multipleChoiceQuestionsToAppend;
 	std::vector<User> m_UsersToAppend;
-	int PopulateServerDatabase();
+	void PopulateServerDatabase();
+	void SetupServer();
 
 public:
 	Server();
 	void wipeUsers();
 	void wipeQuestions();
-	int SetupServer();
+	size_t getNumberOfQuestionMultipleChoiceRecords();
+	size_t getNumberOfQuestionNumericRecords();
 	size_t getNumberOfUserRecords();
 };
 

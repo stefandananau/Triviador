@@ -1,4 +1,5 @@
 #pragma once
+
 #include <stdexcept>
 #include <nlohmann/json.hpp>
 #include <string>
