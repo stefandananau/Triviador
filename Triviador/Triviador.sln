@@ -18,6 +18,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ServerTriviador", "ServerTr
 		{F98C005E-38EB-4ACB-A7A1-2B8ABF18517F} = {F98C005E-38EB-4ACB-A7A1-2B8ABF18517F}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TriviaTesting", "TriviaTesting\TriviaTesting.vcxproj", "{5E3479E9-7304-4F09-B86E-18167E670AF0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{698E7F65-ECCF-493D-B92F-478580BC297C} = {698E7F65-ECCF-493D-B92F-478580BC297C}
+		{F98C005E-38EB-4ACB-A7A1-2B8ABF18517F} = {F98C005E-38EB-4ACB-A7A1-2B8ABF18517F}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -58,6 +64,14 @@ Global
 		{698E7F65-ECCF-493D-B92F-478580BC297C}.Release|x64.Build.0 = Release|x64
 		{698E7F65-ECCF-493D-B92F-478580BC297C}.Release|x86.ActiveCfg = Release|Win32
 		{698E7F65-ECCF-493D-B92F-478580BC297C}.Release|x86.Build.0 = Release|Win32
+		{5E3479E9-7304-4F09-B86E-18167E670AF0}.Debug|x64.ActiveCfg = Debug|x64
+		{5E3479E9-7304-4F09-B86E-18167E670AF0}.Debug|x64.Build.0 = Debug|x64
+		{5E3479E9-7304-4F09-B86E-18167E670AF0}.Debug|x86.ActiveCfg = Debug|Win32
+		{5E3479E9-7304-4F09-B86E-18167E670AF0}.Debug|x86.Build.0 = Debug|Win32
+		{5E3479E9-7304-4F09-B86E-18167E670AF0}.Release|x64.ActiveCfg = Release|x64
+		{5E3479E9-7304-4F09-B86E-18167E670AF0}.Release|x64.Build.0 = Release|x64
+		{5E3479E9-7304-4F09-B86E-18167E670AF0}.Release|x86.ActiveCfg = Release|Win32
+		{5E3479E9-7304-4F09-B86E-18167E670AF0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

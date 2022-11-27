@@ -46,7 +46,8 @@ public:
 	void AddQuestionMultipleChoice(const QuestionMultipleChoiceRecord& questionMultipleChoiceRecord);
 	std::vector<QuestionMultipleChoiceRecord>GetQuestionMultipleChoice();
 
-
+	int WipeUsers();
+	int WipeQuestions();
 
 
 	void Sync();

@@ -8,6 +8,9 @@ Server::Server() {
 	m_multipleChoiceQuestionsToAppend = parser::ParserJsonMultiple();
 	PopulateServerDatabase();
 
+	//wipeUsers();
+	//wipeQuestions();
+
 	SetupServer();
 
 
@@ -27,6 +30,16 @@ int Server::PopulateServerDatabase() {
 	User u("admin@admin.com", "admin");
 	m_DataBase->AddUser(u);
 	return 0;
+}
+
+void Server::wipeUsers()
+{
+	m_DataBase->WipeUsers();
+}
+
+void Server::wipeQuestions()
+{
+	m_DataBase->WipeQuestions();
 }
 
 int Server::SetupServer() {
@@ -285,4 +298,10 @@ int Server::SetupServer() {
 	m_crowApp.debug_print();
 
 	return 0;
+}
+
+size_t Server::getNumberOfUserRecords()
+{
+	std::vector<UserRecord> userRecords = m_DataBase->GetUsers();
+	return userRecords.size();
 }

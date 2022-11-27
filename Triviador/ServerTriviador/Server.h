@@ -27,8 +27,12 @@ private:
 	std::vector<QuestionMultipleChoice> m_multipleChoiceQuestionsToAppend;
 	std::vector<User> m_UsersToAppend;
 	int PopulateServerDatabase();
-	int SetupServer();
+
 public:
 	Server();
+	void wipeUsers();
+	void wipeQuestions();
+	int SetupServer();
+	size_t getNumberOfUserRecords();
 };
 

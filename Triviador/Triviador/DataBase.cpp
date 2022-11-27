@@ -54,3 +54,18 @@ std::vector<QuestionMultipleChoiceRecord> DataBase::GetQuestionMultipleChoice()
 	return 	  m_dataBase.get_all<QuestionMultipleChoiceRecord>();
 
 }
+
+int DataBase::WipeUsers()
+{
+	m_dataBase.remove_all<UserRecord>();
+	Sync();
+	return 0;
+}
+
+int DataBase::WipeQuestions()
+{
+	m_dataBase.remove_all<QuestionMultipleChoiceRecord>();
+	m_dataBase.remove_all<QuestionNumericRecord>();
+	Sync();
+	return 0;
+}
