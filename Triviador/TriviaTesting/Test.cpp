@@ -1,22 +1,23 @@
-#define WIN32_LEAN_AND_MEAN
 #define BOOST_TEST_MODULE mytests
 
-#include <boost/test/included/unit_test.hpp>
 #include "../ServerTriviador/Server.h"
+#include <boost/test/unit_test.hpp>
 
 
+struct TestFixture {
+	Server s_instance;
+	TestFixture() :s_instance() {}
+	~TestFixture() = default;
+};
 
-BOOST_AUTO_TEST_CASE(myTestCase)
-{
-  BOOST_TEST(1 == 1);
-  BOOST_TEST(true);
-}
+BOOST_FIXTURE_TEST_SUITE(TestServerSuite, TestFixture);
 
 BOOST_AUTO_TEST_CASE(serverwipeTestCase) {
-	Server sTest;
-	sTest.wipeQuestions();
-	sTest.wipeUsers();
+	s_instance.wipeQuestions();
+	s_instance.wipeUsers();
 	BOOST_TEST(
-		sTest.getNumberOfUserRecords() == 0
+		s_instance.getNumberOfUserRecords() == 0
 	);
 }
+
+BOOST_AUTO_TEST_SUITE_END();
