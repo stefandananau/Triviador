@@ -33,9 +33,6 @@
     <ClCompile Include="..\Triviador\QuestionNumeric.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Triviador\Storage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Triviador\User.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -45,9 +42,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Triviador\DataBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Triviador\LoginRegisterService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Triviador\Parser.h">

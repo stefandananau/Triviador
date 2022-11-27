@@ -30,6 +30,8 @@ std::vector<UserRecord> DataBase::GetUsers()
 void DataBase::AddQuestionNumeric(const QuestionNumericRecord& questionNumeric)
 {
 	m_dataBase.insert(questionNumeric);
+	Sync();
+
 }
 
 std::vector<QuestionNumericRecord> DataBase::GetQuestionNumeric()
@@ -42,6 +44,8 @@ void DataBase::AddQuestionMultipleChoice(const QuestionMultipleChoiceRecord& que
 {
 
 	m_dataBase.insert(questionMultipleChoiceRecord);
+	Sync();
+
 
 }
 

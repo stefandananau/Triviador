@@ -47,7 +47,7 @@ int Server::SetupServer() {
 		"		If email and password is in User Table then the response is Ok else if password is incorrect response is Unauthorized\n"
 		"		If email is not in User Table then the response is Not Found"
 		"	If register exists then\n"
-		"		If email is in User Table then the response is Conflict else new user is added in User Table and response is Ok\n\n\n";
+		"		If email is in User Table then the response is Conflict else new user is added in User Table and response is Ok\n";
 		
 
 

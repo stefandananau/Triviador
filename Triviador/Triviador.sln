@@ -15,6 +15,7 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ServerTriviador", "ServerTriviador\ServerTriviador.vcxproj", "{698E7F65-ECCF-493D-B92F-478580BC297C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{79478560-0D32-4280-B576-E51A5667C197} = {79478560-0D32-4280-B576-E51A5667C197}
+		{F98C005E-38EB-4ACB-A7A1-2B8ABF18517F} = {F98C005E-38EB-4ACB-A7A1-2B8ABF18517F}
 	EndProjectSection
 EndProject
 Global

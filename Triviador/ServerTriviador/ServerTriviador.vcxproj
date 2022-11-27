@@ -133,14 +133,12 @@
     <ClCompile Include="..\Triviador\Parser.cpp" />
     <ClCompile Include="..\Triviador\QuestionMultipleChoice.cpp" />
     <ClCompile Include="..\Triviador\QuestionNumeric.cpp" />
-    <ClCompile Include="..\Triviador\Storage.cpp" />
     <ClCompile Include="..\Triviador\User.cpp" />
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Triviador\DataBase.h" />
-    <ClInclude Include="..\Triviador\LoginRegisterService.h" />
     <ClInclude Include="..\Triviador\Parser.h" />
     <ClInclude Include="..\Triviador\QuestionMultipleChoice.h" />
     <ClInclude Include="..\Triviador\QuestionMultipleChoiceRecord.h" />
