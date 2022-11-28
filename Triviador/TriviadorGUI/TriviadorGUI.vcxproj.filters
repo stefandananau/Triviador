@@ -47,9 +47,6 @@
     <ClInclude Include="GameWindow2players.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameWindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameWindow4players.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -82,10 +79,5 @@
     <Image Include="images\water-6.png">
       <Filter>Resource Files</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="GameWindow.resx">
-      <Filter>Header Files</Filter>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

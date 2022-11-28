@@ -136,9 +136,6 @@
     <ClInclude Include="GameWindow3players.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="GameWindow.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="GameWindow4players.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -156,7 +153,6 @@
     <EmbeddedResource Include="GameWindow3players.resx">
       <DependentUpon>GameWindow3players.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameWindow.resx" />
     <EmbeddedResource Include="GameWindow4players.resx">
       <DependentUpon>GameWindow4players.h</DependentUpon>
     </EmbeddedResource>
