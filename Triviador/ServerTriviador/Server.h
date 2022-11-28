@@ -8,13 +8,13 @@
 
 #include "DataBase.h"
 
+#include "QuestionNumericRecord.h"
+#include "QuestionMultipleChoiceRecord.h"
+#include "UserRecord.h"
+
 #include "QuestionNumeric.h"
 #include "QuestionMultipleChoice.h"
 #include "User.h"
-
-#include "QuestionNumericRecord.h";
-#include "QuestionMultipleChoiceRecord.h";
-#include "UserRecord.h"
 
 #include "Parser.h"
 class Server
