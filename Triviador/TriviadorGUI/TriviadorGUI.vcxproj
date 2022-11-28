@@ -79,7 +79,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;$(SolutionDir)DataBaseLib;$(SolutionDir)TriviaIslandLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -122,7 +122,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameWindo4players.cpp" />
     <ClCompile Include="GameWindow2players.cpp" />
     <ClCompile Include="GameWindow3players.cpp" />
     <ClCompile Include="GameWindow4players.cpp" />
@@ -173,6 +172,14 @@
     <Image Include="images\water-4.png" />
     <Image Include="images\water-5.png" />
     <Image Include="images\water-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataBaseLib\DataBaseLib.vcxproj">
+      <Project>{72920b01-4fb2-4d50-b026-2949e05922ae}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\TriviaIslandLib\TriviaIslandLib.vcxproj">
+      <Project>{1e171ef3-9344-4f4e-b945-8c83e474ec61}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

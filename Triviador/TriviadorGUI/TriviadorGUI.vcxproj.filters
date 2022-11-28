@@ -21,9 +21,6 @@
     <ClCompile Include="LoginRegisterWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameWindo4players.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameWindow3players.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
