@@ -9,31 +9,31 @@ namespace TriviadorGUI {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	
+
 
 	/// <summary>
-	/// Summary for GameWindow
+	/// Summary for GameWindow4players
 	/// </summary>
-	public ref class GameWindow : public System::Windows::Forms::Form
+	public ref class GameWindow4players : public System::Windows::Forms::Form
 	{
 	public:
-		GameWindow(void)
+		GameWindow4players(void)
 		{
-			
+
 			InitializeComponent();
-			
+
 			this->timer1->Interval = 1200;
 			timer1->Start();
 		}
-		
-		
-		
+
+
+
 
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~GameWindow()
+		~GameWindow4players()
 		{
 			if (components)
 			{
@@ -91,7 +91,7 @@ namespace TriviadorGUI {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(GameWindow::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(GameWindow4players::typeid));
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
@@ -161,16 +161,17 @@ namespace TriviadorGUI {
 			// 
 			// timer1
 			// 
-			this->timer1->Tick += gcnew System::EventHandler(this, &GameWindow::timer1_Tick);
+			this->timer1->Tick += gcnew System::EventHandler(this, &GameWindow4players::timer1_Tick);
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox1->Location = System::Drawing::Point(12, 12);
+			this->pictureBox1->Location = System::Drawing::Point(18, 18);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(97, 161);
+			this->pictureBox1->Size = System::Drawing::Size(146, 248);
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -180,9 +181,10 @@ namespace TriviadorGUI {
 			this->pictureBox2->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.BackgroundImage")));
 			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox2->Location = System::Drawing::Point(12, 870);
+			this->pictureBox2->Location = System::Drawing::Point(18, 1338);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(97, 161);
+			this->pictureBox2->Size = System::Drawing::Size(146, 248);
 			this->pictureBox2->TabIndex = 1;
 			this->pictureBox2->TabStop = false;
 			// 
@@ -192,9 +194,10 @@ namespace TriviadorGUI {
 			this->pictureBox3->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.BackgroundImage")));
 			this->pictureBox3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox3->Location = System::Drawing::Point(1795, 870);
+			this->pictureBox3->Location = System::Drawing::Point(2692, 1338);
+			this->pictureBox3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(97, 161);
+			this->pictureBox3->Size = System::Drawing::Size(146, 248);
 			this->pictureBox3->TabIndex = 2;
 			this->pictureBox3->TabStop = false;
 			// 
@@ -204,9 +207,10 @@ namespace TriviadorGUI {
 			this->pictureBox4->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.BackgroundImage")));
 			this->pictureBox4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox4->Location = System::Drawing::Point(1795, 12);
+			this->pictureBox4->Location = System::Drawing::Point(2692, 18);
+			this->pictureBox4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox4->Name = L"pictureBox4";
-			this->pictureBox4->Size = System::Drawing::Size(97, 161);
+			this->pictureBox4->Size = System::Drawing::Size(146, 248);
 			this->pictureBox4->TabIndex = 3;
 			this->pictureBox4->TabStop = false;
 			// 
@@ -215,9 +219,10 @@ namespace TriviadorGUI {
 			this->pictureBox5->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox5->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.BackgroundImage")));
 			this->pictureBox5->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox5->Location = System::Drawing::Point(115, 12);
+			this->pictureBox5->Location = System::Drawing::Point(172, 18);
+			this->pictureBox5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox5->Name = L"pictureBox5";
-			this->pictureBox5->Size = System::Drawing::Size(179, 132);
+			this->pictureBox5->Size = System::Drawing::Size(268, 203);
 			this->pictureBox5->TabIndex = 4;
 			this->pictureBox5->TabStop = false;
 			// 
@@ -227,9 +232,10 @@ namespace TriviadorGUI {
 			this->pictureBox6->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox6->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.BackgroundImage")));
 			this->pictureBox6->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox6->Location = System::Drawing::Point(1610, 12);
+			this->pictureBox6->Location = System::Drawing::Point(2415, 18);
+			this->pictureBox6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox6->Name = L"pictureBox6";
-			this->pictureBox6->Size = System::Drawing::Size(179, 132);
+			this->pictureBox6->Size = System::Drawing::Size(268, 203);
 			this->pictureBox6->TabIndex = 5;
 			this->pictureBox6->TabStop = false;
 			// 
@@ -239,9 +245,10 @@ namespace TriviadorGUI {
 			this->pictureBox7->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.BackgroundImage")));
 			this->pictureBox7->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox7->Location = System::Drawing::Point(1610, 899);
+			this->pictureBox7->Location = System::Drawing::Point(2415, 1383);
+			this->pictureBox7->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox7->Name = L"pictureBox7";
-			this->pictureBox7->Size = System::Drawing::Size(179, 132);
+			this->pictureBox7->Size = System::Drawing::Size(268, 203);
 			this->pictureBox7->TabIndex = 6;
 			this->pictureBox7->TabStop = false;
 			// 
@@ -251,9 +258,10 @@ namespace TriviadorGUI {
 			this->pictureBox8->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox8->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox8.BackgroundImage")));
 			this->pictureBox8->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox8->Location = System::Drawing::Point(115, 899);
+			this->pictureBox8->Location = System::Drawing::Point(172, 1383);
+			this->pictureBox8->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox8->Name = L"pictureBox8";
-			this->pictureBox8->Size = System::Drawing::Size(179, 132);
+			this->pictureBox8->Size = System::Drawing::Size(268, 203);
 			this->pictureBox8->TabIndex = 7;
 			this->pictureBox8->TabStop = false;
 			// 
@@ -262,9 +270,10 @@ namespace TriviadorGUI {
 			this->pictureBox9->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox9->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox9.BackgroundImage")));
 			this->pictureBox9->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox9->Location = System::Drawing::Point(162, 195);
+			this->pictureBox9->Location = System::Drawing::Point(243, 300);
+			this->pictureBox9->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox9->Name = L"pictureBox9";
-			this->pictureBox9->Size = System::Drawing::Size(192, 123);
+			this->pictureBox9->Size = System::Drawing::Size(288, 189);
 			this->pictureBox9->TabIndex = 8;
 			this->pictureBox9->TabStop = false;
 			// 
@@ -273,9 +282,10 @@ namespace TriviadorGUI {
 			this->pictureBox10->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox10->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox10.BackgroundImage")));
 			this->pictureBox10->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox10->Location = System::Drawing::Point(1274, 568);
+			this->pictureBox10->Location = System::Drawing::Point(1911, 874);
+			this->pictureBox10->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox10->Name = L"pictureBox10";
-			this->pictureBox10->Size = System::Drawing::Size(192, 123);
+			this->pictureBox10->Size = System::Drawing::Size(288, 189);
 			this->pictureBox10->TabIndex = 9;
 			this->pictureBox10->TabStop = false;
 			// 
@@ -284,9 +294,10 @@ namespace TriviadorGUI {
 			this->pictureBox11->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox11->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox11.BackgroundImage")));
 			this->pictureBox11->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox11->Location = System::Drawing::Point(443, 568);
+			this->pictureBox11->Location = System::Drawing::Point(664, 874);
+			this->pictureBox11->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox11->Name = L"pictureBox11";
-			this->pictureBox11->Size = System::Drawing::Size(192, 123);
+			this->pictureBox11->Size = System::Drawing::Size(288, 189);
 			this->pictureBox11->TabIndex = 10;
 			this->pictureBox11->TabStop = false;
 			// 
@@ -295,9 +306,10 @@ namespace TriviadorGUI {
 			this->pictureBox12->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox12->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox12.BackgroundImage")));
 			this->pictureBox12->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox12->Location = System::Drawing::Point(162, 742);
+			this->pictureBox12->Location = System::Drawing::Point(243, 1142);
+			this->pictureBox12->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox12->Name = L"pictureBox12";
-			this->pictureBox12->Size = System::Drawing::Size(192, 123);
+			this->pictureBox12->Size = System::Drawing::Size(288, 189);
 			this->pictureBox12->TabIndex = 11;
 			this->pictureBox12->TabStop = false;
 			// 
@@ -306,9 +318,10 @@ namespace TriviadorGUI {
 			this->pictureBox13->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox13->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox13.BackgroundImage")));
 			this->pictureBox13->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox13->Location = System::Drawing::Point(997, 195);
+			this->pictureBox13->Location = System::Drawing::Point(1496, 300);
+			this->pictureBox13->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox13->Name = L"pictureBox13";
-			this->pictureBox13->Size = System::Drawing::Size(192, 123);
+			this->pictureBox13->Size = System::Drawing::Size(288, 189);
 			this->pictureBox13->TabIndex = 12;
 			this->pictureBox13->TabStop = false;
 			// 
@@ -317,9 +330,10 @@ namespace TriviadorGUI {
 			this->pictureBox14->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox14->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox14.BackgroundImage")));
 			this->pictureBox14->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox14->Location = System::Drawing::Point(997, 380);
+			this->pictureBox14->Location = System::Drawing::Point(1496, 585);
+			this->pictureBox14->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox14->Name = L"pictureBox14";
-			this->pictureBox14->Size = System::Drawing::Size(192, 123);
+			this->pictureBox14->Size = System::Drawing::Size(288, 189);
 			this->pictureBox14->TabIndex = 13;
 			this->pictureBox14->TabStop = false;
 			// 
@@ -328,9 +342,10 @@ namespace TriviadorGUI {
 			this->pictureBox15->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox15->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox15.BackgroundImage")));
 			this->pictureBox15->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox15->Location = System::Drawing::Point(443, 195);
+			this->pictureBox15->Location = System::Drawing::Point(664, 300);
+			this->pictureBox15->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox15->Name = L"pictureBox15";
-			this->pictureBox15->Size = System::Drawing::Size(192, 123);
+			this->pictureBox15->Size = System::Drawing::Size(288, 189);
 			this->pictureBox15->TabIndex = 14;
 			this->pictureBox15->TabStop = false;
 			// 
@@ -339,9 +354,10 @@ namespace TriviadorGUI {
 			this->pictureBox16->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox16->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox16.BackgroundImage")));
 			this->pictureBox16->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox16->Location = System::Drawing::Point(720, 380);
+			this->pictureBox16->Location = System::Drawing::Point(1080, 585);
+			this->pictureBox16->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox16->Name = L"pictureBox16";
-			this->pictureBox16->Size = System::Drawing::Size(192, 123);
+			this->pictureBox16->Size = System::Drawing::Size(288, 189);
 			this->pictureBox16->TabIndex = 15;
 			this->pictureBox16->TabStop = false;
 			// 
@@ -350,9 +366,10 @@ namespace TriviadorGUI {
 			this->pictureBox17->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox17->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox17.BackgroundImage")));
 			this->pictureBox17->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox17->Location = System::Drawing::Point(720, 195);
+			this->pictureBox17->Location = System::Drawing::Point(1080, 300);
+			this->pictureBox17->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox17->Name = L"pictureBox17";
-			this->pictureBox17->Size = System::Drawing::Size(192, 123);
+			this->pictureBox17->Size = System::Drawing::Size(288, 189);
 			this->pictureBox17->TabIndex = 16;
 			this->pictureBox17->TabStop = false;
 			// 
@@ -361,9 +378,10 @@ namespace TriviadorGUI {
 			this->pictureBox19->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox19->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox19.BackgroundImage")));
 			this->pictureBox19->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox19->Location = System::Drawing::Point(443, 742);
+			this->pictureBox19->Location = System::Drawing::Point(664, 1142);
+			this->pictureBox19->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox19->Name = L"pictureBox19";
-			this->pictureBox19->Size = System::Drawing::Size(192, 123);
+			this->pictureBox19->Size = System::Drawing::Size(288, 189);
 			this->pictureBox19->TabIndex = 18;
 			this->pictureBox19->TabStop = false;
 			// 
@@ -372,9 +390,10 @@ namespace TriviadorGUI {
 			this->pictureBox20->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox20->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox20.BackgroundImage")));
 			this->pictureBox20->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox20->Location = System::Drawing::Point(162, 568);
+			this->pictureBox20->Location = System::Drawing::Point(243, 874);
+			this->pictureBox20->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox20->Name = L"pictureBox20";
-			this->pictureBox20->Size = System::Drawing::Size(192, 123);
+			this->pictureBox20->Size = System::Drawing::Size(288, 189);
 			this->pictureBox20->TabIndex = 19;
 			this->pictureBox20->TabStop = false;
 			// 
@@ -383,9 +402,10 @@ namespace TriviadorGUI {
 			this->pictureBox21->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox21->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox21.BackgroundImage")));
 			this->pictureBox21->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox21->Location = System::Drawing::Point(162, 380);
+			this->pictureBox21->Location = System::Drawing::Point(243, 585);
+			this->pictureBox21->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox21->Name = L"pictureBox21";
-			this->pictureBox21->Size = System::Drawing::Size(192, 123);
+			this->pictureBox21->Size = System::Drawing::Size(288, 189);
 			this->pictureBox21->TabIndex = 20;
 			this->pictureBox21->TabStop = false;
 			// 
@@ -394,21 +414,23 @@ namespace TriviadorGUI {
 			this->pictureBox18->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox18->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox18.BackgroundImage")));
 			this->pictureBox18->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox18->Location = System::Drawing::Point(720, 742);
+			this->pictureBox18->Location = System::Drawing::Point(1080, 1142);
+			this->pictureBox18->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox18->Name = L"pictureBox18";
-			this->pictureBox18->Size = System::Drawing::Size(192, 123);
+			this->pictureBox18->Size = System::Drawing::Size(288, 189);
 			this->pictureBox18->TabIndex = 21;
 			this->pictureBox18->TabStop = false;
-			this->pictureBox18->Click += gcnew System::EventHandler(this, &GameWindow::pictureBox18_Click);
+			this->pictureBox18->Click += gcnew System::EventHandler(this, &GameWindow4players::pictureBox18_Click);
 			// 
 			// pictureBox22
 			// 
 			this->pictureBox22->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox22->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox22.BackgroundImage")));
 			this->pictureBox22->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox22->Location = System::Drawing::Point(720, 568);
+			this->pictureBox22->Location = System::Drawing::Point(1080, 874);
+			this->pictureBox22->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox22->Name = L"pictureBox22";
-			this->pictureBox22->Size = System::Drawing::Size(192, 123);
+			this->pictureBox22->Size = System::Drawing::Size(288, 189);
 			this->pictureBox22->TabIndex = 22;
 			this->pictureBox22->TabStop = false;
 			// 
@@ -417,9 +439,10 @@ namespace TriviadorGUI {
 			this->pictureBox23->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox23->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox23.BackgroundImage")));
 			this->pictureBox23->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox23->Location = System::Drawing::Point(443, 380);
+			this->pictureBox23->Location = System::Drawing::Point(664, 585);
+			this->pictureBox23->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox23->Name = L"pictureBox23";
-			this->pictureBox23->Size = System::Drawing::Size(192, 123);
+			this->pictureBox23->Size = System::Drawing::Size(288, 189);
 			this->pictureBox23->TabIndex = 23;
 			this->pictureBox23->TabStop = false;
 			// 
@@ -428,9 +451,10 @@ namespace TriviadorGUI {
 			this->pictureBox24->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox24->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox24.BackgroundImage")));
 			this->pictureBox24->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox24->Location = System::Drawing::Point(997, 742);
+			this->pictureBox24->Location = System::Drawing::Point(1496, 1142);
+			this->pictureBox24->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox24->Name = L"pictureBox24";
-			this->pictureBox24->Size = System::Drawing::Size(192, 123);
+			this->pictureBox24->Size = System::Drawing::Size(288, 189);
 			this->pictureBox24->TabIndex = 24;
 			this->pictureBox24->TabStop = false;
 			// 
@@ -439,9 +463,10 @@ namespace TriviadorGUI {
 			this->pictureBox25->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox25->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox25.BackgroundImage")));
 			this->pictureBox25->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox25->Location = System::Drawing::Point(1548, 568);
+			this->pictureBox25->Location = System::Drawing::Point(2322, 874);
+			this->pictureBox25->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox25->Name = L"pictureBox25";
-			this->pictureBox25->Size = System::Drawing::Size(192, 123);
+			this->pictureBox25->Size = System::Drawing::Size(288, 189);
 			this->pictureBox25->TabIndex = 25;
 			this->pictureBox25->TabStop = false;
 			// 
@@ -450,9 +475,10 @@ namespace TriviadorGUI {
 			this->pictureBox26->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox26->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox26.BackgroundImage")));
 			this->pictureBox26->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox26->Location = System::Drawing::Point(1548, 742);
+			this->pictureBox26->Location = System::Drawing::Point(2322, 1142);
+			this->pictureBox26->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox26->Name = L"pictureBox26";
-			this->pictureBox26->Size = System::Drawing::Size(192, 123);
+			this->pictureBox26->Size = System::Drawing::Size(288, 189);
 			this->pictureBox26->TabIndex = 26;
 			this->pictureBox26->TabStop = false;
 			// 
@@ -461,9 +487,10 @@ namespace TriviadorGUI {
 			this->pictureBox27->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox27->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox27.BackgroundImage")));
 			this->pictureBox27->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox27->Location = System::Drawing::Point(1274, 380);
+			this->pictureBox27->Location = System::Drawing::Point(1911, 585);
+			this->pictureBox27->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox27->Name = L"pictureBox27";
-			this->pictureBox27->Size = System::Drawing::Size(192, 123);
+			this->pictureBox27->Size = System::Drawing::Size(288, 189);
 			this->pictureBox27->TabIndex = 27;
 			this->pictureBox27->TabStop = false;
 			// 
@@ -472,9 +499,10 @@ namespace TriviadorGUI {
 			this->pictureBox28->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox28->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox28.BackgroundImage")));
 			this->pictureBox28->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox28->Location = System::Drawing::Point(1274, 742);
+			this->pictureBox28->Location = System::Drawing::Point(1911, 1142);
+			this->pictureBox28->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox28->Name = L"pictureBox28";
-			this->pictureBox28->Size = System::Drawing::Size(192, 123);
+			this->pictureBox28->Size = System::Drawing::Size(288, 189);
 			this->pictureBox28->TabIndex = 28;
 			this->pictureBox28->TabStop = false;
 			// 
@@ -483,9 +511,10 @@ namespace TriviadorGUI {
 			this->pictureBox29->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox29->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox29.BackgroundImage")));
 			this->pictureBox29->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox29->Location = System::Drawing::Point(997, 568);
+			this->pictureBox29->Location = System::Drawing::Point(1496, 874);
+			this->pictureBox29->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox29->Name = L"pictureBox29";
-			this->pictureBox29->Size = System::Drawing::Size(192, 123);
+			this->pictureBox29->Size = System::Drawing::Size(288, 189);
 			this->pictureBox29->TabIndex = 29;
 			this->pictureBox29->TabStop = false;
 			// 
@@ -494,9 +523,10 @@ namespace TriviadorGUI {
 			this->pictureBox30->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox30->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox30.BackgroundImage")));
 			this->pictureBox30->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox30->Location = System::Drawing::Point(1548, 380);
+			this->pictureBox30->Location = System::Drawing::Point(2322, 585);
+			this->pictureBox30->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox30->Name = L"pictureBox30";
-			this->pictureBox30->Size = System::Drawing::Size(192, 123);
+			this->pictureBox30->Size = System::Drawing::Size(288, 189);
 			this->pictureBox30->TabIndex = 30;
 			this->pictureBox30->TabStop = false;
 			// 
@@ -505,9 +535,10 @@ namespace TriviadorGUI {
 			this->pictureBox31->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox31->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox31.BackgroundImage")));
 			this->pictureBox31->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox31->Location = System::Drawing::Point(1560, 195);
+			this->pictureBox31->Location = System::Drawing::Point(2340, 300);
+			this->pictureBox31->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox31->Name = L"pictureBox31";
-			this->pictureBox31->Size = System::Drawing::Size(192, 123);
+			this->pictureBox31->Size = System::Drawing::Size(288, 189);
 			this->pictureBox31->TabIndex = 31;
 			this->pictureBox31->TabStop = false;
 			// 
@@ -516,19 +547,20 @@ namespace TriviadorGUI {
 			this->pictureBox32->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox32->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox32.BackgroundImage")));
 			this->pictureBox32->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox32->Location = System::Drawing::Point(1274, 195);
+			this->pictureBox32->Location = System::Drawing::Point(1911, 300);
+			this->pictureBox32->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox32->Name = L"pictureBox32";
-			this->pictureBox32->Size = System::Drawing::Size(192, 123);
+			this->pictureBox32->Size = System::Drawing::Size(288, 189);
 			this->pictureBox32->TabIndex = 32;
 			this->pictureBox32->TabStop = false;
 			// 
-			// GameWindow
+			// GameWindow4players
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DeepSkyBlue;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(1904, 1043);
+			this->ClientSize = System::Drawing::Size(1924, 1050);
 			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->pictureBox32);
 			this->Controls->Add(this->pictureBox31);
@@ -562,11 +594,12 @@ namespace TriviadorGUI {
 			this->Controls->Add(this->pictureBox3);
 			this->Controls->Add(this->pictureBox1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Name = L"GameWindow";
+			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->Name = L"GameWindow4players";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"GameWindow";
+			this->Text = L"GameWindow4players";
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
-			this->Load += gcnew System::EventHandler(this, &GameWindow::GameWindow_Load);
+			this->Load += gcnew System::EventHandler(this, &GameWindow4players::GameWindow_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
@@ -607,7 +640,7 @@ namespace TriviadorGUI {
 	}
 
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(GameWindow::typeid));
+		System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(GameWindow4players::typeid));
 		int index = DateTime::Now.Second % 5;
 		switch (index)
 		{
@@ -631,8 +664,8 @@ namespace TriviadorGUI {
 		}
 	}
 
-private: System::Void pictureBox18_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-};
-	
+	private: System::Void pictureBox18_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
+
 }

@@ -125,6 +125,7 @@
     <ClCompile Include="GameWindo4players.cpp" />
     <ClCompile Include="GameWindow2players.cpp" />
     <ClCompile Include="GameWindow3players.cpp" />
+    <ClCompile Include="GameWindow4players.cpp" />
     <ClCompile Include="LoginRegisterWindow.cpp" />
     <ClCompile Include="MainWindow.cpp" />
   </ItemGroup>
@@ -135,7 +136,12 @@
     <ClInclude Include="GameWindow3players.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="GameWindow4players.h" />
+    <ClInclude Include="GameWindow.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="GameWindow4players.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="LoginRegisterWindow.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -150,7 +156,10 @@
     <EmbeddedResource Include="GameWindow3players.resx">
       <DependentUpon>GameWindow3players.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameWindow4players.resx" />
+    <EmbeddedResource Include="GameWindow.resx" />
+    <EmbeddedResource Include="GameWindow4players.resx">
+      <DependentUpon>GameWindow4players.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginRegisterWindow.resx">
       <DependentUpon>LoginRegisterWindow.h</DependentUpon>
     </EmbeddedResource>
