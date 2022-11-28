@@ -1,6 +1,6 @@
 #define BOOST_TEST_MODULE mytests
 
-#include "../ServerTriviador/Server.h"
+#include "Server.h"
 #include <boost/test/unit_test.hpp>
 
 
