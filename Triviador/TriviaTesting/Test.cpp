@@ -1,6 +1,8 @@
 #define BOOST_TEST_MODULE mytests
 
 #include "Server.h"
+
+
 #include <boost/test/unit_test.hpp>
 
 
@@ -9,6 +11,10 @@ struct TestFixture {
 	TestFixture() :s_instance() {}
 	~TestFixture() = default;
 };
+BOOST_AUTO_TEST_CASE(test1) {
+	BOOST_TEST(1 == 1);
+}
+
 
 BOOST_FIXTURE_TEST_SUITE(TestServerSuite, TestFixture);
 
