@@ -18,10 +18,12 @@ namespace TriviadorGUI {
 		MainWindow(void)
 		{
 			InitializeComponent();
+
 			//
 			//TODO: Add the constructor code here
 			//
 		}
+
 
 	protected:
 		/// <summary>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -79,6 +79,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)DataBaseLib;$(SolutionDir)TriviaIslandLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -173,6 +175,9 @@
     <Image Include="images\water-6.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClientTriviador\ClientTriviador.vcxproj">
+      <Project>{6db98ed3-ab25-4c03-a33f-d7cbc0d8e45c}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\DataBaseLib\DataBaseLib.vcxproj">
       <Project>{72920b01-4fb2-4d50-b026-2949e05922ae}</Project>
     </ProjectReference>
