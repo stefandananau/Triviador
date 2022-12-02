@@ -4,76 +4,25 @@ Server::Server() {
 	m_DataBase = DataBase::GetInstance();
 	m_DataBase->Sync();
 
-	m_numericalQuestionsToAppend = parser::ParserJsonNumeric();
-	m_multipleChoiceQuestionsToAppend = parser::ParserJsonMultiple();
-	PopulateServerDatabase();
+	
+	//PopulateServerDatabase();
 
 	//wipeUsers();
 	//wipeQuestions();
 
-	SetupServer();
+	//SetupServer();
 
 
 }
 
-void Server::PopulateServerDatabase() {
 
-	for (const QuestionNumeric& question : m_numericalQuestionsToAppend) {
-		m_DataBase->AddQuestionNumeric(QuestionNumericRecord(question));
-	}
-	for (const QuestionMultipleChoice& question : m_multipleChoiceQuestionsToAppend) {
-		m_DataBase->AddQuestionMultipleChoice(QuestionMultipleChoiceRecord(question));
-	}
-	for (const User& user : m_UsersToAppend) {
-		m_DataBase->AddUser(UserRecord(user));
-	}
-	User u("admin@admin.com", "admin");
-	m_DataBase->AddUser(u);
-	
-}
-
-void Server::wipeUsers()
+crow::response Server::DataBaseRoute(const crow::request& req)
 {
-	m_DataBase->WipeUsers();
-}
-
-void Server::wipeQuestions()
-{
-	m_DataBase->WipeQuestions();
-}
-
-
-
-void Server::SetupServer() {
-
-	std::cout << "admin email: admin@admin.com\n"
-		"admin password: admin\n\n"
-		"Current routes:\n"
-		"/database?table=<value>\n"
-		"	If value is QuestionMultipleChoice then the response is QuestionMultipleChoice Table\n"
-		"	If value is QuestionNumeric then the response is QuestionNumeric Table\n"
-		"	If value is User then the response is User Table\n"
-		"	If value is All then the response is all tables\n"
-		"/database/getQuestion?type=<value>\n"
-		"	If value is Multiple then the response is a random question from QuestionMultipleChoice Table with id,question and answers\n"
-		"	If value is Numeric then the response is a random question from QuestionNumeric Table with id,question\n"
-		"/authentication?(login or register)&email=<value1>&password=<value2>\n"
-		"	If login exists then\n"
-		"		If email and password is in User Table then the response is Ok else if password is incorrect response is Unauthorized\n"
-		"		If email is not in User Table then the response is Not Found\n"
-		"	If register exists then\n"
-		"		If email is in User Table then the response is Conflict else new user is added in User Table and response is Ok\n\n\n";
-		
-
-
-
-	std::default_random_engine generator;
-	CROW_ROUTE(m_crowApp, "/database")([this](const crow::request& req) {
 	auto table = req.url_params.get("table");
 	crow::json::wvalue database;
 	if (table != nullptr)
 	{
-		
+
 		if (std::string(table) == "QuestionMultipleChoice")
 		{
 			crow::json::wvalue x;
@@ -95,7 +44,7 @@ void Server::SetupServer() {
 			database = { {"MulipleQuestionTable",x} };
 			x.clear();
 		}
-		else if (table == "QuestionNumeric") {
+		else if (std::string(table) == "QuestionNumeric") {
 			crow::json::wvalue x;
 			std::vector<QuestionNumericRecord> pulledNumericalQuestions = m_DataBase->GetQuestionNumeric();
 
@@ -105,7 +54,7 @@ void Server::SetupServer() {
 					{"id",question.id},
 					{"type", question.m_type},
 					{"question", question.m_question},
-					{"answer", question.m_answer},
+					{"answer", question.m_correctAnswer},
 
 				};
 			}
@@ -148,7 +97,7 @@ void Server::SetupServer() {
 				};
 
 			}
-			database[0] = { {"MulipleQuestionTable ",x} };
+			database[0] = { {"MulipleQuestionTable",x} };
 			x.clear();
 
 			std::vector<QuestionNumericRecord> pulledNumericalQuestions = m_DataBase->GetQuestionNumeric();
@@ -159,14 +108,14 @@ void Server::SetupServer() {
 					{"id",question.id},
 					{"type", question.m_type},
 					{"question", question.m_question},
-					{"answer", question.m_answer},
+					{"answer", question.m_correctAnswer},
 
 				};
 			}
-			database[1] = { {"NumericalQuestionTable: ",x} };
+			database[1] = { {"NumericalQuestionTable",x} };
 			x.clear();
 
-			
+
 			std::vector<UserRecord> pulledUser = m_DataBase->GetUsers();
 
 			for (const auto& user : pulledUser) {
@@ -177,28 +126,29 @@ void Server::SetupServer() {
 					{"password", user.m_password},
 				};
 			}
-			database[2] = { {"UserTabel: ",x} };
+			database[2] = { {"UserTabe",x} };
 			x.clear();
 
 		}
-		else { 
-			return crow::response(404);
- }
+		else {
+			return crow::response(404);//Not Found
+		}
 		return crow::response(std::move(database));
 	}
 	return crow::response(405);//Method Not Allowed
-	});
-	CROW_ROUTE(m_crowApp, "/database/getQuestion")([this, &generator](const crow::request& req) {
-	
-	
 
+}
+
+crow::response Server::ReturnRandomQuestionRoute(const crow::request& req, std::default_random_engine& generator)
+{
 	if (req.url_params.get("type")) {
 		std::string type = req.url_params.get("type");
 		std::cout << type;
 
 		if (type == "Multiple")
 
-		{std::vector<QuestionMultipleChoiceRecord> pulledMultipleQuestions = m_DataBase->GetQuestionMultipleChoice();
+		{
+			std::vector<QuestionMultipleChoiceRecord> pulledMultipleQuestions = m_DataBase->GetQuestionMultipleChoice();
 			std::uniform_int_distribution<int> distribution(0, pulledMultipleQuestions.size() - 1);
 			int QuestionID = distribution(generator);
 			return crow::response(crow::json::wvalue({
@@ -206,7 +156,8 @@ void Server::SetupServer() {
 				{"Question", pulledMultipleQuestions[QuestionID].m_question},
 				{"Responses",
 				crow::json::wvalue::list(
-					{pulledMultipleQuestions[QuestionID].m_correctAnswer,
+					{
+				pulledMultipleQuestions[QuestionID].m_correctAnswer,
 				pulledMultipleQuestions[QuestionID].m_wrongAnswer1,
 				pulledMultipleQuestions[QuestionID].m_wrongAnswer2,
 				pulledMultipleQuestions[QuestionID].m_wrongAnswer3
@@ -230,10 +181,11 @@ void Server::SetupServer() {
 		}
 	}
 	return crow::response(405);
-		});
-	CROW_ROUTE(m_crowApp, "/authentication")([this](const crow::request& req) {
+}
 
-		std::vector<UserRecord> pulledUser = m_DataBase->GetUsers();
+crow::response Server::AuthenticationRoute(const crow::request& req)
+{
+	std::vector<UserRecord> pulledUser = m_DataBase->GetUsers();
 	if (req.url_params.get("login"))
 	{
 		auto email = req.url_params.get("email");
@@ -291,29 +243,95 @@ void Server::SetupServer() {
 
 	}
 	return crow::response(405);//Method Not Allowed
-		
-	});
+}
+
+void Server::PopulateServerDatabase() {
+	std::vector<QuestionNumeric> numericalQuestionsToAppend = parser::ParserJsonNumeric();
+	std::vector<QuestionMultipleChoice> multipleChoiceQuestionsToAppend = parser::ParserJsonMultiple();
+	std::vector<User> usersToAppend;
+
+	for (const QuestionNumeric& question : numericalQuestionsToAppend) {
+		m_DataBase->AddQuestionNumeric(QuestionNumericRecord(question));
+	}
+	for (const QuestionMultipleChoice& question : multipleChoiceQuestionsToAppend) {
+		m_DataBase->AddQuestionMultipleChoice(QuestionMultipleChoiceRecord(question));
+	}
+	for (const User& user :usersToAppend) {
+		m_DataBase->AddUser(UserRecord(user));
+	}
+	User u("admin@admin.com", "admin");
+	m_DataBase->AddUser(u);
+
+}
+
+void Server::wipeUsers()
+{
+	m_DataBase->WipeUsers();
+}
+
+void Server::wipeQuestions()
+{
+	m_DataBase->WipeQuestions();
+}
+
+
+
+
+void Server::SetupServer() {
+
+	std::cout << "admin email: admin@admin.com\n"
+		"admin password: admin\n\n"
+		"Current routes:\n"
+		"/database?table=<value>\n"
+		"	If value is QuestionMultipleChoice then the response is QuestionMultipleChoice Table\n"
+		"	If value is QuestionNumeric then the response is QuestionNumeric Table\n"
+		"	If value is User then the response is User Table\n"
+		"	If value is All then the response is all tables\n"
+		"/database/getQuestion?type=<value>\n"
+		"	If value is Multiple then the response is a random question from QuestionMultipleChoice Table with id,question and answers\n"
+		"	If value is Numeric then the response is a random question from QuestionNumeric Table with id,question\n"
+		"/authentication?(login or register)&email=<value1>&password=<value2>\n"
+		"	If login exists then\n"
+		"		If email and password is in User Table then the response is Ok else if password is incorrect response is Unauthorized\n"
+		"		If email is not in User Table then the response is Not Found\n"
+		"	If register exists then\n"
+		"		If email is in User Table then the response is Conflict else new user is added in User Table and response is Ok\n\n\n";
+
+	std::default_random_engine generator;
+	CROW_ROUTE(m_crowApp, "/database")([this](const crow::request& req) {
+		return DataBaseRoute(req);
+		});
+
+	CROW_ROUTE(m_crowApp, "/database/getQuestion")([this, &generator](const crow::request& req) {
+		return ReturnRandomQuestionRoute(req, generator);
+
+		});
+
+	CROW_ROUTE(m_crowApp, "/authentication")([this](const crow::request& req) {
+		return AuthenticationRoute(req);
+		});
 
 	m_crowApp.port(80);
 	m_crowApp.multithreaded();
 	m_crowApp.run_async();
 	m_crowApp.debug_print();
 
-	
+
 }
 
-size_t Server::getNumberOfUserRecords()
+size_t Server::GetNumberOfUserRecords() const
 {
 	std::vector<UserRecord> userRecords = m_DataBase->GetUsers();
 	return userRecords.size();
 }
-size_t Server::getNumberOfQuestionMultipleChoiceRecords()
+
+size_t Server::GetNumberOfQuestionMultipleChoiceRecords() const
 {
 	std::vector<QuestionMultipleChoiceRecord> questionMultipleChoiceRecords = m_DataBase->GetQuestionMultipleChoice();
 	return questionMultipleChoiceRecords.size();
 }
 
-size_t Server::getNumberOfQuestionNumericRecords()
+size_t Server::GetNumberOfQuestionNumericRecords() const
 {
 	std::vector<QuestionNumericRecord> questionMultipleChoiceRecords = m_DataBase->GetQuestionNumeric();
 	return questionMultipleChoiceRecords.size();

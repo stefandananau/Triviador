@@ -2,4 +2,6 @@
 
 int main() {
 	Server s;
+	s.PopulateServerDatabase();
+	s.SetupServer();
 }

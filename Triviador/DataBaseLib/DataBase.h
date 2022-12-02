@@ -16,7 +16,7 @@ namespace DB {
 				sqlite_orm::make_column("id",&QuestionNumericRecord::id, sqlite_orm::primary_key()),
 				sqlite_orm::make_column("type",&QuestionNumericRecord::m_type),
 				sqlite_orm::make_column("question",&QuestionNumericRecord::m_question),
-				sqlite_orm::make_column("answer",&QuestionNumericRecord::m_answer)),
+				sqlite_orm::make_column("answer",&QuestionNumericRecord::m_correctAnswer)),
 			sqlite_orm::make_table("QuestionMultipleChoice",
 				sqlite_orm::make_column("id", &QuestionMultipleChoiceRecord::id, sqlite_orm::primary_key()),
 				sqlite_orm::make_column("type", &QuestionMultipleChoiceRecord::m_type),

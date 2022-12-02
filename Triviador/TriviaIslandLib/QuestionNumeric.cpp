@@ -1,12 +1,12 @@
 #include "QuestionNumeric.h"
 
-QuestionNumeric::QuestionNumeric() :m_category(""), m_type(""), m_correct_answer(0), m_difficulty("")
+QuestionNumeric::QuestionNumeric() :m_category(""), m_type(""), m_correctAnswer(0), m_difficulty("")
 {
 
 
 }
 
-QuestionNumeric::QuestionNumeric(const std::string& category, const std::string& type,const std::string& difficulty,const std::string& question, uint8_t correct_answer):m_category(category),m_correct_answer(correct_answer),m_difficulty(difficulty),m_type(type)
+QuestionNumeric::QuestionNumeric(const std::string& category, const std::string& type,const std::string& difficulty,const std::string& question, uint8_t correctAnswer):m_category(category),m_correctAnswer(correctAnswer),m_difficulty(difficulty),m_type(type)
 {
 }
 
@@ -52,12 +52,12 @@ void QuestionNumeric::SetQuestion(const std::string& question)
 
 uint8_t QuestionNumeric::GetCorrectAnswer() const
 {
-    return m_correct_answer;
+    return m_correctAnswer;
 }
 
-void QuestionNumeric::SetCorrectAnswer(uint8_t correct_answer)
+void QuestionNumeric::SetCorrectAnswer(uint8_t correctAnswer)
 {
-    m_correct_answer = correct_answer;
+    m_correctAnswer = correctAnswer;
 }
 
 std::ostream& operator<<(std::ostream& os, const QuestionNumeric& questionNumeric)
@@ -66,6 +66,6 @@ std::ostream& operator<<(std::ostream& os, const QuestionNumeric& questionNumeri
     os << "Type == " << questionNumeric.m_type << std::endl;
     os << "Difficulty == " << questionNumeric.m_difficulty << std::endl;
     os << "Question == " << questionNumeric.m_question << std::endl;
-    os << "Correct Answer == " << questionNumeric.m_correct_answer << std::endl;
+    os << "Correct Answer == " << questionNumeric.m_correctAnswer << std::endl;
     return os;
 }

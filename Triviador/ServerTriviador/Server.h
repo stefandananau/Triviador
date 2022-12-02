@@ -19,22 +19,24 @@
 #include "Parser.h"
 class Server
 {
-private:
+protected:
 	DataBase* m_DataBase;
 	crow::SimpleApp m_crowApp;
+	
+	crow::response DataBaseRoute(const crow::request& req);
+	crow::response ReturnRandomQuestionRoute(const crow::request& req, std::default_random_engine& generator);
+	crow::response AuthenticationRoute(const crow::request& req);
 
-	std::vector<QuestionNumeric> m_numericalQuestionsToAppend;
-	std::vector<QuestionMultipleChoice> m_multipleChoiceQuestionsToAppend;
-	std::vector<User> m_UsersToAppend;
-	void PopulateServerDatabase();
-	void SetupServer();
+	
 
 public:
 	Server();
+	void PopulateServerDatabase();
+	void SetupServer();
 	void wipeUsers();
 	void wipeQuestions();
-	size_t getNumberOfQuestionMultipleChoiceRecords();
-	size_t getNumberOfQuestionNumericRecords();
-	size_t getNumberOfUserRecords();
+	size_t GetNumberOfQuestionMultipleChoiceRecords() const;
+	size_t GetNumberOfQuestionNumericRecords() const;
+	size_t GetNumberOfUserRecords() const;
 };
 
