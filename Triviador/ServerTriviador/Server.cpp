@@ -272,14 +272,20 @@ void Server::PopulateServerDatabase() {
 		std::vector<QuestionMultipleChoice> multipleChoiceQuestionsToAppend = parser::ParserJsonMultiple();
 		std::vector<User> usersToAppend;
 
-		for (const QuestionNumeric& question : numericalQuestionsToAppend) {
-			m_DataBase->AddQuestionNumeric(QuestionNumericRecord(question));
+		if (this->GetNumberOfQuestionNumericRecords() == 0) {
+			for (const QuestionNumeric& question : numericalQuestionsToAppend) {
+				m_DataBase->AddQuestionNumeric(QuestionNumericRecord(question));
+			}
 		}
-		for (const QuestionMultipleChoice& question : multipleChoiceQuestionsToAppend) {
-			m_DataBase->AddQuestionMultipleChoice(QuestionMultipleChoiceRecord(question));
+		if (this->GetNumberOfQuestionMultipleChoiceRecords() == 0) {
+			for (const QuestionMultipleChoice& question : multipleChoiceQuestionsToAppend) {
+				m_DataBase->AddQuestionMultipleChoice(QuestionMultipleChoiceRecord(question));
+			}
 		}
-		for (const User& user : usersToAppend) {
-			m_DataBase->AddUser(UserRecord(user));
+		if (this->GetNumberOfUserRecords() == 0) {
+			for (const User& user : usersToAppend) {
+				m_DataBase->AddUser(UserRecord(user));
+			}
 		}
 		User u("admin@admin.com", "admin");
 		m_DataBase->AddUser(u);
