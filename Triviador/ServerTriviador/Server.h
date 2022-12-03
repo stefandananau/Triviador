@@ -1,5 +1,6 @@
 #pragma once
 
+#include <regex>
 
 #include <crow/http_server.h>
 #include <crow/app.h>

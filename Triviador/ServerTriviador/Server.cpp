@@ -1,5 +1,5 @@
 #include "Server.h"
-
+#include <regex>
 Server::Server() {
 	m_DataBase = DataBase::GetInstance();
 	m_DataBase->Sync();
@@ -191,12 +191,12 @@ crow::response Server::AuthenticationRoute(const crow::request& req)
 		auto email = req.url_params.get("email");
 		if (email == nullptr)
 		{
-			return crow::response(405);//Method Not Allowed
+			return crow::response(405, "email field is null");//Method Not Allowed
 		}
 		auto password = req.url_params.get("password");
 		if (password == nullptr)
 		{
-			return crow::response(405);//Method Not Allowed
+			return crow::response(405, "password field is null");//Method Not Allowed
 		}
 		auto user = std::find_if(pulledUser.begin(), pulledUser.end(), [email](const UserRecord& u) {
 			return u.m_email == email;
@@ -205,13 +205,13 @@ crow::response Server::AuthenticationRoute(const crow::request& req)
 		{
 			if (user->m_password == password)
 			{
-				return crow::response(202);//Accepted
+				return crow::response(202, "login succesful");//Accepted
 			}
 			else
-				return crow::response(401);//Unauthorized
+				return crow::response(401, "wrong password");//Unauthorized
 		}
 		else {
-			return crow::response(404);//Not Found
+			return crow::response(404, "wrong email");//Not Found
 		}
 	}
 	else if (req.url_params.get("register"))
@@ -219,12 +219,18 @@ crow::response Server::AuthenticationRoute(const crow::request& req)
 		auto email = req.url_params.get("email");
 		if (email == nullptr)
 		{
-			return crow::response(405);//Method Not Allowed
+			return crow::response(405, "email field is null");//Method Not Allowed
+		}
+		if (!std::regex_match(email, std::regex("^[A-Za-z0-9]+@[a-z]+\.[a-z]+(\.[a-z]+)?$"))) {
+			return crow::response(417, "email expectations not satisfied");
 		}
 		auto password = req.url_params.get("password");
 		if (password == nullptr)
 		{
-			return crow::response(405);//Method Not Allowed
+			return crow::response(405, "password field is null");//Method Not Allowed
+		}
+		if (!std::regex_match(password , std::regex("^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!#$%&? ]).*$"))) {
+			return crow::response(417, "password expectations not satisfied");
 		}
 
 		auto user = std::find_if(pulledUser.begin(), pulledUser.end(), [email](const UserRecord& u) {
@@ -232,12 +238,12 @@ crow::response Server::AuthenticationRoute(const crow::request& req)
 			});
 		if (!(user == pulledUser.end()))
 		{
-			return crow::response(409);//Conflict
+			return crow::response(409, "email already exists");//Conflict
 		}
 		else
 		{
 			m_DataBase->AddUser(User(email, password));
-			return crow::response(200);//Ok
+			return crow::response(200, "register succesful");//Ok
 
 		}
 
