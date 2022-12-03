@@ -1,8 +1,14 @@
 #include "DataBase.h"
-
+#include <filesystem>
 DataBase* DataBase::singletonDataBase;
 
-DataBase::DataBase(std::string name) : m_dataBase( DB::CreateDatabase(name)) {}
+DataBase::DataBase(std::string name) : m_dataBase( DB::CreateDatabase(name))
+{
+	if(!std::filesystem::exists(name))
+	{
+		Sync();
+	}
+}
 
 DataBase* DataBase::GetInstance()
 {	
@@ -30,7 +36,6 @@ std::vector<UserRecord> DataBase::GetUsers()
 void DataBase::AddQuestionNumeric(const QuestionNumericRecord& questionNumeric)
 {
 	m_dataBase.insert(questionNumeric);
-	Sync();
 
 }
 
@@ -44,7 +49,7 @@ void DataBase::AddQuestionMultipleChoice(const QuestionMultipleChoiceRecord& que
 {
 
 	m_dataBase.insert(questionMultipleChoiceRecord);
-	Sync();
+	
 
 
 }
@@ -58,7 +63,7 @@ std::vector<QuestionMultipleChoiceRecord> DataBase::GetQuestionMultipleChoice()
 int DataBase::WipeUsers()
 {
 	m_dataBase.remove_all<UserRecord>();
-	Sync();
+	
 	return 0;
 }
 
@@ -66,6 +71,6 @@ int DataBase::WipeQuestions()
 {
 	m_dataBase.remove_all<QuestionMultipleChoiceRecord>();
 	m_dataBase.remove_all<QuestionNumericRecord>();
-	Sync();
+	
 	return 0;
 }
