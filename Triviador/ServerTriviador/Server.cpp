@@ -243,27 +243,48 @@ crow::response Server::AuthenticationRoute(const crow::request& req)
 
 	}
 	return crow::response(405);//Method Not Allowed
+		
 }
+
+crow::response Server::AddUserToLobyRoute(const crow::request& req) {
+	auto userName = req.url_params.get("email");
+
+	std::vector<UserRecord> pulledUser = m_DataBase->GetUsers();
+	auto email = req.url_params.get("email");
+
+	auto user = std::find_if(pulledUser.begin(), pulledUser.end(), [email](const UserRecord& u) {
+		return u.m_email == email;
+		});
+	if (user == pulledUser.end())
+	{
+		return crow::response(404);//Not found
+	}
+	else {
+		m_lobby.push_back(userName);
+		m_gameState = state::waitingForPlayers;
+		return crow::response(200);
+	}
+}
+
 
 void Server::PopulateServerDatabase() {
-	std::vector<QuestionNumeric> numericalQuestionsToAppend = parser::ParserJsonNumeric();
-	std::vector<QuestionMultipleChoice> multipleChoiceQuestionsToAppend = parser::ParserJsonMultiple();
-	std::vector<User> usersToAppend;
+		std::vector<QuestionNumeric> numericalQuestionsToAppend = parser::ParserJsonNumeric();
+		std::vector<QuestionMultipleChoice> multipleChoiceQuestionsToAppend = parser::ParserJsonMultiple();
+		std::vector<User> usersToAppend;
 
-	for (const QuestionNumeric& question : numericalQuestionsToAppend) {
-		m_DataBase->AddQuestionNumeric(QuestionNumericRecord(question));
-	}
-	for (const QuestionMultipleChoice& question : multipleChoiceQuestionsToAppend) {
-		m_DataBase->AddQuestionMultipleChoice(QuestionMultipleChoiceRecord(question));
-	}
-	for (const User& user :usersToAppend) {
-		m_DataBase->AddUser(UserRecord(user));
-	}
-	User u("admin@admin.com", "admin");
-	m_DataBase->AddUser(u);
+		for (const QuestionNumeric& question : numericalQuestionsToAppend) {
+			m_DataBase->AddQuestionNumeric(QuestionNumericRecord(question));
+		}
+		for (const QuestionMultipleChoice& question : multipleChoiceQuestionsToAppend) {
+			m_DataBase->AddQuestionMultipleChoice(QuestionMultipleChoiceRecord(question));
+		}
+		for (const User& user : usersToAppend) {
+			m_DataBase->AddUser(UserRecord(user));
+		}
+		User u("admin@admin.com", "admin");
+		m_DataBase->AddUser(u);
 
 }
-
 void Server::wipeUsers()
 {
 	m_DataBase->WipeUsers();
@@ -309,6 +330,10 @@ void Server::SetupServer() {
 
 	CROW_ROUTE(m_crowApp, "/authentication")([this](const crow::request& req) {
 		return AuthenticationRoute(req);
+		});
+
+	CROW_ROUTE(m_crowApp, "/lobby")([this](const crow::request& req) {
+		return AddUserToLobyRoute(req);
 		});
 
 	m_crowApp.port(80);

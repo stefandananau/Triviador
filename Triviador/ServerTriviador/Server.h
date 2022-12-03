@@ -17,19 +17,28 @@
 #include "User.h"
 
 #include "Parser.h"
+
+enum state {
+	waitingForPlayers,
+	gameInProgress
+};
+
 class Server
 {
 protected:
 	DataBase* m_DataBase;
+	state m_gameState;
+	std::vector<std::string> m_lobby;
+
 	crow::SimpleApp m_crowApp;
 	
 	crow::response DataBaseRoute(const crow::request& req);
 	crow::response ReturnRandomQuestionRoute(const crow::request& req, std::default_random_engine& generator);
 	crow::response AuthenticationRoute(const crow::request& req);
-
-	
+	crow::response AddUserToLobyRoute(const crow::request& req);
 
 public:
+
 	Server();
 	void PopulateServerDatabase();
 	void SetupServer();
