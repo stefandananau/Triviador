@@ -6,6 +6,7 @@
 #include <crow/app.h>
 #include <crow/json.h>
 #include <random>
+#include <map>
 
 #include "DataBase.h"
 
@@ -29,7 +30,7 @@ class Server
 protected:
 	DataBase* m_DataBase;
 	state m_gameState;
-	std::vector<std::string> m_lobby;
+	std::map<std::string,bool> m_lobby;
 
 	crow::SimpleApp m_crowApp;
 	
@@ -37,7 +38,8 @@ protected:
 	crow::response ReturnRandomQuestionRoute(const crow::request& req, std::default_random_engine& generator);
 	crow::response AuthenticationRoute(const crow::request& req);
 	crow::response AddUserToLobyRoute(const crow::request& req);
-
+	crow::response SetUserToReadyInLobbyRoute(const crow::request& req);
+	crow::json::wvalue CheckGameState();
 public:
 
 	Server();

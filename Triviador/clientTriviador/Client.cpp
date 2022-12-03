@@ -1,15 +1,45 @@
 #include "Client.h"
 #include "LoginRegister.h"
 
-void Client::sendGameAwaitToServer() {
-	cpr::Response serverLobbyResponse = cpr::Get(cpr::Url("http://localhost/lobby?email=" + m_userEmail));
-	std::cout << serverLobbyResponse.raw_header<<"\n";
+void Client::checkGameState() {
+	cpr::Response currentState = cpr::Get(cpr::Url("http://localhost/lobby/gameState"));
+	auto responseInJson = crow::json::load(currentState.text);
+
+	std::cout << responseInJson["state"];
+	while (responseInJson["state"] == "waiting_for_players") {
+		currentState = cpr::Get(cpr::Url("http://localhost/lobby/gameState"));
+		responseInJson = crow::json::load(currentState.text);
+	}
 	std::cin >> m_option;
+}
+
+void Client::promptReady() {
+	std::string promptResponse;
+	cpr::Response serverReadySetResponse;
+
+	while (!m_ready) {
+		std::cout << "Ready?(Y/N)\n";
+		std::cin >> promptResponse;
+		if (promptResponse == std::string("Y")) {
+			m_ready = true;
+			serverReadySetResponse = cpr::Get(cpr::Url("http://localhost/lobby/ready?email=" + m_userEmail));
+		}
+	}
+}
+
+void Client::sendReadyAwaitToServer() {
+	cpr::Response serverLobbyResponse = cpr::Get(cpr::Url("http://localhost/lobby?email=" + m_userEmail));
+	std::cout << std::endl;
+	std::cout << serverLobbyResponse.raw_header<<"\n";
+	std::cout << std::endl;
+	
 }
 
 void Client::initClient() {
 	getUserCredentials();
-	sendGameAwaitToServer();
+	sendReadyAwaitToServer();
+	promptReady();
+	checkGameState();
 }
 
 void Client::getUserCredentials()

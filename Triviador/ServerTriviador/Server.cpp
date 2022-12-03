@@ -15,6 +15,21 @@ Server::Server() {
 
 }
 
+crow::json::wvalue Server::CheckGameState() {
+	crow::json::wvalue outJson;
+
+	switch (m_gameState) {
+	case state::waitingForPlayers:
+		outJson = { { "state", "waiting_for_players" } };
+		break;
+	case state::gameInProgress:
+		outJson = { {"state", "game_in_progress"} };
+		break;
+	default:
+		break;
+	}
+	return outJson;
+}
 
 crow::response Server::DataBaseRoute(const crow::request& req)
 {
@@ -266,10 +281,33 @@ crow::response Server::AddUserToLobyRoute(const crow::request& req) {
 		return crow::response(404);//Not found
 	}
 	else {
-		m_lobby.push_back(userName);
+		m_lobby[userName] = false;
 		m_gameState = state::waitingForPlayers;
 		return crow::response(200);
 	}
+}
+
+crow::response Server::SetUserToReadyInLobbyRoute(const crow::request& req) {
+	auto email = req.url_params.get("email");
+	size_t numberOfReadyUsers = 0;
+	if (!m_lobby.contains(email)) {
+		return crow::response(404);//not found
+	}
+	else {
+		m_lobby[email] = true;
+		for (const auto &elem : m_lobby) {
+			if (elem.second == true) {
+				numberOfReadyUsers++;
+			}
+		}
+		if (numberOfReadyUsers == 4) {
+			this->m_gameState = state::gameInProgress;
+			std::cout << "Game started!\n";
+		}
+
+		return crow::response(200);//ok
+	}
+
 }
 
 
@@ -346,6 +384,14 @@ void Server::SetupServer() {
 
 	CROW_ROUTE(m_crowApp, "/lobby")([this](const crow::request& req) {
 		return AddUserToLobyRoute(req);
+		});
+
+	CROW_ROUTE(m_crowApp, "/lobby/ready")([this](const crow::request& req) {
+		return SetUserToReadyInLobbyRoute(req);
+		});
+	
+	CROW_ROUTE(m_crowApp, "/lobby/gameState")([this]() {
+		return CheckGameState();
 		});
 
 	m_crowApp.port(80);
