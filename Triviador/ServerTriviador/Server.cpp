@@ -5,7 +5,7 @@ Server::Server() {
 	m_DataBase->Sync();
 
 	
-	//PopulateServerDatabase();
+	PopulateServerDatabase();
 
 	//wipeUsers();
 	//wipeQuestions();

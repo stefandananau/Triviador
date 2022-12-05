@@ -3,11 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TriviadorGUI", "TriviadorGUI\TriviadorGUI.vcxproj", "{75EADD51-FED8-43B2-8AB7-D5E95B84FCF4}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6DB98ED3-AB25-4C03-A33F-D7CBC0D8E45C} = {6DB98ED3-AB25-4C03-A33F-D7CBC0D8E45C}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Requester", "Requester\Requester.vcxproj", "{F98C005E-38EB-4ACB-A7A1-2B8ABF18517F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ServerTriviador", "ServerTriviador\ServerTriviador.vcxproj", "{698E7F65-ECCF-493D-B92F-478580BC297C}"
@@ -33,7 +28,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TriviaIslandLib", "TriviaIs
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataBaseLib", "DataBaseLib\DataBaseLib.vcxproj", "{72920B01-4FB2-4D50-B026-2949E05922AE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClientCLR", "ClientCLR\ClientCLR.vcxproj", "{0460784D-E31C-4E25-BA78-F69E63C5B5F9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TriviadorGUI", "TriviadorGUI\TriviadorGUI.vcxproj", "{51C79335-2167-4AE6-BA4D-EFCF77389E0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,14 +38,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{75EADD51-FED8-43B2-8AB7-D5E95B84FCF4}.Debug|x64.ActiveCfg = Debug|x64
-		{75EADD51-FED8-43B2-8AB7-D5E95B84FCF4}.Debug|x64.Build.0 = Debug|x64
-		{75EADD51-FED8-43B2-8AB7-D5E95B84FCF4}.Debug|x86.ActiveCfg = Debug|Win32
-		{75EADD51-FED8-43B2-8AB7-D5E95B84FCF4}.Debug|x86.Build.0 = Debug|Win32
-		{75EADD51-FED8-43B2-8AB7-D5E95B84FCF4}.Release|x64.ActiveCfg = Release|x64
-		{75EADD51-FED8-43B2-8AB7-D5E95B84FCF4}.Release|x64.Build.0 = Release|x64
-		{75EADD51-FED8-43B2-8AB7-D5E95B84FCF4}.Release|x86.ActiveCfg = Release|Win32
-		{75EADD51-FED8-43B2-8AB7-D5E95B84FCF4}.Release|x86.Build.0 = Release|Win32
 		{F98C005E-38EB-4ACB-A7A1-2B8ABF18517F}.Debug|x64.ActiveCfg = Debug|x64
 		{F98C005E-38EB-4ACB-A7A1-2B8ABF18517F}.Debug|x64.Build.0 = Debug|x64
 		{F98C005E-38EB-4ACB-A7A1-2B8ABF18517F}.Debug|x86.ActiveCfg = Debug|Win32
@@ -99,14 +86,14 @@ Global
 		{72920B01-4FB2-4D50-B026-2949E05922AE}.Release|x64.Build.0 = Release|x64
 		{72920B01-4FB2-4D50-B026-2949E05922AE}.Release|x86.ActiveCfg = Release|Win32
 		{72920B01-4FB2-4D50-B026-2949E05922AE}.Release|x86.Build.0 = Release|Win32
-		{0460784D-E31C-4E25-BA78-F69E63C5B5F9}.Debug|x64.ActiveCfg = Debug|x64
-		{0460784D-E31C-4E25-BA78-F69E63C5B5F9}.Debug|x64.Build.0 = Debug|x64
-		{0460784D-E31C-4E25-BA78-F69E63C5B5F9}.Debug|x86.ActiveCfg = Debug|Win32
-		{0460784D-E31C-4E25-BA78-F69E63C5B5F9}.Debug|x86.Build.0 = Debug|Win32
-		{0460784D-E31C-4E25-BA78-F69E63C5B5F9}.Release|x64.ActiveCfg = Release|x64
-		{0460784D-E31C-4E25-BA78-F69E63C5B5F9}.Release|x64.Build.0 = Release|x64
-		{0460784D-E31C-4E25-BA78-F69E63C5B5F9}.Release|x86.ActiveCfg = Release|Win32
-		{0460784D-E31C-4E25-BA78-F69E63C5B5F9}.Release|x86.Build.0 = Release|Win32
+		{51C79335-2167-4AE6-BA4D-EFCF77389E0C}.Debug|x64.ActiveCfg = Debug|x64
+		{51C79335-2167-4AE6-BA4D-EFCF77389E0C}.Debug|x64.Build.0 = Debug|x64
+		{51C79335-2167-4AE6-BA4D-EFCF77389E0C}.Debug|x86.ActiveCfg = Debug|x64
+		{51C79335-2167-4AE6-BA4D-EFCF77389E0C}.Debug|x86.Build.0 = Debug|x64
+		{51C79335-2167-4AE6-BA4D-EFCF77389E0C}.Release|x64.ActiveCfg = Release|x64
+		{51C79335-2167-4AE6-BA4D-EFCF77389E0C}.Release|x64.Build.0 = Release|x64
+		{51C79335-2167-4AE6-BA4D-EFCF77389E0C}.Release|x86.ActiveCfg = Release|x64
+		{51C79335-2167-4AE6-BA4D-EFCF77389E0C}.Release|x86.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
