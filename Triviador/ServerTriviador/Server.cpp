@@ -244,9 +244,7 @@ crow::response Server::AuthenticationRoute(const crow::request& req)
 		{
 			return crow::response(405, "password field is null");//Method Not Allowed
 		}
-		if (!std::regex_match(password , std::regex("^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!#$%&? ]).*$"))) {
-			return crow::response(417, "password expectations not satisfied");
-		}
+		//password regex (need to add)
 
 		auto user = std::find_if(pulledUser.begin(), pulledUser.end(), [email](const UserRecord& u) {
 			return u.m_email == email;
