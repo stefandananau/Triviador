@@ -4,6 +4,7 @@
 #include <qmessagebox.h>
 #include <cstring>
 #include "Client.h"
+#include "Triviador.h"
 #include "ui_MainWindow.h"
 
 class MainWindow : public QMainWindow
@@ -19,5 +20,6 @@ private slots:
     void on_pushButton_2_clicked();//login
 private:
     Ui::MainWindowClass ui;
+    Triviador* triv;
 
 };

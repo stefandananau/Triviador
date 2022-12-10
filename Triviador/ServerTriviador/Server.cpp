@@ -204,12 +204,12 @@ crow::response Server::AuthenticationRoute(const crow::request& req)
 	if (req.url_params.get("login"))
 	{
 		auto email = req.url_params.get("email");
-		if (email == nullptr)
+		if (strlen(email) == 0)
 		{
 			return crow::response(405, "email field is null");//Method Not Allowed
 		}
 		auto password = req.url_params.get("password");
-		if (password == nullptr)
+		if (strlen(password) == 0)
 		{
 			return crow::response(405, "password field is null");//Method Not Allowed
 		}
@@ -226,13 +226,13 @@ crow::response Server::AuthenticationRoute(const crow::request& req)
 				return crow::response(401, "wrong password");//Unauthorized
 		}
 		else {
-			return crow::response(404, "wrong email");//Not Found
+			return crow::response(404, "email not found");//Not Found
 		}
 	}
 	else if (req.url_params.get("register"))
 	{
 		auto email = req.url_params.get("email");
-		if (email == nullptr)
+		if (strlen(email) == 0)
 		{
 			return crow::response(405, "email field is null");//Method Not Allowed
 		}
@@ -240,7 +240,7 @@ crow::response Server::AuthenticationRoute(const crow::request& req)
 			return crow::response(417, "email expectations not satisfied");
 		}
 		auto password = req.url_params.get("password");
-		if (password == nullptr)
+		if (strlen(password) == 0)
 		{
 			return crow::response(405, "password field is null");//Method Not Allowed
 		}

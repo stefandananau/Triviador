@@ -33,9 +33,15 @@ void MainWindow::on_pushButton_2_clicked()
         return;
     }
     if (response == "login succesful") {
-        // open next page
-        return;
+        this->ui.pushButton->setEnabled(false);
+        this->ui.pushButton_2->setEnabled(false);
+        this->ui.lineEdit->setEnabled(false);
+        this->ui.lineEdit_2->setEnabled(false);
+        QApplication::processEvents();
+        triv = new Triviador(this);
+        triv->show();
     }
+   
     this->ui.label->setText(response.c_str());
 }
 
