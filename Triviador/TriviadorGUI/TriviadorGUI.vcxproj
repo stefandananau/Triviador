@@ -91,6 +91,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Triviador.cpp" />
+    <ClCompile Include="_4PlayersMap.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="MainWindow.ui" />
     <QtMoc Include="MainWindow.h" />
@@ -98,9 +99,11 @@
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <QtUic Include="Triviador.ui" />
+    <QtUic Include="_4PlayersMap.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h" />
+    <QtMoc Include="_4PlayersMap.h" />
     <QtMoc Include="Triviador.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

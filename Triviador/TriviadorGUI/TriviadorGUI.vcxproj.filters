@@ -46,6 +46,9 @@
     <ClCompile Include="Triviador.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="_4PlayersMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -56,9 +59,15 @@
     <QtUic Include="Triviador.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="_4PlayersMap.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Triviador.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="_4PlayersMap.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
