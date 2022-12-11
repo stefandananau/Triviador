@@ -171,19 +171,17 @@ crow::response Server::ReturnRandomQuestionRoute(const crow::request& req, std::
 		if (type == "Multiple")
 
 		{
-			std::vector<QuestionMultipleChoiceRecord> pulledMultipleQuestions = m_DataBase->GetQuestionMultipleChoice();
-			std::uniform_int_distribution<int> distribution(0, pulledMultipleQuestions.size() - 1);
-			int QuestionID = distribution(generator);
+			QuestionMultipleChoiceRecord pulledMultipleQuestions = RandomMultipleChoice(generator);
 			return crow::response(crow::json::wvalue({
-				{"Id", pulledMultipleQuestions[QuestionID].id},
-				{"Question", pulledMultipleQuestions[QuestionID].m_question},
+				{"Id", pulledMultipleQuestions.id},
+				{"Question", pulledMultipleQuestions.m_question},
 				{"Responses",
 				crow::json::wvalue::list(
 					{
-				pulledMultipleQuestions[QuestionID].m_correctAnswer,
-				pulledMultipleQuestions[QuestionID].m_wrongAnswer1,
-				pulledMultipleQuestions[QuestionID].m_wrongAnswer2,
-				pulledMultipleQuestions[QuestionID].m_wrongAnswer3
+				pulledMultipleQuestions.m_correctAnswer,
+				pulledMultipleQuestions.m_wrongAnswer1,
+				pulledMultipleQuestions.m_wrongAnswer2,
+				pulledMultipleQuestions.m_wrongAnswer3
 				})
 				}
 				}
@@ -192,12 +190,10 @@ crow::response Server::ReturnRandomQuestionRoute(const crow::request& req, std::
 		if (type == "Numeric")
 
 		{
-			std::vector<QuestionNumericRecord> pulledNumericalQuestions = m_DataBase->GetQuestionNumeric();
-			std::uniform_int_distribution<int> distribution(0, pulledNumericalQuestions.size() - 1);
-			int QuestionID = distribution(generator);
+			QuestionNumericRecord pulledNumericalQuestions = RandomNumeric(generator);
 			return crow::response(std::move(crow::json::wvalue({
-				{"Id", pulledNumericalQuestions[QuestionID].id},
-				{"Question", pulledNumericalQuestions[QuestionID].m_question},
+				{"Id", pulledNumericalQuestions.id},
+				{"Question", pulledNumericalQuestions.m_question},
 
 				}
 			)));
@@ -306,7 +302,7 @@ crow::response Server::SetUserToReadyInLobbyRoute(const crow::request& req) {
 				numberOfReadyUsers++;
 			}
 		}
-		if (numberOfReadyUsers == numberOfRequiredPlayers) {
+		if (numberOfReadyUsers == 2) {
 			this->m_GameState = state::gameInProgress;
 			std::cout << "Game started!\n";
 			//first random num question should be set here
@@ -318,7 +314,6 @@ crow::response Server::SetUserToReadyInLobbyRoute(const crow::request& req) {
 	}
 
 }
-
 
 void Server::PopulateServerDatabase() {
 		std::vector<QuestionNumeric> numericalQuestionsToAppend = parser::ParserJsonNumeric();
@@ -344,6 +339,7 @@ void Server::PopulateServerDatabase() {
 		m_DataBase->AddUser(u);
 
 }
+
 void Server::wipeUsers()
 {
 	m_DataBase->WipeUsers();
@@ -353,9 +349,6 @@ void Server::wipeQuestions()
 {
 	m_DataBase->WipeQuestions();
 }
-
-
-
 
 void Server::SetupServer() {
 
@@ -377,13 +370,13 @@ void Server::SetupServer() {
 		"	If register exists then\n"
 		"		If email is in User Table then the response is Conflict else new user is added in User Table and response is Ok\n\n\n";
 
-	std::default_random_engine generator;
+	
 	CROW_ROUTE(m_crowApp, "/database")([this](const crow::request& req) {
 		return DataBaseRoute(req);
 		});
 
-	CROW_ROUTE(m_crowApp, "/database/getQuestion")([this, &generator](const crow::request& req) {
-		return ReturnRandomQuestionRoute(req, generator);
+	CROW_ROUTE(m_crowApp, "/database/getQuestion")([this ](const crow::request& req) {
+		return ReturnRandomQuestionRoute(req, m_Generator);
 
 		});
 
@@ -411,6 +404,27 @@ void Server::SetupServer() {
 
 }
 
+QuestionMultipleChoiceRecord Server::RandomMultipleChoice(std::default_random_engine& generator)
+{
+	std::vector<QuestionMultipleChoiceRecord> pulledMultipleQuestions = m_DataBase->GetQuestionMultipleChoice();
+	std::uniform_int_distribution<int> distribution(0, pulledMultipleQuestions.size() - 1);
+	int QuestionID = distribution(generator);
+	return pulledMultipleQuestions[QuestionID];
+}
+
+QuestionNumericRecord Server::RandomNumeric(std::default_random_engine& generator)
+{
+	std::vector<QuestionNumericRecord> pulledNumericalQuestions = m_DataBase->GetQuestionNumeric();
+	std::uniform_int_distribution<int> distribution(0, pulledNumericalQuestions.size() - 1);
+	int QuestionID = distribution(generator);
+	return pulledNumericalQuestions[QuestionID];
+}
+
+std::default_random_engine Server::GetGenerator() const
+{
+	return m_Generator;
+}
+
 size_t Server::GetNumberOfUserRecords() const
 {
 	std::vector<UserRecord> userRecords = m_DataBase->GetUsers();
@@ -427,13 +441,4 @@ size_t Server::GetNumberOfQuestionNumericRecords() const
 {
 	std::vector<QuestionNumericRecord> questionMultipleChoiceRecords = m_DataBase->GetQuestionNumeric();
 	return questionMultipleChoiceRecords.size();
-}
-
-size_t Server::GetNumberOfPlayersInLobby() const
-{
-	return m_Lobby.size();
-}
-
-std::map<std::string, bool> Server::GetPlayersInLobby() {
-	return m_Lobby;
 }

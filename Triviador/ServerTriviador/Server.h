@@ -30,7 +30,7 @@ class Server
 protected:
 	DataBase* m_DataBase;
 	state m_GameState;
-
+	std::default_random_engine m_Generator;
 
 	std::map<std::string,bool> m_Lobby;
 	crow::SimpleApp m_crowApp;
@@ -49,13 +49,13 @@ public:
 	Server();
 	void PopulateServerDatabase();
 	void SetupServer();
+	QuestionMultipleChoiceRecord RandomMultipleChoice(std::default_random_engine& generator);
+	QuestionNumericRecord RandomNumeric(std::default_random_engine& generator);
+	std::default_random_engine GetGenerator() const;
 	void wipeUsers();
 	void wipeQuestions();
 	size_t GetNumberOfQuestionMultipleChoiceRecords() const;
 	size_t GetNumberOfQuestionNumericRecords() const;
 	size_t GetNumberOfUserRecords() const;
-
-	size_t GetNumberOfPlayersInLobby() const;
-	std::map<std::string, bool>  GetPlayersInLobby();
 };
 

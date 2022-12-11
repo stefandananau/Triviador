@@ -11,6 +11,7 @@ void Client::checkGameState() {
 
 	std::cout << responseInJson["state"];
 	while (responseInJson["state"] == "waiting_for_players") {
+		Sleep(1000);
 		currentState = cpr::Get(cpr::Url("http://localhost/lobby/gameState"));
 		responseInJson = crow::json::load(currentState.text);
 	}
