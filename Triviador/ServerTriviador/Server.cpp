@@ -127,8 +127,24 @@ crow::json::wvalue Server::ReturnUnreadyUsersInLobby()
 	return outJson;
 }
 
+bool Server::AllAnswersAreGiven()
+{
+	bool ok = true;
+	for(const auto& player: m_PlayersInGame)
+	{
+		if (player.second.GetAnswer().empty())
+		{
+			ok = false;
+			break;
+		}
+	}
+	return ok;
+}
+
+
 crow::json::wvalue Server::CheckGameState() {
 	crow::json::wvalue outJson;
+
 
 	switch (m_GameState) {
 	case state::waitingForPlayers:
@@ -139,6 +155,9 @@ crow::json::wvalue Server::CheckGameState() {
 		break;
 	case state::waitingForQuestionResponse:
 		outJson = { {"state", "waiting_for_question_answer"} };
+		break;
+	case state::showAnswers:
+		outJson = { {"state", "show_answers"} };
 		break;
 	default:
 		break;
@@ -434,6 +453,24 @@ crow::response Server::ReturnUserStats(const crow::request& req)
 	)));
 }
 
+crow::json::wvalue Server::ValidateAnswer()
+{
+	int diffCur=INT_MAX;
+	std::string userWinner;
+	crow::json::wvalue res;
+	for(const auto& player:m_PlayersInGame)
+	{
+		int diff =std::abs( stoi(player.second.GetAnswer()) - stoi(m_CurrentNumericQuestion.m_correctAnswer));
+		if(diff< diffCur)
+		{
+			diffCur = diff;
+			userWinner = player.first;
+		}
+	}
+	 res["winner"] = userWinner;
+	 return res;
+}
+
 void Server::PopulateServerDatabase() {
 		std::vector<QuestionNumeric> numericalQuestionsToAppend = parser::ParserJsonNumeric();
 		std::vector<QuestionMultipleChoice> multipleChoiceQuestionsToAppend = parser::ParserJsonMultiple();
@@ -464,6 +501,8 @@ crow::response Server::AddQuestionAnswerToUser(const crow::request& req) {
 	auto answer = req.url_params.get("answer");
 		//m_Game.PlayerSetAnswer(userName, answer);
 	m_PlayersInGame[userName].SetAnswer(answer);
+	if (AllAnswersAreGiven())
+		m_GameState = state::showAnswers;
 	return crow::response(200); //ok
 }
 
@@ -545,7 +584,10 @@ void Server::SetupServer() {
 		return AddQuestionAnswerToUser(req);
 
 		});
-	
+	CROW_ROUTE(m_crowApp, "/game/validateAnswer")([this]()
+		{
+			return ValidateAnswer();
+	});
 	CROW_ROUTE(m_crowApp, "/game/currentQuestion")([this]() {
 		return CurrentQuestionToJson();
 		});

@@ -29,7 +29,8 @@ public:
 	enum state {
 		waitingForPlayers,
 		gameInProgress,
-		waitingForQuestionResponse
+		waitingForQuestionResponse,
+		showAnswers
 	};
 	enum questionType {
 		NUMERIC,
@@ -43,6 +44,7 @@ protected:
 		//state m_GameState;
 	questionType m_CurrentQuestionType;
 	std::map<std::string, Player> m_PlayersInGame;
+
 
 	QuestionMultipleChoiceRecord m_CurrentMultipleChoiceQuestion;
 	QuestionNumericRecord m_CurrentNumericQuestion;
@@ -69,9 +71,10 @@ protected:
 	
 	crow::json::wvalue ReturnReadyUsersInLobby();
 	crow::json::wvalue ReturnUnreadyUsersInLobby();
+	crow::json::wvalue ValidateAnswer();
 	crow::json::wvalue CheckGameState();
 	crow::json::wvalue CurrentQuestionToJson();
-
+	bool AllAnswersAreGiven();
 	void matchStarted();
 public:
 
