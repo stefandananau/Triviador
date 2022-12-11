@@ -20,7 +20,7 @@
    <string>_4PlayersMap</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image:url(&quot;D:/Faculta/ModernC++/Triviador/Triviador/images/water-2.png&quot;)</string>
+   <string notr="true">background-image:url(&quot;images/water-2.png&quot;)</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="pushButton_4">
@@ -33,7 +33,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island7-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island7-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -50,7 +50,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island1-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island1-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -70,7 +70,7 @@ background-color: transparent;</string>
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island8-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island8-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -87,7 +87,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island4-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island4-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -104,7 +104,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island4-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island4-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -121,7 +121,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island7-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island7-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -138,7 +138,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island2-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island2-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -155,7 +155,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island3-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island3-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -172,7 +172,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image:url(&quot;D:/Downloads/MyFlow/shield2.png&quot;);</string>
+     <string notr="true">image:url(&quot;images/shield2.png&quot;);</string>
     </property>
     <property name="text">
      <string/>
@@ -191,7 +191,7 @@ background-color: transparent;</string>
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island8-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island8-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -208,7 +208,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image:url(&quot;D:/Downloads/MyFlow/shield1.png&quot;);</string>
+     <string notr="true">image:url(&quot;images/shield1.png&quot;);</string>
     </property>
     <property name="text">
      <string/>
@@ -224,7 +224,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island1-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island1-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -241,7 +241,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island2-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island2-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -258,7 +258,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island1-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island1-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -275,7 +275,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island4-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island4-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -292,7 +292,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island3-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island3-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -309,7 +309,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island2-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island2-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -326,7 +326,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island3-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island3-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -343,7 +343,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island7-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island7-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -360,7 +360,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island7-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island7-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -380,7 +380,7 @@ background-color: transparent;</string>
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island8-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island8-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -400,7 +400,7 @@ background-color: transparent;</string>
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">image:url(&quot;D:/Downloads/MyFlow/shield3.png&quot;);</string>
+     <string notr="true">image:url(&quot;images/shield3.png&quot;);</string>
     </property>
     <property name="text">
      <string/>
@@ -416,7 +416,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island1-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island1-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -433,7 +433,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island4-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island4-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -450,7 +450,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island2-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island2-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -467,7 +467,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island3-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island3-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -484,7 +484,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image:url(&quot;D:/Downloads/MyFlow/shield4.png&quot;);</string>
+     <string notr="true">image:url(&quot;images/shield4.png&quot;);</string>
     </property>
     <property name="text">
      <string/>
@@ -503,7 +503,7 @@ background-color: transparent;</string>
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(&quot;D:/Downloads/island8-removebg-preview.png&quot;);
+     <string notr="true">image: url(&quot;images/island8-removebg-preview.png&quot;);
 background-color: transparent;</string>
     </property>
     <property name="text">
@@ -520,7 +520,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image:url(&quot;D:/Faculta/ModernC++/Triviador/Triviador/images/ship1.png&quot;);</string>
+     <string notr="true">image:url(&quot;images/ship1.png&quot;);</string>
     </property>
     <property name="text">
      <string/>
@@ -536,7 +536,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image:url(&quot;D:/Faculta/ModernC++/Triviador/Triviador/images/ship1.png&quot;);</string>
+     <string notr="true">image:url(&quot;images/ship1.png&quot;);</string>
     </property>
     <property name="text">
      <string/>
@@ -552,7 +552,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image:url(&quot;D:/Faculta/ModernC++/Triviador/Triviador/images/ship2.png&quot;);</string>
+     <string notr="true">image:url(&quot;images/ship2.png&quot;);</string>
     </property>
     <property name="text">
      <string/>
@@ -568,7 +568,7 @@ background-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image:url(&quot;D:/Faculta/ModernC++/Triviador/Triviador/images/ship2.png&quot;);</string>
+     <string notr="true">image:url(&quot;images/ship2.png&quot;);</string>
     </property>
     <property name="text">
      <string/>

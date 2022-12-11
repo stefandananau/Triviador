@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>images/favicon.ico</file>
+        <file>images/island1-removebg-preview.png</file>
+        <file>images/island2-removebg-preview.png</file>
+        <file>images/island3-removebg-preview.png</file>
+        <file>images/island4-removebg-preview.png</file>
+        <file>images/island5-removebg-preview.png</file>
+        <file>images/island7-removebg-preview.png</file>
+        <file>images/island8-removebg-preview.png</file>
+        <file>images/shield1.png</file>
+        <file>images/shield2.png</file>
+        <file>images/shield3.png</file>
+        <file>images/shield4.png</file>
+        <file>images/ship1.png</file>
+        <file>images/ship2.png</file>
+        <file>images/water-2.png</file>
+        <file>images/water-3.png</file>
+        <file>images/water-4.png</file>
+        <file>images/water-5.png</file>
+        <file>images/water-6.png</file>
+    </qresource>
+</RCC>

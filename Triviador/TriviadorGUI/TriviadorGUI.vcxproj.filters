@@ -35,6 +35,9 @@
     <ClCompile Include="MainWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <QtRcc Include="images.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -47,6 +50,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="_4PlayersMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="_3PlayersMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,12 +68,18 @@
     <QtUic Include="_4PlayersMap.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="_3PlayersMap.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Triviador.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="_4PlayersMap.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="_3PlayersMap.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
