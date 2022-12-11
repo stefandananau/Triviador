@@ -30,8 +30,9 @@ class Server
 protected:
 	DataBase* m_DataBase;
 	state m_gameState;
-	std::map<std::string,bool> m_lobby;
 
+
+	std::map<std::string,bool> m_lobby;
 	crow::SimpleApp m_crowApp;
 	
 	crow::response DataBaseRoute(const crow::request& req);
@@ -39,7 +40,10 @@ protected:
 	crow::response AuthenticationRoute(const crow::request& req);
 	crow::response AddUserToLobyRoute(const crow::request& req);
 	crow::response SetUserToReadyInLobbyRoute(const crow::request& req);
+
 	crow::json::wvalue CheckGameState();
+
+	void matchStarted();
 public:
 
 	Server();

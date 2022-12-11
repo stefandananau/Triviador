@@ -1,5 +1,8 @@
 #include "Server.h"
 #include <regex>
+
+#define numberOfRequiredPlayers 4 //this is for debugging purposes
+
 Server::Server() {
 	m_DataBase = DataBase::GetInstance();
 	m_DataBase->Sync();
@@ -15,10 +18,15 @@ Server::Server() {
 
 }
 
+void Server::matchStarted() {
+	//1. first question has to be numerical and decides which client gets to pick a piece of land first
+	
+}
+
 crow::json::wvalue Server::CheckGameState() {
 	crow::json::wvalue outJson;
 
-	switch (m_gameState) {
+	switch (m_GameState) {
 	case state::waitingForPlayers:
 		outJson = { { "state", "waiting_for_players" } };
 		break;
@@ -279,8 +287,8 @@ crow::response Server::AddUserToLobyRoute(const crow::request& req) {
 		return crow::response(404);//Not found
 	}
 	else {
-		m_lobby[userName] = false;
-		m_gameState = state::waitingForPlayers;
+		m_Lobby[userName] = false;
+		m_GameState = state::waitingForPlayers;
 		return crow::response(200);
 	}
 }
@@ -288,19 +296,22 @@ crow::response Server::AddUserToLobyRoute(const crow::request& req) {
 crow::response Server::SetUserToReadyInLobbyRoute(const crow::request& req) {
 	auto email = req.url_params.get("email");
 	size_t numberOfReadyUsers = 0;
-	if (!m_lobby.contains(email)) {
+	if (!m_Lobby.contains(email)) {
 		return crow::response(404);//not found
 	}
 	else {
-		m_lobby[email] = true;
-		for (const auto &elem : m_lobby) {
+		m_Lobby[email] = true;
+		for (const auto &elem : m_Lobby) {
 			if (elem.second == true) {
 				numberOfReadyUsers++;
 			}
 		}
-		if (numberOfReadyUsers == 4) {
-			this->m_gameState = state::gameInProgress;
+		if (numberOfReadyUsers == numberOfRequiredPlayers) {
+			this->m_GameState = state::gameInProgress;
 			std::cout << "Game started!\n";
+			//first random num question should be set here
+			matchStarted();
+
 		}
 
 		return crow::response(200);//ok

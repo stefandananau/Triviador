@@ -1,6 +1,10 @@
 #include "Client.h"
 #include "LoginRegister.h"
 
+void Client::gameStarted() {
+
+}
+
 void Client::checkGameState() {
 	cpr::Response currentState = cpr::Get(cpr::Url("http://localhost/lobby/gameState"));
 	auto responseInJson = crow::json::load(currentState.text);
@@ -10,7 +14,7 @@ void Client::checkGameState() {
 		currentState = cpr::Get(cpr::Url("http://localhost/lobby/gameState"));
 		responseInJson = crow::json::load(currentState.text);
 	}
-	std::cin >> m_option;
+	gameStarted();
 }
 
 void Client::promptReady() {

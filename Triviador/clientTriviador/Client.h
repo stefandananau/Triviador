@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 
 class Client
 {
@@ -17,6 +18,7 @@ private:
 	void promptReady();
 	void awaitGameStart();
 	void checkGameState();
+	void gameStarted();
 
 public:
 	Client(): m_option(0), m_userIn(false), m_ready(false) {};
