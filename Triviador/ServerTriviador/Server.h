@@ -29,9 +29,10 @@ class Server
 {
 protected:
 	DataBase* m_DataBase;
-	state m_gameState;
-	std::map<std::string,bool> m_lobby;
+	state m_GameState;
+	std::default_random_engine m_Generator;
 
+	std::map<std::string,bool> m_Lobby;
 	crow::SimpleApp m_crowApp;
 	
 	crow::response DataBaseRoute(const crow::request& req);
@@ -39,12 +40,18 @@ protected:
 	crow::response AuthenticationRoute(const crow::request& req);
 	crow::response AddUserToLobyRoute(const crow::request& req);
 	crow::response SetUserToReadyInLobbyRoute(const crow::request& req);
+
 	crow::json::wvalue CheckGameState();
+
+	void matchStarted();
 public:
 
 	Server();
 	void PopulateServerDatabase();
 	void SetupServer();
+	QuestionMultipleChoiceRecord RandomMultipleChoice(std::default_random_engine& generator);
+	QuestionNumericRecord RandomNumeric(std::default_random_engine& generator);
+	std::default_random_engine GetGenerator() const;
 	void wipeUsers();
 	void wipeQuestions();
 	size_t GetNumberOfQuestionMultipleChoiceRecords() const;
