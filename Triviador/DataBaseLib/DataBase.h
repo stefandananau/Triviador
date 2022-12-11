@@ -11,7 +11,10 @@ namespace DB {
 			sqlite_orm::make_table("User",
 				sqlite_orm::make_column("id", &UserRecord::id, sqlite_orm::primary_key()),
 				sqlite_orm::make_column("email", &UserRecord::m_email),
-				sqlite_orm::make_column("password", &UserRecord::m_password)),
+				sqlite_orm::make_column("password", &UserRecord::m_password),
+				sqlite_orm::make_column("numberOfPlayedGames",&UserRecord::m_numberOfPlayedGames),
+				sqlite_orm::make_column("numberOfWonGames", &UserRecord::m_numberOfWonGames),
+				sqlite_orm::make_column("winLoseRatio", &UserRecord::m_winLoseRatio)),
 			sqlite_orm::make_table("QuestionNumeric",
 				sqlite_orm::make_column("id",&QuestionNumericRecord::id, sqlite_orm::primary_key()),
 				sqlite_orm::make_column("type",&QuestionNumericRecord::m_type),
@@ -47,9 +50,10 @@ public:
 	void AddQuestionMultipleChoice(const QuestionMultipleChoiceRecord& questionMultipleChoiceRecord);
 	std::vector<QuestionMultipleChoiceRecord>GetQuestionMultipleChoice();
 
+	std::vector < std::tuple<int, int, float>> GetUserStats(const std::string& email);
+
 	int WipeUsers();
 	int WipeQuestions();
-
 
 	void Sync();
 	

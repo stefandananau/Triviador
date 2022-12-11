@@ -47,17 +47,20 @@ std::vector<QuestionNumericRecord> DataBase::GetQuestionNumeric()
 
 void DataBase::AddQuestionMultipleChoice(const QuestionMultipleChoiceRecord& questionMultipleChoiceRecord)
 {
-
 	m_dataBase.insert(questionMultipleChoiceRecord);
-	
-
 
 }
 
 std::vector<QuestionMultipleChoiceRecord> DataBase::GetQuestionMultipleChoice()
 {
-	return 	  m_dataBase.get_all<QuestionMultipleChoiceRecord>();
+	return m_dataBase.get_all<QuestionMultipleChoiceRecord>();
 
+}
+
+std::vector<std::tuple<int,int,float>> DataBase::GetUserStats(const std::string& email)
+{
+	return m_dataBase.select(sqlite_orm::columns ( & UserRecord::m_numberOfPlayedGames, &UserRecord::m_numberOfWonGames, &UserRecord::m_winLoseRatio), sqlite_orm::where(sqlite_orm::c(&UserRecord::m_email) = email));
+	
 }
 
 int DataBase::WipeUsers()

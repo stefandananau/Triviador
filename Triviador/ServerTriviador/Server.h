@@ -40,6 +40,7 @@ protected:
 	crow::response AuthenticationRoute(const crow::request& req);
 	crow::response AddUserToLobbyRoute(const crow::request& req);
 	crow::response SetUserToReadyInLobbyRoute(const crow::request& req);
+	crow::response ReturnUserStats(const crow::request& req);
 
 	crow::json::wvalue CheckGameState();
 

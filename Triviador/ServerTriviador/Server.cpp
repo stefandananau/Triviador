@@ -315,6 +315,18 @@ crow::response Server::SetUserToReadyInLobbyRoute(const crow::request& req) {
 
 }
 
+crow::response Server::ReturnUserStats(const crow::request& req)
+{
+	std::string email = req.url_params.get("email");
+	auto Stats = m_DataBase->GetUserStats(email);
+
+	return crow::response(std::move(crow::json::wvalue({
+		{ "Number of played games",std::get<0>(Stats[0]) },
+		{ "Number of won games", std::get<1>(Stats[0])},
+		{"win/lose Ratio", std::get<2>(Stats[0]) } }
+	)));
+}
+
 void Server::PopulateServerDatabase() {
 		std::vector<QuestionNumeric> numericalQuestionsToAppend = parser::ParserJsonNumeric();
 		std::vector<QuestionMultipleChoice> multipleChoiceQuestionsToAppend = parser::ParserJsonMultiple();
@@ -360,6 +372,8 @@ void Server::SetupServer() {
 		"	If value is QuestionNumeric then the response is QuestionNumeric Table\n"
 		"	If value is User then the response is User Table\n"
 		"	If value is All then the response is all tables\n"
+		"/database/getStats?email=<value>\n"
+		"	If value is a valid email it returns the stats of the player\n"
 		"/database/getQuestion?type=<value>\n"
 		"	If value is Multiple then the response is a random question from QuestionMultipleChoice Table with id,question and answers\n"
 		"	If value is Numeric then the response is a random question from QuestionNumeric Table with id,question\n"
@@ -375,9 +389,14 @@ void Server::SetupServer() {
 		return DataBaseRoute(req);
 		});
 
-	CROW_ROUTE(m_crowApp, "/database/getQuestion")([this ](const crow::request& req) {
+	CROW_ROUTE(m_crowApp, "/database/getQuestion")([this](const crow::request& req) {
 		return ReturnRandomQuestionRoute(req, m_Generator);
 
+		});
+
+	CROW_ROUTE(m_crowApp, "/database/getStats")([this](const crow::request& req)
+		{
+			return ReturnUserStats(req);
 		});
 
 	CROW_ROUTE(m_crowApp, "/authentication")([this](const crow::request& req) {
