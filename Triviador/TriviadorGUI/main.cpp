@@ -1,12 +1,12 @@
 #include "MainWindow.h"
 #include <QtWidgets/QApplication>
 #include "Triviador.h"
-#include "_4PlayersMap.h"
+#include "_2PlayersMap.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    _4PlayersMap w;
+    _2PlayersMap w;
     w.show();
     return a.exec();
 }
