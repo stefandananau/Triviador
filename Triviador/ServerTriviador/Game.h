@@ -7,6 +7,7 @@
 
 #include "QuestionMultipleChoiceRecord.h"
 #include "QuestionNumericRecord.h"
+#include "Server.h"
 
 class Game {
 private:
@@ -20,6 +21,6 @@ private:
 
 	void drawBoard();
 public:
-	Game(uint16_t numberOfClientsInLobby, std::map<std::string, bool> playersInLobby);
+	Game(uint16_t numberOfClientsInLobby, std::map<std::string, bool> playersInLobby, Server s);
 	~Game();
 };

@@ -428,3 +428,12 @@ size_t Server::GetNumberOfQuestionNumericRecords() const
 	std::vector<QuestionNumericRecord> questionMultipleChoiceRecords = m_DataBase->GetQuestionNumeric();
 	return questionMultipleChoiceRecords.size();
 }
+
+size_t Server::GetNumberOfPlayersInLobby() const
+{
+	return m_Lobby.size();
+}
+
+std::map<std::string, bool> Server::GetPlayersInLobby() {
+	return m_Lobby;
+}

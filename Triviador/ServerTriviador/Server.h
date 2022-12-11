@@ -29,10 +29,10 @@ class Server
 {
 protected:
 	DataBase* m_DataBase;
-	state m_gameState;
+	state m_GameState;
 
 
-	std::map<std::string,bool> m_lobby;
+	std::map<std::string,bool> m_Lobby;
 	crow::SimpleApp m_crowApp;
 	
 	crow::response DataBaseRoute(const crow::request& req);
@@ -54,5 +54,8 @@ public:
 	size_t GetNumberOfQuestionMultipleChoiceRecords() const;
 	size_t GetNumberOfQuestionNumericRecords() const;
 	size_t GetNumberOfUserRecords() const;
+
+	size_t GetNumberOfPlayersInLobby() const;
+	std::map<std::string, bool>  GetPlayersInLobby();
 };
 
