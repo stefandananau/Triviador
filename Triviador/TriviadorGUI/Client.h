@@ -14,12 +14,20 @@ private:
 	bool m_ready;
 
 	std::string m_userEmail;
-	std::string m_userPassword;
 	std::string m_actionResponse;
 
+	
 public:
+	
 	std::string loginUser(const std::string& email, const std::string& password);
 	std::string registerUser(const std::string& email, const std::string& password);
+	std::string addCurrentUserToLobby();
+	std::string userReadyInLobby();
+	
+	void setCurrentUser(const std::string email);
+	const std::string getCurrentUser();
+
 	static Client* getClient();
+
 
 };

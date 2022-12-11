@@ -38,7 +38,7 @@ protected:
 	crow::response DataBaseRoute(const crow::request& req);
 	crow::response ReturnRandomQuestionRoute(const crow::request& req, std::default_random_engine& generator);
 	crow::response AuthenticationRoute(const crow::request& req);
-	crow::response AddUserToLobyRoute(const crow::request& req);
+	crow::response AddUserToLobbyRoute(const crow::request& req);
 	crow::response SetUserToReadyInLobbyRoute(const crow::request& req);
 
 	crow::json::wvalue CheckGameState();

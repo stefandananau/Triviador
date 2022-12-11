@@ -33,6 +33,7 @@ void MainWindow::on_pushButton_2_clicked()
         return;
     }
     if (response == "login succesful") {
+        Client::getClient()->setCurrentUser(email);
         this->ui.pushButton->setEnabled(false);
         this->ui.pushButton_2->setEnabled(false);
         this->ui.lineEdit->setEnabled(false);

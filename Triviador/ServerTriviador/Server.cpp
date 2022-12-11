@@ -269,7 +269,7 @@ crow::response Server::AuthenticationRoute(const crow::request& req)
 		
 }
 
-crow::response Server::AddUserToLobyRoute(const crow::request& req) {
+crow::response Server::AddUserToLobbyRoute(const crow::request& req) {
 	auto userName = req.url_params.get("email");
 
 	std::vector<UserRecord> pulledUser = m_DataBase->GetUsers();
@@ -280,12 +280,12 @@ crow::response Server::AddUserToLobyRoute(const crow::request& req) {
 		});
 	if (user == pulledUser.end())
 	{
-		return crow::response(404);//Not found
+		return crow::response(404, "something bad happened");//Not found
 	}
 	else {
 		m_Lobby[userName] = false;
 		m_GameState = state::waitingForPlayers;
-		return crow::response(200);
+		return crow::response(200, "joined lobby");
 	}
 }
 
@@ -293,7 +293,7 @@ crow::response Server::SetUserToReadyInLobbyRoute(const crow::request& req) {
 	auto email = req.url_params.get("email");
 	size_t numberOfReadyUsers = 0;
 	if (!m_Lobby.contains(email)) {
-		return crow::response(404);//not found
+		return crow::response(404, "something bad happened");//not found
 	}
 	else {
 		m_Lobby[email] = true;
@@ -310,7 +310,7 @@ crow::response Server::SetUserToReadyInLobbyRoute(const crow::request& req) {
 
 		}
 
-		return crow::response(200);//ok
+		return crow::response(200 ,"user ready");//ok
 	}
 
 }
@@ -385,7 +385,7 @@ void Server::SetupServer() {
 		});
 
 	CROW_ROUTE(m_crowApp, "/lobby")([this](const crow::request& req) {
-		return AddUserToLobyRoute(req);
+		return AddUserToLobbyRoute(req);
 		});
 
 	CROW_ROUTE(m_crowApp, "/lobby/ready")([this](const crow::request& req) {
