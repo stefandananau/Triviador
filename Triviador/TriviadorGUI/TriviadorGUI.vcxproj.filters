@@ -43,11 +43,7 @@
     <ClCompile Include="Client.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-<<<<<<< Updated upstream
     <ClCompile Include="Triviador.cpp">
-=======
-    <ClCompile Include="_4PlayersMap.cpp">
->>>>>>> Stashed changes
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -57,26 +53,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< Updated upstream
     <QtUic Include="Triviador.ui">
-=======
-    <QtUic Include="4PlayersMap.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="3PlayersMap.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="_4PlayersMap.ui">
->>>>>>> Stashed changes
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< Updated upstream
     <QtMoc Include="Triviador.h">
-=======
-    <QtMoc Include="_4PlayersMap.h">
->>>>>>> Stashed changes
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

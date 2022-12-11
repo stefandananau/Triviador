@@ -90,32 +90,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-<<<<<<< Updated upstream
     <ClCompile Include="Triviador.cpp" />
-=======
-    <ClCompile Include="_4PlayersMap.cpp" />
->>>>>>> Stashed changes
     <QtRcc Include="MainWindow.qrc" />
-    <QtUic Include="3PlayersMap.ui" />
-    <QtUic Include="4PlayersMap.ui" />
     <QtUic Include="MainWindow.ui" />
     <QtMoc Include="MainWindow.h" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
-<<<<<<< Updated upstream
     <QtUic Include="Triviador.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h" />
     <QtMoc Include="Triviador.h" />
-=======
-    <QtUic Include="_4PlayersMap.ui" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Client.h" />
-    <QtMoc Include="_4PlayersMap.h" />
->>>>>>> Stashed changes
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
