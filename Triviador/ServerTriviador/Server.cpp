@@ -103,6 +103,30 @@ crow::json::wvalue Server::CurrentQuestionToJson() {
 	return crow::json::wvalue(409);
 }
 
+crow::json::wvalue Server::ReturnReadyUsersInLobby()
+{
+	crow::json::wvalue outJson;
+	int index = 0;
+	for (auto player : m_Lobby) {
+		if (player.second == true) {
+			outJson[index] = crow::json::wvalue(player.first);
+		}
+	}
+	return outJson;
+}
+
+crow::json::wvalue Server::ReturnUnreadyUsersInLobby()
+{
+	crow::json::wvalue outJson;
+	int index = 0;
+	for (auto player : m_Lobby) {
+		if (player.second == false) {
+			outJson[index] = crow::json::wvalue(player.first);
+		}
+	}
+	return outJson;
+}
+
 crow::json::wvalue Server::CheckGameState() {
 	crow::json::wvalue outJson;
 
@@ -506,6 +530,14 @@ void Server::SetupServer() {
 	
 	CROW_ROUTE(m_crowApp, "/lobby/gameState")([this]() {
 		return CheckGameState();
+		});
+
+	CROW_ROUTE(m_crowApp, "/lobby/rplayers")([this]() {
+		return ReturnReadyUsersInLobby();
+		});
+	
+	CROW_ROUTE(m_crowApp, "/lobby/uplayers")([this]() {
+		return ReturnUnreadyUsersInLobby();
 		});
 
 	CROW_ROUTE(m_crowApp, "/game/questionAnswer")([this](const crow::request& req) {

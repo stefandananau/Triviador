@@ -66,7 +66,9 @@ protected:
 	crow::response SetUserToReadyInLobbyRoute(const crow::request& req);
 	crow::response AddQuestionAnswerToUser(const crow::request& req);
 	crow::response ReturnUserStats(const crow::request& req);
-
+	
+	crow::json::wvalue ReturnReadyUsersInLobby();
+	crow::json::wvalue ReturnUnreadyUsersInLobby();
 	crow::json::wvalue CheckGameState();
 	crow::json::wvalue CurrentQuestionToJson();
 

@@ -24,8 +24,10 @@ public:
 	std::string addCurrentUserToLobby();
 	std::string userReadyInLobby();
 	
+	
 	void setCurrentUser(const std::string email);
 	const std::string getCurrentUser();
+	const std::vector<std::string, bool> getLobbyUsers();
 
 	static Client* getClient();
 

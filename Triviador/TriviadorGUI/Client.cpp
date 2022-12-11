@@ -34,6 +34,18 @@ const std::string Client::getCurrentUser() {
 	return m_userEmail;
 }
 
+const std::vector<std::string, bool> Client::getLobbyUsers()
+{
+	auto readyUsersResponse = cpr::Get(cpr::Url("http://localhost/lobby/rplayers"));
+	auto unreadyUsersResponse = cpr::Get(cpr::Url("http://localhost/lobby/uplayers"));
+	auto readyUsers = crow::json::load(readyUsersResponse.text);
+	auto unreadyUsers = crow::json::load(unreadyUsersResponse.text);
+
+	std::vector<std::string, bool> lobbyUsers;
+	
+	return lobbyUsers;
+}
+
 Client* Client::getClient()
 {
 	if (client == nullptr) {
