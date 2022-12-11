@@ -18,9 +18,89 @@ Server::Server() {
 
 }
 
+void Server::drawBoard() {
+	for (size_t y = 0; y < m_Board[0].size(); y++)
+		std::cout << y << " ";
+	std::cout << std::endl;
+
+	for (size_t x = 0; x < m_Board.size(); x++) {
+		std::cout << x << ": ";
+		for (size_t y = 0; y < m_Board[x].size(); y++) {
+			std::cout << m_Board[x][y] << " ";
+		}
+		std::cout << std::endl;
+	}
+}
+
 void Server::matchStarted() {
 	//1. first question has to be numerical and decides which client gets to pick a piece of land first
+
+	size_t numberOfClients = GetNumberOfPlayersInLobby();
+
+	switch (numberOfClients)
+	{
+	case 2:
+		m_BoardSize.first = 3;
+		m_BoardSize.second = 3;
+		break;
+
+	case 3:
+		m_BoardSize.first = 3; 
+		m_BoardSize.second = 5;
+		break;
+
+	case 4:
+		m_BoardSize.first = 4;
+		m_BoardSize.second = 6;
+		break;
+
+	default:
+		break;
+	}
+
+
+	for (auto player : m_Lobby) {
+		Player playerForMap(player.first);
+		m_PlayersInGame[player.first] = playerForMap;
+	}
+
+	std::vector<uint16_t> t_boardRows;
+	for (uint16_t x = 0; x < m_BoardSize.first; x++) {
+		for (uint16_t y = 0; y < m_BoardSize.second; y++) {
+			t_boardRows.push_back(0);
+		}
+		m_Board.push_back(t_boardRows);
+		t_boardRows.clear();
+	}
+
+	drawBoard();
+
+	m_CurrentNumericQuestion = RandomNumeric(GetGenerator());
+
+	//m_GameState = state::WAITING_ANSWER;
+	m_CurrentQuestionType = questionType::NUMERIC;
+
+	m_GameState = Server::state::waitingForQuestionResponse;
 	
+}
+
+crow::json::wvalue Server::CurrentQuestionToJson() {
+	crow::json::wvalue outJson;
+	if (m_GameState == state::waitingForQuestionResponse) {
+		switch (m_CurrentQuestionType) {
+		case questionType::NUMERIC:
+			outJson = {
+				{"question", m_CurrentNumericQuestion.m_question},
+				{"answers", m_CurrentNumericQuestion.m_correctAnswer}
+			};
+			break;
+			//TO DO: same for multiple
+		default:
+			break;
+		}
+		return outJson;
+	}
+	return crow::json::wvalue(409);
 }
 
 crow::json::wvalue Server::CheckGameState() {
@@ -32,6 +112,9 @@ crow::json::wvalue Server::CheckGameState() {
 		break;
 	case state::gameInProgress:
 		outJson = { {"state", "game_in_progress"} };
+		break;
+	case state::waitingForQuestionResponse:
+		outJson = { {"state", "waiting_for_question_answer"} };
 		break;
 	default:
 		break;
@@ -352,6 +435,16 @@ void Server::PopulateServerDatabase() {
 
 }
 
+crow::response Server::AddQuestionAnswerToUser(const crow::request& req) {
+	auto userName = req.url_params.get("email");
+	auto answer = req.url_params.get("answer");
+		//m_Game.PlayerSetAnswer(userName, answer);
+	m_PlayersInGame[userName].SetAnswer(answer);
+	return crow::response(200); //ok
+}
+
+
+
 void Server::wipeUsers()
 {
 	m_DataBase->WipeUsers();
@@ -415,6 +508,16 @@ void Server::SetupServer() {
 		return CheckGameState();
 		});
 
+	CROW_ROUTE(m_crowApp, "/game/questionAnswer")([this](const crow::request& req) {
+		//req: email + questionAnswer
+		return AddQuestionAnswerToUser(req);
+
+		});
+	
+	CROW_ROUTE(m_crowApp, "/game/currentQuestion")([this]() {
+		return CurrentQuestionToJson();
+		});
+
 	m_crowApp.port(80);
 	m_crowApp.multithreaded();
 	m_crowApp.run_async();
@@ -439,7 +542,7 @@ QuestionNumericRecord Server::RandomNumeric(std::default_random_engine& generato
 	return pulledNumericalQuestions[QuestionID];
 }
 
-std::default_random_engine Server::GetGenerator() const
+std::default_random_engine& Server::GetGenerator()
 {
 	return m_Generator;
 }
@@ -460,4 +563,17 @@ size_t Server::GetNumberOfQuestionNumericRecords() const
 {
 	std::vector<QuestionNumericRecord> questionMultipleChoiceRecords = m_DataBase->GetQuestionNumeric();
 	return questionMultipleChoiceRecords.size();
+}
+
+size_t Server::GetNumberOfPlayersInLobby() const
+{
+	return m_Lobby.size();
+}
+
+std::map<std::string, bool> Server::GetPlayersInLobby() {
+	return m_Lobby;
+}
+
+void Server::SetState(state stateToSet) {
+	m_GameState = stateToSet;
 }

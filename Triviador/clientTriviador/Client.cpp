@@ -2,7 +2,22 @@
 #include "LoginRegister.h"
 
 void Client::gameStarted() {
+	cpr::Response currentState = cpr::Get(cpr::Url("http://localhost/lobby/gameState"));
+	auto responseInJson = crow::json::load(currentState.text);
 
+	while (responseInJson["state"] != "waiting_for_question_answer") {
+		cpr::Response currentState = cpr::Get(cpr::Url("http://localhost/lobby/gameState"));
+		auto responseInJson = crow::json::load(currentState.text);
+
+	}
+	std::cout << std::endl;
+
+	cpr::Response currentQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/currentQuestion"));
+	auto questionJson = crow::json::load(currentQuestionResponse.text);
+	std::cout << questionJson["question"]<<"\n";
+
+	int test;
+	std::cin >> test;
 }
 
 void Client::checkGameState() {
