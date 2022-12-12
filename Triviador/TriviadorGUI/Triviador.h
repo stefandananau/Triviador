@@ -17,8 +17,9 @@ private slots:
 	void on_joinButton_clicked();
 	void on_leaveButton_clicked();
 	void on_readyButton_clicked();
-
+	void on_unreadyButton_clicked();
 private:
+	void updateUserLobby();
 	Ui::Triviador* ui;
 
 };

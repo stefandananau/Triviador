@@ -65,7 +65,9 @@ protected:
 	crow::response ReturnRandomQuestionRoute(const crow::request& req, std::default_random_engine& generator);
 	crow::response AuthenticationRoute(const crow::request& req);
 	crow::response AddUserToLobbyRoute(const crow::request& req);
+	crow::response RemoveUserFromLobbyRoute(const crow::request& req);
 	crow::response SetUserToReadyInLobbyRoute(const crow::request& req);
+	crow::response SetUserToUnreadyInLobbyRoute(const crow::request& req);
 	crow::response AddQuestionAnswerToUser(const crow::request& req);
 	crow::response ReturnUserStats(const crow::request& req);
 	

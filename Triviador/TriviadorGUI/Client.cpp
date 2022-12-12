@@ -16,13 +16,25 @@ std::string Client::loginUser(const std::string& email, const std::string& passw
 
 std::string Client::addCurrentUserToLobby()
 {
-	auto serverLobbyResponse = cpr::Get(cpr::Url("http://localhost/lobby?email=" + m_userEmail));
+	auto serverLobbyResponse = cpr::Get(cpr::Url("http://localhost/lobby/join?email=" + m_userEmail));
+	return serverLobbyResponse.text;
+}
+
+std::string Client::removeCurrentUserFromLobby()
+{
+	auto serverLobbyResponse = cpr::Get(cpr::Url("http://localhost/lobby/exit?email=" + m_userEmail));
 	return serverLobbyResponse.text;
 }
 
 std::string Client::userReadyInLobby()
 {
 	auto serverReadySetResponse = cpr::Get(cpr::Url("http://localhost/lobby/ready?email=" + m_userEmail));
+	return serverReadySetResponse.text;
+}
+
+std::string Client::userUnreadyInLobby()
+{
+	auto serverReadySetResponse = cpr::Get(cpr::Url("http://localhost/lobby/unready?email=" + m_userEmail));
 	return serverReadySetResponse.text;
 }
 
@@ -34,15 +46,20 @@ const std::string Client::getCurrentUser() {
 	return m_userEmail;
 }
 
-const std::vector<std::string, bool> Client::getLobbyUsers()
+const std::vector<std::pair<std::string, bool>> Client::getLobbyUsers()
 {
 	auto readyUsersResponse = cpr::Get(cpr::Url("http://localhost/lobby/rplayers"));
 	auto unreadyUsersResponse = cpr::Get(cpr::Url("http://localhost/lobby/uplayers"));
-	auto readyUsers = crow::json::load(readyUsersResponse.text);
-	auto unreadyUsers = crow::json::load(unreadyUsersResponse.text);
+	nlohmann::json ready = nlohmann::json::parse(readyUsersResponse.text);
+	nlohmann::json unready = nlohmann::json::parse(unreadyUsersResponse.text);
 
-	std::vector<std::string, bool> lobbyUsers;
-	
+	std::vector<std::pair<std::string, bool>> lobbyUsers;
+	for (std::string s : ready) {
+		lobbyUsers.push_back(std::make_pair(s, true));
+	}
+	for (std::string s : unready) {
+		lobbyUsers.push_back(std::make_pair(s, false));
+	}
 	return lobbyUsers;
 }
 

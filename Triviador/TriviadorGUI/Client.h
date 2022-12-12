@@ -2,7 +2,8 @@
 #include <string>
 #include <crow.h>
 #include <cpr/cpr.h>
-
+#include <vector>
+#include <nlohmann/json.hpp>
 class Client
 {
 private:
@@ -22,12 +23,14 @@ public:
 	std::string loginUser(const std::string& email, const std::string& password);
 	std::string registerUser(const std::string& email, const std::string& password);
 	std::string addCurrentUserToLobby();
+	std::string removeCurrentUserFromLobby();
 	std::string userReadyInLobby();
+	std::string userUnreadyInLobby();
 	
 	
 	void setCurrentUser(const std::string email);
 	const std::string getCurrentUser();
-	const std::vector<std::string, bool> getLobbyUsers();
+	const std::vector<std::pair<std::string, bool>> getLobbyUsers();
 
 	static Client* getClient();
 

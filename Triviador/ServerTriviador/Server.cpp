@@ -110,6 +110,7 @@ crow::json::wvalue Server::ReturnReadyUsersInLobby()
 	for (auto player : m_Lobby) {
 		if (player.second == true) {
 			outJson[index] = crow::json::wvalue(player.first);
+			index++;
 		}
 	}
 	return outJson;
@@ -122,6 +123,7 @@ crow::json::wvalue Server::ReturnUnreadyUsersInLobby()
 	for (auto player : m_Lobby) {
 		if (player.second == false) {
 			outJson[index] = crow::json::wvalue(player.first);
+			index++;
 		}
 	}
 	return outJson;
@@ -400,7 +402,9 @@ crow::response Server::AddUserToLobbyRoute(const crow::request& req) {
 
 	std::vector<UserRecord> pulledUser = m_DataBase->GetUsers();
 	auto email = req.url_params.get("email");
-
+	if (m_Lobby.contains(email)) {
+		return crow::response(404, "user already in lobby");
+	}
 	auto user = std::find_if(pulledUser.begin(), pulledUser.end(), [email](const UserRecord& u) {
 		return u.m_email == email;
 		});
@@ -415,30 +419,52 @@ crow::response Server::AddUserToLobbyRoute(const crow::request& req) {
 	}
 }
 
+crow::response Server::RemoveUserFromLobbyRoute(const crow::request& req)
+{
+	auto email = req.url_params.get("email");
+	if (!m_Lobby.contains(email)) {
+		return crow::response(404, "user not already in lobby");
+	}
+	m_Lobby.erase(email);
+	return crow::response(200, "exit lobby");
+}
+
 crow::response Server::SetUserToReadyInLobbyRoute(const crow::request& req) {
 	auto email = req.url_params.get("email");
 	size_t numberOfReadyUsers = 0;
 	if (!m_Lobby.contains(email)) {
-		return crow::response(404, "something bad happened");//not found
+		return crow::response(404, "user already ready");//not found
 	}
-	else {
-		m_Lobby[email] = true;
-		for (const auto &elem : m_Lobby) {
-			if (elem.second == true) {
-				numberOfReadyUsers++;
-			}
-		}
-		if (numberOfReadyUsers == 2) {
-			this->m_GameState = state::gameInProgress;
-			std::cout << "Game started!\n";
-			//first random num question should be set here
-			matchStarted();
+	//else {
+	//	m_Lobby[email] = true;
+	//	for (const auto &elem : m_Lobby) {
+	//		if (elem.second == true) {
+	//			numberOfReadyUsers++;
+	//		}
+	//	}
+	//	if (numberOfReadyUsers == 2) {
+	//		this->m_GameState = state::gameInProgress;
+	//		std::cout << "Game started!\n";
+	//		//first random num question should be set here
+	//		matchStarted();
 
-		}
+	//	}
 
-		return crow::response(200 ,"user ready");//ok
+	//	return crow::response(200 ,"user ready");//ok
+	//}
+	m_Lobby[email] = true;
+	return crow::response(200, "user ready");//ok
+}
+
+crow::response Server::SetUserToUnreadyInLobbyRoute(const crow::request& req)
+{
+	auto email = req.url_params.get("email");
+	size_t numberOfReadyUsers = 0;
+	if (!m_Lobby.contains(email)) {
+		return crow::response(404, "user already unready");//not found
 	}
-
+	m_Lobby[email] = false;
+	return crow::response(200, "user unready");
 }
 
 crow::response Server::ReturnUserStats(const crow::request& req)
@@ -559,12 +585,20 @@ void Server::SetupServer() {
 		return AuthenticationRoute(req);
 		});
 
-	CROW_ROUTE(m_crowApp, "/lobby")([this](const crow::request& req) {
+	CROW_ROUTE(m_crowApp, "/lobby/join")([this](const crow::request& req) {
 		return AddUserToLobbyRoute(req);
+		});
+
+	CROW_ROUTE(m_crowApp, "/lobby/exit")([this](const crow::request& req) {
+		return RemoveUserFromLobbyRoute(req);
 		});
 
 	CROW_ROUTE(m_crowApp, "/lobby/ready")([this](const crow::request& req) {
 		return SetUserToReadyInLobbyRoute(req);
+		});
+
+	CROW_ROUTE(m_crowApp, "/lobby/unready")([this](const crow::request& req) {
+		return SetUserToUnreadyInLobbyRoute(req);
 		});
 	
 	CROW_ROUTE(m_crowApp, "/lobby/gameState")([this]() {
