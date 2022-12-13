@@ -9,8 +9,7 @@ class Client
 private:
 
 	static Client* client;
-	Client() : m_option(0), m_userIn(false), m_ready(false) {};
-	int m_option;
+	Client() : m_userIn(false), m_ready(false) {};
 	bool m_userIn;
 	bool m_ready;
 

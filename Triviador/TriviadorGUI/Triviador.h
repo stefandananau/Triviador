@@ -2,6 +2,7 @@
 #include <qdialog.h>
 #include "ui_Triviador.h"
 #include "Client.h"
+#include "UpdateThread.h"
 namespace Ui {
 	class Triviador;
 }
@@ -19,7 +20,9 @@ private slots:
 	void on_readyButton_clicked();
 	void on_unreadyButton_clicked();
 private:
-	void updateUserLobby();
+	void updateLobby();
 	Ui::Triviador* ui;
-
+	UpdateThread* updateThread;
+public slots:
+	void updateSignal();
 };

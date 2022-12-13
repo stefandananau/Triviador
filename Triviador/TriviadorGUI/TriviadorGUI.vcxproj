@@ -91,6 +91,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Triviador.cpp" />
+    <ClCompile Include="UpdateThread.cpp" />
     <ClCompile Include="_2PlayersMap.cpp" />
     <ClCompile Include="_3PlayersMap.cpp" />
     <ClCompile Include="_4PlayersMap.cpp" />
@@ -108,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h" />
+    <QtMoc Include="UpdateThread.h" />
     <QtMoc Include="_2PlayersMap.h" />
     <QtMoc Include="_3PlayersMap.h" />
     <QtMoc Include="_4PlayersMap.h" />
