@@ -1,13 +1,13 @@
 #include "Server.h"
 #include <regex>
 
-#define numberOfRequiredPlayers 4 //this is for debugging purposes
+#define numberOfRequiredPlayers 2 //this is for debugging purposes
 
 Server::Server() {
 	m_DataBase = DataBase::GetInstance();
 	m_DataBase->Sync();
 
-	
+
 	PopulateServerDatabase();
 
 	//wipeUsers();
@@ -45,7 +45,7 @@ void Server::matchStarted() {
 		break;
 
 	case 3:
-		m_BoardSize.first = 3; 
+		m_BoardSize.first = 3;
 		m_BoardSize.second = 5;
 		break;
 
@@ -81,7 +81,7 @@ void Server::matchStarted() {
 	m_CurrentQuestionType = questionType::NUMERIC;
 
 	m_GameState = Server::state::waitingForQuestionResponse;
-	
+
 }
 
 crow::json::wvalue Server::CurrentQuestionToJson() {
@@ -132,7 +132,7 @@ crow::json::wvalue Server::ReturnUnreadyUsersInLobby()
 bool Server::AllAnswersAreGiven()
 {
 	bool ok = true;
-	for(const auto& player: m_PlayersInGame)
+	for (const auto& player : m_PlayersInGame)
 	{
 		if (player.second.GetAnswer().empty())
 		{
@@ -394,7 +394,7 @@ crow::response Server::AuthenticationRoute(const crow::request& req)
 
 	}
 	return crow::response(405);//Method Not Allowed
-		
+
 }
 
 crow::response Server::AddUserToLobbyRoute(const crow::request& req) {
@@ -435,23 +435,23 @@ crow::response Server::SetUserToReadyInLobbyRoute(const crow::request& req) {
 	if (!m_Lobby.contains(email)) {
 		return crow::response(404, "user already ready");//not found
 	}
-	//else {
-	//	m_Lobby[email] = true;
-	//	for (const auto &elem : m_Lobby) {
-	//		if (elem.second == true) {
-	//			numberOfReadyUsers++;
-	//		}
-	//	}
-	//	if (numberOfReadyUsers == 2) {
-	//		this->m_GameState = state::gameInProgress;
-	//		std::cout << "Game started!\n";
-	//		//first random num question should be set here
-	//		matchStarted();
+	else {
+		m_Lobby[email] = true;
+		for (const auto &elem : m_Lobby) {
+			if (elem.second == true) {
+				numberOfReadyUsers++;
+			}
+		}
+		if ((numberOfReadyUsers >= 2) && (numberOfReadyUsers == m_Lobby.size())) {
+			this->m_GameState = state::gameInProgress;
+			std::cout << "Game started!\n";
+			//first random num question should be set here
+			matchStarted();
 
-	//	}
+		}
 
-	//	return crow::response(200 ,"user ready");//ok
-	//}
+		return crow::response(200 ,"user ready");//ok
+	}
 	m_Lobby[email] = true;
 	return crow::response(200, "user ready");//ok
 }
@@ -481,51 +481,51 @@ crow::response Server::ReturnUserStats(const crow::request& req)
 
 crow::json::wvalue Server::ValidateAnswer()
 {
-	int diffCur=INT_MAX;
+	int diffCur = INT_MAX;
 	std::string userWinner;
 	crow::json::wvalue res;
-	for(const auto& player:m_PlayersInGame)
+	for (const auto& player : m_PlayersInGame)
 	{
-		int diff =std::abs( stoi(player.second.GetAnswer()) - stoi(m_CurrentNumericQuestion.m_correctAnswer));
-		if(diff< diffCur)
+		int diff = std::abs(stoi(player.second.GetAnswer()) - stoi(m_CurrentNumericQuestion.m_correctAnswer));
+		if (diff < diffCur)
 		{
 			diffCur = diff;
 			userWinner = player.first;
 		}
 	}
-	 res["winner"] = userWinner;
-	 return res;
+	res["winner"] = userWinner;
+	return res;
 }
 
 void Server::PopulateServerDatabase() {
-		std::vector<QuestionNumeric> numericalQuestionsToAppend = parser::ParserJsonNumeric();
-		std::vector<QuestionMultipleChoice> multipleChoiceQuestionsToAppend = parser::ParserJsonMultiple();
-		std::vector<User> usersToAppend;
+	std::vector<QuestionNumeric> numericalQuestionsToAppend = parser::ParserJsonNumeric();
+	std::vector<QuestionMultipleChoice> multipleChoiceQuestionsToAppend = parser::ParserJsonMultiple();
+	std::vector<User> usersToAppend;
 
-		if (this->GetNumberOfQuestionNumericRecords() == 0) {
-			for (const QuestionNumeric& question : numericalQuestionsToAppend) {
-				m_DataBase->AddQuestionNumeric(QuestionNumericRecord(question));
-			}
+	if (this->GetNumberOfQuestionNumericRecords() == 0) {
+		for (const QuestionNumeric& question : numericalQuestionsToAppend) {
+			m_DataBase->AddQuestionNumeric(QuestionNumericRecord(question));
 		}
-		if (this->GetNumberOfQuestionMultipleChoiceRecords() == 0) {
-			for (const QuestionMultipleChoice& question : multipleChoiceQuestionsToAppend) {
-				m_DataBase->AddQuestionMultipleChoice(QuestionMultipleChoiceRecord(question));
-			}
+	}
+	if (this->GetNumberOfQuestionMultipleChoiceRecords() == 0) {
+		for (const QuestionMultipleChoice& question : multipleChoiceQuestionsToAppend) {
+			m_DataBase->AddQuestionMultipleChoice(QuestionMultipleChoiceRecord(question));
 		}
-		if (this->GetNumberOfUserRecords() == 0) {
-			for (const User& user : usersToAppend) {
-				m_DataBase->AddUser(UserRecord(user));
-			}
+	}
+	if (this->GetNumberOfUserRecords() == 0) {
+		for (const User& user : usersToAppend) {
+			m_DataBase->AddUser(UserRecord(user));
 		}
-		User u("admin@admin.com", "admin");
-		m_DataBase->AddUser(u);
+	}
+	User u("admin@admin.com", "admin");
+	m_DataBase->AddUser(u);
 
 }
 
 crow::response Server::AddQuestionAnswerToUser(const crow::request& req) {
 	auto userName = req.url_params.get("email");
 	auto answer = req.url_params.get("answer");
-		//m_Game.PlayerSetAnswer(userName, answer);
+	//m_Game.PlayerSetAnswer(userName, answer);
 	m_PlayersInGame[userName].SetAnswer(answer);
 	if (AllAnswersAreGiven())
 		m_GameState = state::showAnswers;
@@ -566,7 +566,7 @@ void Server::SetupServer() {
 		"	If register exists then\n"
 		"		If email is in User Table then the response is Conflict else new user is added in User Table and response is Ok\n\n\n";
 
-	
+
 	CROW_ROUTE(m_crowApp, "/database")([this](const crow::request& req) {
 		return DataBaseRoute(req);
 		});
@@ -600,7 +600,7 @@ void Server::SetupServer() {
 	CROW_ROUTE(m_crowApp, "/lobby/unready")([this](const crow::request& req) {
 		return SetUserToUnreadyInLobbyRoute(req);
 		});
-	
+
 	CROW_ROUTE(m_crowApp, "/lobby/gameState")([this]() {
 		return CheckGameState();
 		});
@@ -608,7 +608,7 @@ void Server::SetupServer() {
 	CROW_ROUTE(m_crowApp, "/lobby/rplayers")([this]() {
 		return ReturnReadyUsersInLobby();
 		});
-	
+
 	CROW_ROUTE(m_crowApp, "/lobby/uplayers")([this]() {
 		return ReturnUnreadyUsersInLobby();
 		});
@@ -621,7 +621,7 @@ void Server::SetupServer() {
 	CROW_ROUTE(m_crowApp, "/game/validateAnswer")([this]()
 		{
 			return ValidateAnswer();
-	});
+		});
 	CROW_ROUTE(m_crowApp, "/game/currentQuestion")([this]() {
 		return CurrentQuestionToJson();
 		});

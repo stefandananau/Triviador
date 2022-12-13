@@ -70,7 +70,7 @@ void Client::promptReady() {
 }
 
 void Client::sendReadyAwaitToServer() {
-	cpr::Response serverLobbyResponse = cpr::Get(cpr::Url("http://localhost/lobby?email=" + m_userEmail));
+	cpr::Response serverLobbyResponse = cpr::Get(cpr::Url("http://localhost/lobby/join?email=" + m_userEmail));
 	std::cout << std::endl;
 	std::cout << serverLobbyResponse.raw_header << "\n";
 	std::cout << std::endl;
