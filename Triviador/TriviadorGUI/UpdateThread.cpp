@@ -9,7 +9,7 @@ void UpdateThread::run()
 {
 	while (!stop) {
 		emit updateSignal();
-		this->msleep(500);
+		this->msleep(1000);
 	}
 }
 

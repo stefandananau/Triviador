@@ -34,16 +34,19 @@ void MainWindow::on_pushButton_2_clicked()
     }
     if (response == "login succesful") {
         Client::getClient()->setCurrentUser(email);
-        this->ui.pushButton->setEnabled(false);
-        this->ui.pushButton_2->setEnabled(false);
-        this->ui.lineEdit->setEnabled(false);
-        this->ui.lineEdit_2->setEnabled(false);
         QApplication::processEvents();
         triv = new Triviador(this);
+        connect(triv, SIGNAL(TriviadorClosed()), this, SLOT(TriviadorClosed()));
         triv->show();
+        this->hide();
     }
    
     this->ui.label->setText(response.c_str());
+}
+
+void MainWindow::TriviadorClosed()
+{
+    this->show();
 }
 
 

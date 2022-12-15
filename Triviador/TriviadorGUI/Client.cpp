@@ -63,6 +63,13 @@ const std::vector<std::pair<std::string, bool>> Client::getLobbyUsers()
 	return lobbyUsers;
 }
 
+std::string Client::getGameState()
+{
+	cpr::Response currentState = cpr::Get(cpr::Url("http://localhost/lobby/gameState"));
+	auto responseInJson = nlohmann::json::parse(currentState.text);
+	return responseInJson["state"];
+}
+
 Client* Client::getClient()
 {
 	if (client == nullptr) {

@@ -399,7 +399,12 @@ crow::response Server::AuthenticationRoute(const crow::request& req)
 
 crow::response Server::AddUserToLobbyRoute(const crow::request& req) {
 	auto userName = req.url_params.get("email");
-
+	if (m_GameState != waitingForPlayers) {
+		return crow::response(403, "game in progress");
+	}
+	if (m_Lobby.size() == 4) {
+		return crow::response(403, "lobby full");
+	}
 	std::vector<UserRecord> pulledUser = m_DataBase->GetUsers();
 	auto email = req.url_params.get("email");
 	if (m_Lobby.contains(email)) {
@@ -458,6 +463,9 @@ crow::response Server::SetUserToReadyInLobbyRoute(const crow::request& req) {
 
 crow::response Server::SetUserToUnreadyInLobbyRoute(const crow::request& req)
 {
+	if (m_GameState != waitingForPlayers) {
+		return crow::response(403, "game in progress");
+	}
 	auto email = req.url_params.get("email");
 	size_t numberOfReadyUsers = 0;
 	if (!m_Lobby.contains(email)) {

@@ -25,7 +25,7 @@ public:
 	std::string removeCurrentUserFromLobby();
 	std::string userReadyInLobby();
 	std::string userUnreadyInLobby();
-	
+	std::string getGameState();
 	
 	void setCurrentUser(const std::string email);
 	const std::string getCurrentUser();

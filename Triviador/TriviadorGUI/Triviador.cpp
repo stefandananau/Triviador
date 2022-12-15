@@ -14,9 +14,6 @@ Triviador::Triviador(QWidget* parent)
 
 Triviador::~Triviador()
 {
-    updateThread->terminate();
-    Client::getClient()->userUnreadyInLobby();
-    Client::getClient()->removeCurrentUserFromLobby();
     delete ui;
 }
 
@@ -99,8 +96,27 @@ void Triviador::updateLobby()
     
 }
 
+void Triviador::reject()
+{
+    Client::getClient()->userUnreadyInLobby();
+    Client::getClient()->removeCurrentUserFromLobby();
+    emit TriviadorClosed();
+    QDialog::reject();
+}
+
+void Triviador::closeGameWindowSignal()
+{
+    updateThread = new UpdateThread(this);
+    connect(updateThread, SIGNAL(updateSignal()), this, SLOT(updateSignal()));
+    updateThread->start();
+    this->show();
+}
+
 void Triviador::updateSignal() {
     updateLobby();
+    if (Client::getClient()->getGameState() != "waiting_for_players") { //add condition for user not in lobby
+        updateThread->terminate();
+    }
 }
 
 
