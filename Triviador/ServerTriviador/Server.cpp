@@ -376,8 +376,12 @@ crow::response Server::AuthenticationRoute(const crow::request& req)
 		{
 			return crow::response(405, "password field is null");//Method Not Allowed
 		}
-		//password regex (need to add)
 
+		if (!std::regex_match(password, std::regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[.,?!*]).{6,}$")))
+		{
+			return crow::response(417, "password expectations not satisfied");
+		}
+		
 		auto user = std::find_if(pulledUser.begin(), pulledUser.end(), [email](const UserRecord& u) {
 			return u.m_email == email;
 			});
@@ -485,6 +489,11 @@ crow::response Server::ReturnUserStats(const crow::request& req)
 		{ "Number of won games", std::get<1>(Stats[0])},
 		{"win/lose Ratio", std::get<2>(Stats[0]) } }
 	)));
+}
+
+crow::response Server::NumberOfPlayersInLobby()
+{
+	return crow::response(crow::json::wvalue({ "Number of players", m_Lobby.size() }));
 }
 
 crow::json::wvalue Server::ValidateAnswer()
@@ -632,6 +641,9 @@ void Server::SetupServer() {
 		});
 	CROW_ROUTE(m_crowApp, "/game/currentQuestion")([this]() {
 		return CurrentQuestionToJson();
+		});
+	CROW_ROUTE(m_crowApp, "/game/numberOfPlayersInLobby")([this]() {
+		return NumberOfPlayersInLobby();
 		});
 
 	m_crowApp.port(80);

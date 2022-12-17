@@ -70,6 +70,13 @@ std::string Client::getGameState()
 	return responseInJson["state"];
 }
 
+int Client::getNumberOfPlayersInLobby()
+{
+	cpr::Response numberOfPlayersResponse = cpr::Get(cpr::Url("http://localhost/game/numberOfPlayersInLobby"));
+	auto numberOfPlayers = nlohmann::json::parse(numberOfPlayersResponse.text);
+	return numberOfPlayers["numberOfPlayers"];
+}
+
 Client* Client::getClient()
 {
 	if (client == nullptr) {

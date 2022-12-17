@@ -41,7 +41,7 @@ protected:
 	//game logic
 	std::pair<uint16_t, uint16_t> m_BoardSize;
 	std::vector<std::vector<uint16_t>> m_Board;
-		//state m_GameState;
+	//state m_GameState;
 	questionType m_CurrentQuestionType;
 	std::map<std::string, Player> m_PlayersInGame;
 
@@ -70,7 +70,7 @@ protected:
 	crow::response SetUserToUnreadyInLobbyRoute(const crow::request& req);
 	crow::response AddQuestionAnswerToUser(const crow::request& req);
 	crow::response ReturnUserStats(const crow::request& req);
-	
+	crow::response NumberOfPlayersInLobby();
 	crow::json::wvalue ReturnReadyUsersInLobby();
 	crow::json::wvalue ReturnUnreadyUsersInLobby();
 	crow::json::wvalue ValidateAnswer();
