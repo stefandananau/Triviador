@@ -39,9 +39,11 @@ void MainWindow::on_pushButton_2_clicked()
         connect(triv, SIGNAL(TriviadorClosed()), this, SLOT(TriviadorClosed()));
         triv->show();
         this->hide();
+        this->ui.label->setText("");
     }
-   
-    this->ui.label->setText(response.c_str());
+    else {
+        this->ui.label->setText(response.c_str());
+    }
 }
 
 void MainWindow::TriviadorClosed()

@@ -9,7 +9,7 @@ Triviador::Triviador(QWidget* parent)
     ui->setupUi(this);
     ui->label_3->setText(Client::getClient()->getCurrentUser().c_str());
     
-
+    this->updateThread = new UpdateThread(this);
 }
 
 Triviador::~Triviador()
@@ -23,6 +23,7 @@ void Triviador::on_joinButton_clicked() {
         this->ui->joinButton->setEnabled(false);
         this->ui->leaveButton->setEnabled(true);
         this->ui->readyButton->setEnabled(true);
+        delete updateThread;
         updateThread = new UpdateThread(this);
         connect(updateThread, SIGNAL(updateSignal()), this, SLOT(updateSignal()));
         updateThread->start();
@@ -98,6 +99,10 @@ void Triviador::updateLobby()
 
 void Triviador::reject()
 {
+    if (updateThread->isRunning()) {
+        updateThread->terminate();
+    }
+    delete updateThread;
     Client::getClient()->userUnreadyInLobby();
     Client::getClient()->removeCurrentUserFromLobby();
     emit TriviadorClosed();
@@ -116,6 +121,7 @@ void Triviador::updateSignal() {
     updateLobby();
     if (Client::getClient()->getGameState() != "waiting_for_players") { //add condition for user not in lobby
         updateThread->terminate();
+        this->hide();
     }
 }
 
