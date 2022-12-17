@@ -61,7 +61,7 @@ void MainWindow::on_toolButton_released()
 
 void MainWindow::TriviadorClosed()
 {
-    this->show();
+   this->show();
 }
 
 
