@@ -48,7 +48,7 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::TriviadorClosed()
 {
-    this->show();
+   this->show();
 }
 
 

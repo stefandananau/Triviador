@@ -119,9 +119,24 @@ void Triviador::closeGameWindowSignal()
 
 void Triviador::updateSignal() {
     updateLobby();
-    if (Client::getClient()->getGameState() != "waiting_for_players") { //add condition for user not in lobby
+    if (Client::getClient()->getGameState() != "waiting_for_players") { 
         updateThread->terminate();
-        this->hide();
+        //this->hide();
+        int playerNumber = Client::getClient()->getNumberOfPlayersInLobby();
+        switch (playerNumber) {
+            case 2: 
+                map2players = new _2PlayersMap();
+                map2players->show();
+                break;
+            case 3:
+                map3players = new _3PlayersMap();
+                map3players->show();
+                break;
+            case 4:
+                map4players = new _4PlayersMap();
+                map4players->show();
+                break;
+        }
     }
 }
 
