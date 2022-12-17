@@ -2,8 +2,9 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-{
+{   
     ui.setupUi(this);
+    
 }
 
 MainWindow::~MainWindow()
@@ -45,6 +46,18 @@ void MainWindow::on_pushButton_2_clicked()
         this->ui.label->setText(response.c_str());
     }
 }
+
+void MainWindow::on_toolButton_pressed()
+{
+	this->ui.lineEdit_2->setEchoMode(QLineEdit::Normal);
+}
+
+void MainWindow::on_toolButton_released()
+{
+	this->ui.lineEdit_2->setEchoMode(QLineEdit::Password);
+}
+
+
 
 void MainWindow::TriviadorClosed()
 {

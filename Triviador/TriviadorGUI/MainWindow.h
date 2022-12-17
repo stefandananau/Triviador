@@ -18,8 +18,11 @@ public:
 private slots:
     void on_pushButton_clicked();//register
     void on_pushButton_2_clicked();//login
+	void on_toolButton_pressed();
+	void on_toolButton_released();
 public slots:
     void TriviadorClosed();
+   
 private:
     Ui::MainWindowClass ui;
     Triviador* triv;
