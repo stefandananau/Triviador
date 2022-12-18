@@ -493,7 +493,7 @@ crow::response Server::ReturnUserStats(const crow::request& req)
 
 crow::response Server::NumberOfPlayersInLobby()
 {
-	return crow::response(crow::json::wvalue({ "Number of players", m_Lobby.size() }));
+	return crow::response(crow::json::wvalue({ "numberOfPlayers", m_Lobby.size() }));
 }
 
 crow::json::wvalue Server::ValidateAnswer()

@@ -4,7 +4,7 @@
 #include <qmessagebox.h>
 #include <cstring>
 #include "Client.h"
-#include "Triviador.h"
+#include "TriviadorLobby.h"
 #include "ui_MainWindow.h"
 
 class MainWindow : public QMainWindow
@@ -25,6 +25,6 @@ public slots:
    
 private:
     Ui::MainWindowClass ui;
-    Triviador* triv;
+    TriviadorLobby* triv;
 
 };

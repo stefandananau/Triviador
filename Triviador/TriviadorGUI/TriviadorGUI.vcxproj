@@ -91,6 +91,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Triviador.cpp" />
+    <ClCompile Include="TriviadorLobby.cpp" />
     <ClCompile Include="UpdateThread.cpp" />
     <ClCompile Include="_2PlayersMap.cpp" />
     <ClCompile Include="_3PlayersMap.cpp" />
@@ -103,12 +104,14 @@
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <QtUic Include="Triviador.ui" />
+    <QtUic Include="TriviadorLobby.ui" />
     <QtUic Include="_2PlayersMap.ui" />
     <QtUic Include="_3PlayersMap.ui" />
     <QtUic Include="_4PlayersMap.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h" />
+    <QtMoc Include="TriviadorLobby.h" />
     <QtMoc Include="UpdateThread.h" />
     <QtMoc Include="_2PlayersMap.h" />
     <QtMoc Include="_3PlayersMap.h" />
