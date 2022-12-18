@@ -35,8 +35,9 @@ void MainWindow::on_pushButton_2_clicked()
     if (response == "login succesful") {
         Client::getClient()->setCurrentUser(email);
         QApplication::processEvents();
-        triv = new TriviadorLobby(this);
+        triv = new Triviador(this);
         connect(triv, SIGNAL(TriviadorClosed()), this, SLOT(TriviadorClosed()));
+        connect(triv, SIGNAL(GameStarted()), this, SLOT(GameStarted()));
         triv->show();
         this->hide();
         this->ui.label->setText("");
@@ -54,6 +55,27 @@ void MainWindow::on_toolButton_pressed()
 void MainWindow::on_toolButton_released()
 {
 	this->ui.lineEdit_2->setEchoMode(QLineEdit::Password);
+}
+
+void MainWindow::GameStarted()
+{
+   
+    int playerNumber = 2;
+    switch (playerNumber) {
+    case 2:
+        map2players = new _2PlayersMap();
+        map2players->show();
+        break;
+    case 3:
+        map3players = new _3PlayersMap();
+        map3players->show();
+        break;
+    case 4:
+        map4players = new _4PlayersMap();
+        map4players->show();
+        break;
+    }
+
 }
 
 

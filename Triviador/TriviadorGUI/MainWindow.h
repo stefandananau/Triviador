@@ -4,8 +4,11 @@
 #include <qmessagebox.h>
 #include <cstring>
 #include "Client.h"
-#include "TriviadorLobby.h"
+#include "Triviador.h"
 #include "ui_MainWindow.h"
+#include "_2PlayersMap.h"
+#include "_3PlayersMap.h"
+#include "_4PlayersMap.h"
 
 class MainWindow : public QMainWindow
 {
@@ -22,9 +25,12 @@ private slots:
 	void on_toolButton_released();
 public slots:
     void TriviadorClosed();
+    void GameStarted();
    
 private:
     Ui::MainWindowClass ui;
-    TriviadorLobby* triv;
-
+    Triviador* triv;
+    _2PlayersMap* map2players;
+    _3PlayersMap* map3players;
+    _4PlayersMap* map4players;
 };

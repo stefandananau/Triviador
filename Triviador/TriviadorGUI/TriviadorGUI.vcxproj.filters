@@ -46,9 +46,6 @@
     <ClCompile Include="Client.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Triviador.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="_4PlayersMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -61,7 +58,7 @@
     <ClCompile Include="UpdateThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TriviadorLobby.cpp">
+    <ClCompile Include="Triviador.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,9 +80,6 @@
     <QtUic Include="_2PlayersMap.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="TriviadorLobby.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Triviador.h">
@@ -101,9 +95,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="UpdateThread.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="TriviadorLobby.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
