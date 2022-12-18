@@ -1,8 +1,6 @@
 #include "Player.h"
 
-Player::Player() {
 
-}
 
 Player::Player(std::string userEmail) {
 	m_UserEmail = userEmail;

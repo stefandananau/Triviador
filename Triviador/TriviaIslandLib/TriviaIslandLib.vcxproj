@@ -127,13 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Board.cpp" />
+    <ClCompile Include="Island.cpp" />
     <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="QuestionMultipleChoice.cpp" />
     <ClCompile Include="QuestionNumeric.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Board.h" />
+    <ClInclude Include="Island.h" />
     <ClInclude Include="Parser.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="QuestionMultipleChoice.h" />
     <ClInclude Include="QuestionNumeric.h" />
     <ClInclude Include="User.h" />

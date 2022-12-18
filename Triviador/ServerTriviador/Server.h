@@ -57,6 +57,9 @@ protected:
 	std::default_random_engine m_Generator;
 	std::map<std::string,bool> m_Lobby;
 
+
+
+
 	//Game m_Game;
 	
 	crow::SimpleApp m_crowApp;
