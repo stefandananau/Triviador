@@ -1,4 +1,5 @@
 #include "MainWindow.h"
+#include <QFontDatabase>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {   
