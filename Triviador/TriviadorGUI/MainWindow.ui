@@ -14,7 +14,8 @@
    <string>Launcher</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"> background-color: rgb(8, 10, 8);</string>
+   <string notr="true"> background-color: rgb(8, 10, 8);
+;</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">

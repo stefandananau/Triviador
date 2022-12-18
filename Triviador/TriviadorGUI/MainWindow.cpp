@@ -4,6 +4,9 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {   
     ui.setupUi(this);
+   
+	setWindowIcon(QIcon(":/new/prefix1/images/ship2.png"));
+
 }
 
 MainWindow::~MainWindow()
