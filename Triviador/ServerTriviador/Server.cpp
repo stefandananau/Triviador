@@ -10,8 +10,8 @@ Server::Server() {
 
 	PopulateServerDatabase();
 
-	//wipeUsers();
-	//wipeQuestions();
+	/*wipeUsers();
+	wipeQuestions();*/
 
 	//SetupServer();
 
@@ -530,12 +530,14 @@ void Server::PopulateServerDatabase() {
 		}
 	}
 	if (this->GetNumberOfUserRecords() == 0) {
+		User u("admin@admin.com", "admin");
+		m_DataBase->AddUser(u);
+
 		for (const User& user : usersToAppend) {
 			m_DataBase->AddUser(UserRecord(user));
 		}
 	}
-	User u("admin@admin.com", "admin");
-	m_DataBase->AddUser(u);
+
 
 }
 
@@ -581,7 +583,19 @@ void Server::SetupServer() {
 		"		If email and password is in User Table then the response is Ok else if password is incorrect response is Unauthorized\n"
 		"		If email is not in User Table then the response is Not Found\n"
 		"	If register exists then\n"
-		"		If email is in User Table then the response is Conflict else new user is added in User Table and response is Ok\n\n\n";
+		"		If email is in User Table then the response is Conflict else new user is added in User Table and response is Ok\n"
+		"/lobby/join?email=<value>\n"
+		"	Where <value> is the user email to add to lobby object\n"
+		"/lobby/rplayers\n"
+		"	Returns the current number of ready players in lobby\n"
+		"/lobby/uplayers\n"
+		"	Returns the current number of unready players in lobby\n"
+		"/game/questionAnswer?email=<value1>&answer=<value2>\n"
+		"	Asigns an answer to <value1> (user email) through <value2> (answer) for the currently displayed question\n"
+		"/game/validateAnswer\n"
+		"	Validate a numeric question answer set for current user\n"
+		"/game/currentQuestion\n"
+		"	Returns the currently set question in game\n\n\n";
 
 
 	CROW_ROUTE(m_crowApp, "/database")([this](const crow::request& req) {

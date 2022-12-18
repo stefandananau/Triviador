@@ -1,10 +1,9 @@
 #include "MainWindow.h"
-
+#include <QFontDatabase>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {   
     ui.setupUi(this);
-    
 }
 
 MainWindow::~MainWindow()

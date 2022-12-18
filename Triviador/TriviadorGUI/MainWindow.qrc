@@ -1,4 +1,3 @@
 <RCC>
-    <qresource prefix="MainWindow">
-    </qresource>
+    <qresource prefix="/MainWindow"/>
 </RCC>
