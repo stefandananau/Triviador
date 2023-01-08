@@ -481,14 +481,27 @@ crow::response Server::SetUserToUnreadyInLobbyRoute(const crow::request& req)
 
 crow::response Server::ReturnUserStats(const crow::request& req)
 {
+	std::vector<UserRecord> pulledUser = m_DataBase->GetUsers();
 	std::string email = req.url_params.get("email");
-	auto Stats = m_DataBase->GetUserStats(email);
-
-	return crow::response(std::move(crow::json::wvalue({
-		{ "Number of played games",std::get<0>(Stats[0]) },
-		{ "Number of won games", std::get<1>(Stats[0])},
-		{"win/lose Ratio", std::get<2>(Stats[0]) } }
-	)));
+	auto user = std::find_if(pulledUser.begin(), pulledUser.end(), [email](const UserRecord& u) {
+		return u.m_email == email;
+		});
+	if (user != pulledUser.end())
+	{
+		auto Stats = m_DataBase->GetUserStats(email);
+		return crow::response(std::move(crow::json::wvalue({
+			{ "Number of played games", std::to_string(std::get<0>(Stats[0]))},
+			{ "Number of won games", std::to_string(std::get<1>(Stats[0]))},
+			{"win/lose Ratio", std::get<2>(Stats[0]) } }
+		)));
+	}
+	else {
+		return crow::response(std::move(crow::json::wvalue({
+			{ "Number of played games","-"},
+			{ "Number of won games", "-"},
+			{"win/lose Ratio", "-" }}
+		)));
+	}
 }
 
 crow::response Server::NumberOfPlayersInLobby()
@@ -624,7 +637,7 @@ void Server::SetupServer() {
 		"/game/currentQuestion\n"
 		"	Returns the currently set question in game\n";
 		"/game/player/powerUp?user=<value1>&powerUp=<value2>\n"
-		"	Removes the value2 powerUp from the value1 player\n\n\n"
+		"	Removes the value2 powerUp from the value1 player\n\n\n";
 
 	CROW_ROUTE(m_crowApp, "/database")([this](const crow::request& req) {
 		return DataBaseRoute(req);

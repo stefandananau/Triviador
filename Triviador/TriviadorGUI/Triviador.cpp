@@ -81,6 +81,15 @@ void Triviador::on_unreadyButton_clicked()
     }
 }
 
+void Triviador::on_searchUserButton_clicked()
+{
+    std::string email = this->ui->lineEdit->text().toUtf8().constData();
+    std::pair<std::string, std::string> stats = Client::getClient()->getUserStats(email);
+    this->ui->label_14->setText(email.c_str());
+    this->ui->label_11->setText(stats.first.c_str());
+    this->ui->label_9->setText(stats.second.c_str());
+}
+
 void Triviador::updateLobby()
 {
     

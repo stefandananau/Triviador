@@ -70,6 +70,13 @@ std::string Client::getGameState()
 	return responseInJson["state"];
 }
 
+std::pair<std::string, std::string> Client::getUserStats(const std::string& email)
+{
+	cpr::Response currentState = cpr::Get(cpr::Url("http://localhost/database/getStats?email=" + email));
+	auto responseInJson = nlohmann::json::parse(currentState.text);
+	return std::make_pair<std::string, std::string>(responseInJson["Number of played games"], responseInJson["Number of won games"]);
+}
+
 int Client::getNumberOfPlayersInLobby()
 {
 	cpr::Response numberOfPlayersResponse = cpr::Get(cpr::Url("http://localhost/game/numberOfPlayersInLobby"));

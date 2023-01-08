@@ -26,6 +26,7 @@ public:
 	std::string userReadyInLobby();
 	std::string userUnreadyInLobby();
 	std::string getGameState();
+	std::pair <std::string, std::string> getUserStats(const std::string& email);
 	int getNumberOfPlayersInLobby();
 	void setCurrentUser(const std::string email);
 	const std::string getCurrentUser();

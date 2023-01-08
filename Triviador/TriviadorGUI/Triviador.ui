@@ -457,7 +457,7 @@ background-color: rgb(245, 232, 206);</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="searchUserButton">
            <property name="styleSheet">
             <string notr="true">QPushButton{
 	background-color: rgb(163, 130, 54);
