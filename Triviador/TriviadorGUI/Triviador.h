@@ -23,6 +23,7 @@ private slots:
 	void on_leaveButton_clicked();
 	void on_readyButton_clicked();
 	void on_unreadyButton_clicked();
+	void on_searchUserButton_clicked();
 private:
 	void updateLobby();
 	void reject();
