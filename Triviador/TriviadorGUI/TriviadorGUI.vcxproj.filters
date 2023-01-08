@@ -67,6 +67,12 @@
     <ClCompile Include="GameLoop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NumericQuestionWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MultipleQuestionWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -87,6 +93,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="AnswerPrompt.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="NumericQuestionWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="MultipleQuestionWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -110,6 +122,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="GameLoop.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="NumericQuestionWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="MultipleQuestionWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

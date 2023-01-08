@@ -13,12 +13,21 @@ GameLoop::GameLoop(QObject *parent)
 
 	cpr::Response currentQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/currentQuestion"));
 	auto questionJson = crow::json::load(currentQuestionResponse.text);
-	std::cout << questionJson["question"] << "\n";
+	if (questionJson["type"] == "numeric") {
+		//numeric widget
+		m_numericQuestionWidget = new NumericQuestionWidget();
+		m_numericQuestionWidget->setQuestion(questionJson["question"].s());
+		m_numericQuestionWidget->show();
 
-	std::string answer;
-	//here should spawn answer prompt
-	m_answerPrompt = new AnswerPrompt();
-	m_answerPrompt->show();
+		//get answer somehow
+	}
+	else {
+		//multiple widget
+		m_multipleQuestionWidget = new MultipleQuestionWidget();
+		m_multipleQuestionWidget->setQuestion(questionJson["question"].s());
+		m_multipleQuestionWidget->show();
+
+	}
 
 
 	//cpr::Response answerQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/questionAnswer?email=" + m_userEmail + "&answer=" + answer));

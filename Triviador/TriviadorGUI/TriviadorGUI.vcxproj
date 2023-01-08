@@ -92,6 +92,8 @@
   <ItemGroup>
     <ClCompile Include="AnswerPrompt.cpp" />
     <ClCompile Include="GameLoop.cpp" />
+    <ClCompile Include="MultipleQuestionWidget.cpp" />
+    <ClCompile Include="NumericQuestionWidget.cpp" />
     <ClCompile Include="Triviador.cpp" />
     <ClCompile Include="UpdateThread.cpp" />
     <ClCompile Include="_2PlayersMap.cpp" />
@@ -105,12 +107,16 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="MultipleQuestionWidget.ui" />
+    <QtUic Include="NumericQuestionWidget.ui" />
     <QtUic Include="Triviador.ui" />
     <QtUic Include="_2PlayersMap.ui" />
     <QtUic Include="_3PlayersMap.ui" />
     <QtUic Include="_4PlayersMap.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="MultipleQuestionWidget.h" />
+    <QtMoc Include="NumericQuestionWidget.h" />
     <QtMoc Include="GameLoop.h" />
     <QtMoc Include="AnswerPrompt.h" />
     <ClInclude Include="Client.h" />

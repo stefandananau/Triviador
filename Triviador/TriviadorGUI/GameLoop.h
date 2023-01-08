@@ -2,7 +2,8 @@
 
 #include <QObject>
 #include "Client.h"
-#include "AnswerPrompt.h"
+#include "MultipleQuestionWidget.h"
+#include "NumericQuestionWidget.h"
 
 class GameLoop  : public QObject
 {
@@ -12,5 +13,7 @@ public:
 	GameLoop(QObject *parent);
 	~GameLoop();
 private:
-	AnswerPrompt* m_answerPrompt;
+	MultipleQuestionWidget* m_multipleQuestionWidget;
+	NumericQuestionWidget* m_numericQuestionWidget;
+
 };
