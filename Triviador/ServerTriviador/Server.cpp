@@ -47,7 +47,6 @@ void Server::matchStarted() {
 	drawBoard();
 
 	m_CurrentNumericQuestion = RandomNumeric(GetGenerator());
-	m_CurrentMultipleChoiceQuestion = RandomMultipleChoice(GetGenerator());
 
 	//m_GameState = state::WAITING_ANSWER;
 	m_CurrentQuestionType = questionType::NUMERIC;
@@ -62,21 +61,11 @@ crow::json::wvalue Server::CurrentQuestionToJson() {
 		switch (m_CurrentQuestionType) {
 		case questionType::NUMERIC:
 			outJson = {
-				{"type", "numeric"},
 				{"question", m_CurrentNumericQuestion.m_question},
 				{"answers", m_CurrentNumericQuestion.m_correctAnswer}
 			};
 			break;
 			//TO DO: same for multiple
-		case questionType::MULTIPLE_ANSWER:
-			outJson = {
-				{"type", "multipleAnswer"},
-				{"question", m_CurrentMultipleChoiceQuestion.m_question},
-				{"correct_answer", m_CurrentMultipleChoiceQuestion.m_correctAnswer},
-				{"wrong_answer1", m_CurrentMultipleChoiceQuestion.m_wrongAnswer1},
-				{"wrong_answer2", m_CurrentMultipleChoiceQuestion.m_wrongAnswer2},
-				{"wrong_answer3", m_CurrentMultipleChoiceQuestion.m_wrongAnswer3}
-			};
 		default:
 			break;
 		}
@@ -550,7 +539,6 @@ crow::response Server::OwnerIsland(const crow::request& req)
 
 crow::json::wvalue Server::ValidateAnswer()
 {
-	//works only for numeric vals
 	int diffCur = INT_MAX;
 	std::string userWinner;
 	crow::json::wvalue res;
@@ -699,6 +687,10 @@ void Server::SetupServer() {
 		});
 	CROW_ROUTE(m_crowApp, "/game/attacker")([this](const crow::request& req) {
 		return AttackIsland(req);
+		});
+
+	CROW_ROUTE(m_crowApp, "/game/owner")([this](const crow::request& req) {
+		return OwnerIsland(req);
 		});
 
 	CROW_ROUTE(m_crowApp, "/game/player/powerUp")([this](const crow::request& req) {
