@@ -19,17 +19,15 @@ Server::Server() {
 }
 
 void Server::drawBoard() {
-	for (size_t y = 0; y < m_Board[0].size(); y++)
-		std::cout << y << " ";
-	std::cout << std::endl;
-
-	for (size_t x = 0; x < m_Board.size(); x++) {
-		std::cout << x << ": ";
-		for (size_t y = 0; y < m_Board[x].size(); y++) {
-			std::cout << m_Board[x][y] << " ";
+	for (const auto& row : m_Board.GetBoard())
+	{
+		for (const auto& element : row)
+		{
+			std::cout << element.GetOwner().GetUser() << " ";
 		}
-		std::cout << std::endl;
+		std::cout << "\n";
 	}
+	std::cout << "\n";
 }
 
 void Server::matchStarted() {
@@ -37,26 +35,7 @@ void Server::matchStarted() {
 
 	size_t numberOfClients = GetNumberOfPlayersInLobby();
 
-	switch (numberOfClients)
-	{
-	case 2:
-		m_BoardSize.first = 3;
-		m_BoardSize.second = 3;
-		break;
-
-	case 3:
-		m_BoardSize.first = 3;
-		m_BoardSize.second = 5;
-		break;
-
-	case 4:
-		m_BoardSize.first = 4;
-		m_BoardSize.second = 6;
-		break;
-
-	default:
-		break;
-	}
+	m_Board = Board(numberOfClients);
 
 
 	for (auto player : m_Lobby) {
@@ -64,14 +43,6 @@ void Server::matchStarted() {
 		m_PlayersInGame[player.first] = playerForMap;
 	}
 
-	std::vector<uint16_t> t_boardRows;
-	for (uint16_t x = 0; x < m_BoardSize.first; x++) {
-		for (uint16_t y = 0; y < m_BoardSize.second; y++) {
-			t_boardRows.push_back(0);
-		}
-		m_Board.push_back(t_boardRows);
-		t_boardRows.clear();
-	}
 
 	drawBoard();
 
@@ -142,7 +113,6 @@ bool Server::AllAnswersAreGiven()
 	}
 	return ok;
 }
-
 
 crow::json::wvalue Server::CheckGameState() {
 	crow::json::wvalue outJson;
@@ -377,7 +347,7 @@ crow::response Server::AuthenticationRoute(const crow::request& req)
 			return crow::response(405, "password field is null");//Method Not Allowed
 		}
 
-		if (!std::regex_match(password, std::regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[.,?!*]).{6,}$")))
+		if (!std::regex_match(password, std::regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[.,?!*@]).{6,}$")))
 		{
 			return crow::response(417, "password expectations not satisfied");
 		}
@@ -536,6 +506,37 @@ crow::response Server::RemovePowerUp(const crow::request& req)
 	}
 }
 
+crow::response Server::AttackIsland(const crow::request& req)
+{
+	if (!(req.url_params.get("width") && req.url_params.get("height") && req.url_params.get("attacker")))
+	{
+		return crow::response(404);
+	}
+	else
+	{
+		auto width = int(req.url_params.get("width"));
+		auto height = int(req.url_params.get("height"));
+		auto attacker = req.url_params.get("attacker");
+		m_Board.SetAttacker(height, width, m_PlayersInGame[attacker]);
+		return crow::response(200);
+	}
+}
+
+crow::response Server::OwnerIsland(const crow::request& req)
+{
+	if (!(req.url_params.get("width") && req.url_params.get("height") ))
+	{
+		return crow::response(404);
+	}
+	else
+	{
+		auto width = int(req.url_params.get("width"));
+		auto height = int(req.url_params.get("height"));
+		m_Board.ChangeOwner(height, width);
+		return crow::response(200);
+	}
+}
+
 crow::json::wvalue Server::ValidateAnswer()
 {
 	int diffCur = INT_MAX;
@@ -635,7 +636,7 @@ void Server::SetupServer() {
 		"/game/validateAnswer\n"
 		"	Validate a numeric question answer set for current user\n"
 		"/game/currentQuestion\n"
-		"	Returns the currently set question in game\n";
+		"	Returns the currently set question in game\n"
 		"/game/player/powerUp?user=<value1>&powerUp=<value2>\n"
 		"	Removes the value2 powerUp from the value1 player\n\n\n";
 
@@ -684,6 +685,10 @@ void Server::SetupServer() {
 	CROW_ROUTE(m_crowApp, "/lobby/uplayers")([this]() {
 		return ReturnUnreadyUsersInLobby();
 		});
+	CROW_ROUTE(m_crowApp, "/game/attacker")([this](const crow::request& req) {
+		return AttackIsland(req);
+		});
+
 	CROW_ROUTE(m_crowApp, "/game/player/powerUp")([this](const crow::request& req) {
 		return RemovePowerUp(req);
 		});

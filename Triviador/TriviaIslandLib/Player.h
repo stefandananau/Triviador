@@ -17,6 +17,8 @@ public:
 	void AddPoints(uint16_t pointsToAdd);
 	const uint16_t& GetPoints()const;
 
+	const std::string& GetUser() const;
+
 	void RemovePowerUp(std::string powerUp);
 	int NumberOfPowerUp();
 

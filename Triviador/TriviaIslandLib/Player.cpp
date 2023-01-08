@@ -16,6 +16,11 @@ const uint16_t& Player::GetPoints() const
 	return m_Points;
 }
 
+const std::string& Player::GetUser() const
+{
+	return m_UserEmail;
+}
+
 void Player::RemovePowerUp(std::string powerUp)
 {
 	m_AvailablePowerUp.erase(std::remove(m_AvailablePowerUp.begin(), m_AvailablePowerUp.end(), powerUp), m_AvailablePowerUp.end());
