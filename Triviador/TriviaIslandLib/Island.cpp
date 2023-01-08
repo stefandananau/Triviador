@@ -10,6 +10,11 @@ void Island::SetOwner(const Player& owner)
 	m_Owner = owner;
 }
 
+void Island::SetOwner()
+{
+	m_Owner = std::move(m_Attacker);
+}
+
 const Player& Island::GetOwner() const
 {
 	return m_Owner;

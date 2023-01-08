@@ -1,5 +1,9 @@
 #include "Board.h"
 
+Board::Board()
+{
+}
+
 Board::Board(uint16_t numberOfPlayers)
 {
 	switch (numberOfPlayers)
@@ -19,14 +23,31 @@ Board::Board(uint16_t numberOfPlayers)
 	default:
 		break;
 	} 
-	m_Board.resize(m_width);
-	for (auto column : m_Board)
-	{
-		column.resize(m_height,Island());
-	}
+
+	m_Board.resize(m_width, std::vector<Island>(m_height,Island()));
 }
 
 const std::vector<std::vector<Island>>& Board::GetBoard() const
 {
 	return m_Board;
+}
+
+const size_t Board::GetHeight() const
+{
+	return m_height;
+}
+
+const size_t Board::GetWidth() const
+{
+	return m_width;
+}
+
+void Board::SetAttacker(const size_t& height,const size_t& width, const Player& attacker)
+{
+	m_Board[height][width].SetAttacker(attacker);
+}
+
+void Board::ChangeOwner(const size_t& height, const size_t& width)
+{
+	m_Board[height][width].SetOwner();
 }

@@ -20,6 +20,7 @@
 
 #include "Parser.h"
 #include "Player.h"
+#include <Board.h>
 //#include "Game.h"
 
 
@@ -39,8 +40,8 @@ public:
 
 protected:
 	//game logic
-	std::pair<uint16_t, uint16_t> m_BoardSize;
-	std::vector<std::vector<uint16_t>> m_Board;
+	
+	Board m_Board;
 	//state m_GameState;
 	questionType m_CurrentQuestionType;
 	std::map<std::string, Player> m_PlayersInGame;
@@ -72,6 +73,8 @@ protected:
 	crow::response ReturnUserStats(const crow::request& req);
 	crow::response NumberOfPlayersInLobby();
 	crow::response RemovePowerUp(const crow::request& req);
+	crow::response AttackIsland(const crow::request& req);
+	crow::response OwnerIsland(const crow::request& req);
 	crow::json::wvalue ReturnReadyUsersInLobby();
 	crow::json::wvalue ReturnUnreadyUsersInLobby();
 	crow::json::wvalue ValidateAnswer();
