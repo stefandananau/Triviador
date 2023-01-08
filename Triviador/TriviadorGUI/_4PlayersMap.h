@@ -1,9 +1,9 @@
 #pragma once
 
-#include <QMainWindow>
+#include <qdialog>
 #include "ui__4PlayersMap.h"
 
-class _4PlayersMap : public QMainWindow
+class _4PlayersMap : public QDialog
 {
 	Q_OBJECT
 

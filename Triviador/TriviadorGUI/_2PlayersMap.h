@@ -1,10 +1,10 @@
 #pragma once
 
-#include <QMainWindow>
+#include <qdialog.h>
 #include "ui__2PlayersMap.h"
 #include "GameLoop.h"
 
-class _2PlayersMap : public QMainWindow
+class _2PlayersMap : public QDialog
 {
 	Q_OBJECT
 

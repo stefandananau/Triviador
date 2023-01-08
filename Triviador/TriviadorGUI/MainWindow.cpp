@@ -66,15 +66,15 @@ void MainWindow::GameStarted()
     int playerNumber = 2;
     switch (playerNumber) {
     case 2:
-        map2players = new _2PlayersMap();
+        map2players = new _2PlayersMap(this);
         map2players->show();
         break;
     case 3:
-        map3players = new _3PlayersMap();
+        map3players = new _3PlayersMap(this);
         map3players->show();
         break;
     case 4:
-        map4players = new _4PlayersMap();
+        map4players = new _4PlayersMap(this);
         map4players->show();
         break;
     }
