@@ -2,6 +2,7 @@
 
 #include <string>
 #include <cstdint>
+#include <vector>
 
 class Player {
 
@@ -16,9 +17,13 @@ public:
 	void AddPoints(uint16_t pointsToAdd);
 	const uint16_t& GetPoints()const;
 
+	void RemovePowerUp(std::string powerUp);
+	int NumberOfPowerUp();
+
 	~Player();
 
 private:
+	std::vector<std::string> m_AvailablePowerUp = {"50/50","PickAnswer","SuggestAnswer"};
 	std::string m_UserEmail;
 	std::string m_Answer;
 	uint16_t m_Points;

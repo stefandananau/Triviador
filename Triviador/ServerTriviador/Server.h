@@ -57,9 +57,6 @@ protected:
 	std::default_random_engine m_Generator;
 	std::map<std::string,bool> m_Lobby;
 
-
-
-
 	//Game m_Game;
 	
 	crow::SimpleApp m_crowApp;
@@ -74,6 +71,7 @@ protected:
 	crow::response AddQuestionAnswerToUser(const crow::request& req);
 	crow::response ReturnUserStats(const crow::request& req);
 	crow::response NumberOfPlayersInLobby();
+	crow::response RemovePowerUp(const crow::request& req);
 	crow::json::wvalue ReturnReadyUsersInLobby();
 	crow::json::wvalue ReturnUnreadyUsersInLobby();
 	crow::json::wvalue ValidateAnswer();
@@ -81,6 +79,7 @@ protected:
 	crow::json::wvalue CurrentQuestionToJson();
 	bool AllAnswersAreGiven();
 	void matchStarted();
+
 public:
 
 	Server();

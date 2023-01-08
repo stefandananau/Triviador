@@ -496,6 +496,33 @@ crow::response Server::NumberOfPlayersInLobby()
 	return crow::response(crow::json::wvalue({ "numberOfPlayers", m_Lobby.size() }));
 }
 
+crow::response Server::RemovePowerUp(const crow::request& req)
+{
+	if (!req.url_params.get("user"))
+	{
+		return crow::response(404);//not found
+	}
+	else
+	{
+		auto userName = req.url_params.get("user");
+		Player player = m_PlayersInGame[userName];
+		if (!req.url_params.get("powerUp"))
+		{
+			return crow::response(404);//not found
+		}
+		else
+		{
+			int numberOfPowerUps = player.NumberOfPowerUp();
+			player.RemovePowerUp(req.url_params.get("powerUp"));
+			if (numberOfPowerUps == player.NumberOfPowerUp())
+			{
+				return crow::response(403);//forbidden
+			}
+			return crow::response(200);
+		}
+	}
+}
+
 crow::json::wvalue Server::ValidateAnswer()
 {
 	int diffCur = INT_MAX;
@@ -595,8 +622,9 @@ void Server::SetupServer() {
 		"/game/validateAnswer\n"
 		"	Validate a numeric question answer set for current user\n"
 		"/game/currentQuestion\n"
-		"	Returns the currently set question in game\n\n\n";
-
+		"	Returns the currently set question in game\n";
+		"/game/player/powerUp?user=<value1>&powerUp=<value2>\n"
+		"	Removes the value2 powerUp from the value1 player\n\n\n"
 
 	CROW_ROUTE(m_crowApp, "/database")([this](const crow::request& req) {
 		return DataBaseRoute(req);
@@ -643,7 +671,9 @@ void Server::SetupServer() {
 	CROW_ROUTE(m_crowApp, "/lobby/uplayers")([this]() {
 		return ReturnUnreadyUsersInLobby();
 		});
-
+	CROW_ROUTE(m_crowApp, "/game/player/powerUp")([this](const crow::request& req) {
+		return RemovePowerUp(req);
+		});
 	CROW_ROUTE(m_crowApp, "/game/questionAnswer")([this](const crow::request& req) {
 		//req: email + questionAnswer
 		return AddQuestionAnswerToUser(req);
