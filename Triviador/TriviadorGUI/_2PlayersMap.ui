@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1920</width>
-    <height>1080</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -31,32 +31,32 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">background: transparent</string>
    </property>
-   <layout class="QGridLayout" name="Table" rowminimumheight="0" columnminimumwidth="0">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <property name="leftMargin">
-     <number>0</number>
+     <number>10</number>
     </property>
     <property name="topMargin">
-     <number>0</number>
+     <number>10</number>
     </property>
     <property name="rightMargin">
-     <number>0</number>
+     <number>10</number>
     </property>
     <property name="bottomMargin">
-     <number>0</number>
+     <number>10</number>
     </property>
-    <property name="spacing">
-     <number>0</number>
-    </property>
-    <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1,1">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,1,0">
       <property name="spacing">
        <number>0</number>
       </property>
@@ -64,31 +64,73 @@
        <enum>QLayout::SetMinimumSize</enum>
       </property>
       <item>
-       <layout class="QGridLayout" name="player1GridL">
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
         <property name="sizeConstraint">
-         <enum>QLayout::SetMinimumSize</enum>
+         <enum>QLayout::SetDefaultConstraint</enum>
         </property>
-        <property name="rightMargin">
-         <number>100</number>
+        <property name="topMargin">
+         <number>200</number>
         </property>
-        <property name="spacing">
-         <number>0</number>
+        <property name="bottomMargin">
+         <number>200</number>
         </property>
-        <item row="0" column="1">
-         <widget class="QLabel" name="label_8">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
+        <item>
+         <widget class="QLabel" name="label_4">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
           <property name="minimumSize">
            <size>
-            <width>0</width>
-            <height>0</height>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">image:url(:/new/prefix1/images/shield1.png);
+background:rgba(255, 0, 0, 0.4);
+</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_8">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
            </size>
           </property>
           <property name="autoFillBackground">
@@ -96,7 +138,7 @@
           </property>
           <property name="styleSheet">
            <string notr="true">image: url(:/new/prefix1/images/ship2.png);
-background: transparent;</string>
+background: rgba(255, 0, 0, 0.4);</string>
           </property>
           <property name="text">
            <string/>
@@ -109,61 +151,18 @@ background: transparent;</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_4">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">image:url(:/new/prefix1/images/shield1.png);
-background:transparent;</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
        </layout>
       </item>
       <item>
-       <layout class="QGridLayout" name="landGrid" rowstretch="0,0,0" columnstretch="0,0,0">
+       <layout class="QGridLayout" name="landGrid" rowstretch="0,0,0" columnstretch="0,0,0,0,0">
         <property name="sizeConstraint">
          <enum>QLayout::SetMinimumSize</enum>
         </property>
         <property name="spacing">
          <number>0</number>
         </property>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="pushButton_5">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">image: url(:/new/prefix1/images/island1-removebg-preview.png);
-background: transparent;</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QPushButton" name="pushButton_14">
+        <item row="0" column="2">
+         <widget class="QPushButton" name="pushButton_3">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
             <horstretch>0</horstretch>
@@ -231,52 +230,6 @@ background: transparent;</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="1">
-         <widget class="QPushButton" name="pushButton_17">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">image: url(:/new/prefix1/images/island1-removebg-preview.png);
-background: transparent;</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">image: url(:/new/prefix1/images/island1-removebg-preview.png);
-background: transparent;</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="0">
          <widget class="QPushButton" name="pushButton_4">
           <property name="sizePolicy">
@@ -300,8 +253,31 @@ background: transparent;</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="2">
-         <widget class="QPushButton" name="pushButton_12">
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pushButton_5">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">image: url(:/new/prefix1/images/island1-removebg-preview.png);
+background: transparent;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="pushButton_17">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
             <horstretch>0</horstretch>
@@ -346,35 +322,14 @@ background: transparent;</string>
           </property>
          </widget>
         </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QGridLayout" name="player2GridR">
-        <property name="sizeConstraint">
-         <enum>QLayout::SetMinimumSize</enum>
-        </property>
-        <property name="leftMargin">
-         <number>100</number>
-        </property>
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <item row="0" column="1">
-         <widget class="QLabel" name="label_3">
-          <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="pushButton_14">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-          <property name="styleSheet">
-           <string notr="true">image:url(:/new/prefix1/images/shield4.png);
-background:transparent</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_5">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -382,8 +337,102 @@ background:transparent</string>
            </size>
           </property>
           <property name="styleSheet">
+           <string notr="true">image: url(:/new/prefix1/images/island1-removebg-preview.png);
+background: transparent;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QPushButton" name="pushButton_12">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">image: url(:/new/prefix1/images/island1-removebg-preview.png);
+background: transparent;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <property name="topMargin">
+         <number>200</number>
+        </property>
+        <property name="bottomMargin">
+         <number>200</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">image:url(:/new/prefix1/images/shield4.png);
+background:rgba(0, 0, 255, 0.4)</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_5">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
            <string notr="true">image:url(:/new/prefix1/images/ship1.png);
-background: transparent</string>
+background: rgba(0, 0, 255, 0.4)</string>
           </property>
           <property name="text">
            <string/>

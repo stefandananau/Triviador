@@ -90,6 +90,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnswerPrompt.cpp" />
+    <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="Triviador.cpp" />
     <ClCompile Include="UpdateThread.cpp" />
     <ClCompile Include="_2PlayersMap.cpp" />
@@ -97,6 +99,7 @@
     <ClCompile Include="_4PlayersMap.cpp" />
     <QtRcc Include="images.qrc" />
     <QtRcc Include="MainWindow.qrc" />
+    <QtUic Include="AnswerPrompt.ui" />
     <QtUic Include="MainWindow.ui" />
     <QtMoc Include="MainWindow.h" />
     <ClCompile Include="Client.cpp" />
@@ -108,6 +111,8 @@
     <QtUic Include="_4PlayersMap.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="GameLoop.h" />
+    <QtMoc Include="AnswerPrompt.h" />
     <ClInclude Include="Client.h" />
     <QtMoc Include="UpdateThread.h" />
     <QtMoc Include="_2PlayersMap.h" />
