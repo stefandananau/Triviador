@@ -1,19 +1,28 @@
 #pragma once
 
 #include <QObject>
+#include <QDebug>
+#include <QEventLoop>
 #include "Client.h"
-#include "MultipleQuestionWidget.h"
-#include "NumericQuestionWidget.h"
 
 class GameLoop  : public QObject
 {
 	Q_OBJECT
 
 public:
-	GameLoop(QObject *parent);
+	enum state {
+		WAITING_PLAYER_QUESTION_RESPONSE,
+		WAITING_ON_SERVER_STATE,
+		SENDING_RESPONSE
+	};
+	GameLoop(QObject *parent = nullptr);
+	state m_clientState;
 	~GameLoop();
-private:
-	MultipleQuestionWidget* m_multipleQuestionWidget;
-	NumericQuestionWidget* m_numericQuestionWidget;
+public slots:
+	void printTestOrder();
 
+
+private:
+
+	
 };

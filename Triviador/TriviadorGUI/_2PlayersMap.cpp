@@ -5,7 +5,9 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 {
 	ui.setupUi(this);
 	setWindowIcon(QIcon(":/new/prefix1/images/ship2.png"));
+	
 	gameLoop = new GameLoop(this);
+	qDebug() << "Back to main";
 }
 
 _2PlayersMap::~_2PlayersMap()

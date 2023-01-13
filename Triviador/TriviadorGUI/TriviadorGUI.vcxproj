@@ -90,10 +90,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AnswerPrompt.cpp" />
     <ClCompile Include="GameLoop.cpp" />
-    <ClCompile Include="MultipleQuestionWidget.cpp" />
-    <ClCompile Include="NumericQuestionWidget.cpp" />
+    <ClCompile Include="numericAnswerDialog.cpp" />
     <ClCompile Include="Triviador.cpp" />
     <ClCompile Include="UpdateThread.cpp" />
     <ClCompile Include="_2PlayersMap.cpp" />
@@ -101,24 +99,20 @@
     <ClCompile Include="_4PlayersMap.cpp" />
     <QtRcc Include="images.qrc" />
     <QtRcc Include="MainWindow.qrc" />
-    <QtUic Include="AnswerPrompt.ui" />
     <QtUic Include="MainWindow.ui" />
     <QtMoc Include="MainWindow.h" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
-    <QtUic Include="MultipleQuestionWidget.ui" />
-    <QtUic Include="NumericQuestionWidget.ui" />
+    <QtUic Include="numericAnswerDialog.ui" />
     <QtUic Include="Triviador.ui" />
     <QtUic Include="_2PlayersMap.ui" />
     <QtUic Include="_3PlayersMap.ui" />
     <QtUic Include="_4PlayersMap.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="MultipleQuestionWidget.h" />
-    <QtMoc Include="NumericQuestionWidget.h" />
+    <QtMoc Include="numericAnswerDialog.h" />
     <QtMoc Include="GameLoop.h" />
-    <QtMoc Include="AnswerPrompt.h" />
     <ClInclude Include="Client.h" />
     <QtMoc Include="UpdateThread.h" />
     <QtMoc Include="_2PlayersMap.h" />
