@@ -1,6 +1,6 @@
 #include "multipleAnswerDialog.h"
 
-multipleAnswerDialog::multipleAnswerDialog(QWidget *parent, std::string question,std::string ranswer, std::string wanswer1 , std::string wanswer2 , std::string wanswer3)
+multipleAnswerDialog::multipleAnswerDialog(QWidget* parent, std::string question, std::string ranswer, std::string wanswer1, std::string wanswer2, std::string wanswer3)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
@@ -13,25 +13,30 @@ multipleAnswerDialog::multipleAnswerDialog(QWidget *parent, std::string question
 	ui.answer3Button->text() = answers[2].c_str();
 	ui.answer4Button->text() = answers[3].c_str();
 
-
-
 }
 
 multipleAnswerDialog::~multipleAnswerDialog()
 {}
 
 QString multipleAnswerDialog::getAnswer() {
-	//if (ui.answer->text().size() != 0) {
-	//	return ui.answer->text();
-	//}
-	//else {
-	//	return "NaN";
-	//}
+	if (this->m_answer != "")
+		return m_answer;
 	return "NaN";
 }
 
 void multipleAnswerDialog::on_answer1Button_pressed() {
-		emit dialogShouldClose();
-	
-	
+	m_answer = ui.answer1Button->text();
+	emit dialogShouldClose();
+}
+void multipleAnswerDialog::on_answer2Button_pressed() {
+	m_answer = ui.answer2Button->text();
+	emit dialogShouldClose();
+}
+void multipleAnswerDialog::on_answer3Button_pressed() {
+	m_answer = ui.answer3Button->text();
+	emit dialogShouldClose();
+}
+void multipleAnswerDialog::on_answer4Button_pressed() {
+	m_answer = ui.answer4Button->text();
+	emit dialogShouldClose();
 }

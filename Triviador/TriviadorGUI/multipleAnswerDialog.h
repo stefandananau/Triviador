@@ -14,12 +14,16 @@ public:
 	QString getAnswer();
 	~multipleAnswerDialog();
 private slots:
-	
 	void on_answer1Button_pressed();
+	void on_answer2Button_pressed();
+	void on_answer3Button_pressed();
+	void on_answer4Button_pressed();
+
 
 signals:
 	void dialogShouldClose();
 
 private:
+	QString m_answer;
 	Ui::multipleAnswerDialogClass ui;
 };

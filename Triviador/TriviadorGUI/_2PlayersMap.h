@@ -17,12 +17,14 @@ public:
 private slots:
 	void setGameState();
 	void sendNumericAnswerToServer();
+	void sendMultipleAnswerToServer();
+
 
 private:
 	Ui::_2PlayersMapClass ui;
 	numericAnswerDialog* m_nad;
-	std::vector < std::vector<QPushButton*>> islandButtons;
 	multipleAnswerDialog* m_mad;
+	std::vector < std::vector<QPushButton*>> islandButtons;
 	Client* m_client;
 
 	void numericQuestion(std::string Question);

@@ -113,5 +113,35 @@ void _2PlayersMap::sendNumericAnswerToServer() {
 	setGameState();
 }
 
+void _2PlayersMap::sendMultipleAnswerToServer() {
+	QString answer;
+	std::string thisClientEmail = m_client->getCurrentUser();
+
+	answer = m_nad->getAnswer();
+	qDebug() << answer;
+	std::string answerToStdString;
+	for (uint16_t i = 0; i < answer.size(); i++) {
+		answerToStdString.push_back(answer[i].unicode());
+	}
+	//ok. 
+	// Send answer to server
+	cpr::Response answerQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/questionAnswer?email=" + thisClientEmail + "&answer=" + answerToStdString));
+
+
+	//terminate dialog
+	delete m_mad;
+
+	std::string gameState = m_client->getGameState();
+	while (gameState != "show_answers")
+	{
+		Sleep(1000);
+		gameState = m_client->getGameState();
+	}
+
+	qDebug() << "All players answered!\n";
+
+	setGameState();
+}
+
 _2PlayersMap::~_2PlayersMap()
 {}
