@@ -61,16 +61,10 @@
     <ClCompile Include="Triviador.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AnswerPrompt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameLoop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NumericQuestionWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MultipleQuestionWidget.cpp">
+    <ClCompile Include="numericAnswerDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -92,13 +86,7 @@
     <QtUic Include="_2PlayersMap.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="AnswerPrompt.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="NumericQuestionWidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="MultipleQuestionWidget.ui">
+    <QtUic Include="numericAnswerDialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -118,16 +106,10 @@
     <QtMoc Include="UpdateThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="AnswerPrompt.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="GameLoop.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="NumericQuestionWidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="MultipleQuestionWidget.h">
+    <QtMoc Include="numericAnswerDialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

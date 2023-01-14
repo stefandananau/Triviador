@@ -62,11 +62,18 @@ crow::json::wvalue Server::CurrentQuestionToJson() {
 		case questionType::NUMERIC:
 			outJson = {
 				{"question", m_CurrentNumericQuestion.m_question},
-				{"answers", m_CurrentNumericQuestion.m_correctAnswer}
+				{"answers", m_CurrentNumericQuestion.m_correctAnswer},
+				{"type", "numeric"}
 			};
 			break;
-			//TO DO: same for multiple
-		default:
+			outJson = {
+				{"question", m_CurrentMultipleChoiceQuestion.m_question},
+				{"answers", m_CurrentMultipleChoiceQuestion.m_correctAnswer},
+				{"wrong_answer1", m_CurrentMultipleChoiceQuestion.m_wrongAnswer1},
+				{"wrong_answer2", m_CurrentMultipleChoiceQuestion.m_wrongAnswer2},
+				{"wrong_answer3", m_CurrentMultipleChoiceQuestion.m_wrongAnswer3},
+				{"type", "multiple"}
+			};		default:
 			break;
 		}
 		return outJson;
@@ -291,8 +298,7 @@ crow::response Server::ReturnRandomQuestionRoute(const crow::request& req, std::
 			QuestionNumericRecord pulledNumericalQuestions = RandomNumeric(generator);
 			return crow::response(std::move(crow::json::wvalue({
 				{"Id", pulledNumericalQuestions.id},
-				{"Question", pulledNumericalQuestions.m_question},
-
+				{"Question", pulledNumericalQuestions.m_question}
 				}
 			)));
 		}
