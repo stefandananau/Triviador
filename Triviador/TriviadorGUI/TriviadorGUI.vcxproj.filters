@@ -67,6 +67,9 @@
     <ClCompile Include="numericAnswerDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="multipleAnswerDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -87,6 +90,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="numericAnswerDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="multipleAnswerDialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -110,6 +116,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="numericAnswerDialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="multipleAnswerDialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
