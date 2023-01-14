@@ -49,7 +49,17 @@
     </rect>
    </property>
    <property name="text">
-    <string>answer</string>
+    <string>Answer!</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="actionResponse">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>270</y>
+     <width>581</width>
+     <height>31</height>
+    </rect>
    </property>
   </widget>
  </widget>

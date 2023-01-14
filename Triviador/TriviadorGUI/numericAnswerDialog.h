@@ -8,7 +8,8 @@ class numericAnswerDialog : public QDialog
 	Q_OBJECT
 
 public:
-	numericAnswerDialog(QWidget *parent = nullptr);
+	numericAnswerDialog(QWidget *parent = nullptr, std::string question = "");
+	QString getAnswer();
 	~numericAnswerDialog();
 
 private slots:

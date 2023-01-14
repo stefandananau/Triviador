@@ -3,7 +3,10 @@
 #include <QObject>
 #include <QDebug>
 #include <QEventLoop>
+
 #include "Client.h"
+#include "numericAnswerDialog.h"
+
 
 class GameLoop  : public QObject
 {
@@ -19,10 +22,10 @@ public:
 	state m_clientState;
 	~GameLoop();
 public slots:
-	void printTestOrder();
-
+	void sendAnswerToServer();
+	
 
 private:
-
-	
+	numericAnswerDialog* m_nad;
+	Client* m_client;
 };
