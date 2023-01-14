@@ -2,8 +2,9 @@
 
 #include <QDialog>
 #include "ui_multipleAnswerDialog.h"
-#include <algorithm>
 #include <random>
+#include <QElapsedTimer>
+
 
 class multipleAnswerDialog : public QDialog
 {
@@ -26,4 +27,6 @@ signals:
 private:
 	QString m_answer;
 	Ui::multipleAnswerDialogClass ui;
+	QElapsedTimer m_timer;
+	uint64_t m_elapsedTime;
 };
