@@ -21,6 +21,7 @@ private slots:
 private:
 	Ui::_2PlayersMapClass ui;
 	numericAnswerDialog* m_nad;
+	std::vector < std::vector<QPushButton*>> islandButtons;
 	Client* m_client;
 
 };
