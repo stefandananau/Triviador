@@ -2,6 +2,7 @@
 
 #include <qdialog>
 #include "ui__4PlayersMap.h"
+#include <QTimer>
 
 class _4PlayersMap : public QDialog
 {
@@ -11,6 +12,13 @@ public:
 	_4PlayersMap(QWidget *parent = nullptr);
 	~_4PlayersMap();
 
+	
+
+
 private:
 	Ui::_4PlayersMapClass ui;
+	QTimer* timer;
+
+public slots:
+	void updateBackground();
 };

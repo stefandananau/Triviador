@@ -9,59 +9,186 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>605</width>
+    <height>340</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>numericAnswerDialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(138, 156, 151);</string>
+  </property>
   <property name="modal">
    <bool>true</bool>
   </property>
-  <widget class="QTextEdit" name="question">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>581</width>
-     <height>151</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="answer">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>170</y>
-     <width>113</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="answerButton">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>200</y>
-     <width>75</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Answer!</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="actionResponse">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>270</y>
-     <width>581</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout_4">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QTextEdit" name="question">
+       <property name="styleSheet">
+        <string notr="true">	border: none;
+	padding-top: 5px;
+	color: rgb();
+	border-radius:10px;
+	border-top:2px solid rgb(11, 189, 140);
+	border-left:  2px solid rgb(11, 189, 140);
+	border-right: 2px solid rgb(11, 189, 140);
+	border-bottom: 2px solid rgb(11, 189, 140);
+background-color: rgb(195, 232, 222);</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>228</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QLineEdit" name="answer">
+             <property name="styleSheet">
+              <string notr="true">	border: none;
+	padding-top: 5px;
+	color: rgb();
+	border-radius:10px;
+	border-top:2px solid rgb(11, 189, 140);
+	border-left:  2px solid rgb(11, 189, 140);
+	border-right: 2px solid rgb(11, 189, 140);
+	border-bottom: 2px solid rgb(11, 189, 140);
+background-color: rgb(195, 232, 222);</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>17</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="answerButton">
+               <property name="minimumSize">
+                <size>
+                 <width>60</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	background-color: rgb(52, 235, 186);
+	border: none;
+	padding-top: 5px;
+	color: rgb(31, 22, 1);
+	border-radius:10px;
+	border-left:  1px solid rgb(30, 201, 156);
+	border-right: 1px solid rgb(30, 201, 156);
+	border-bottom: 5px solid rgb(30, 201, 156);
+	font: bold large &quot;Monospace&quot;;
+	
+
+}
+QPushButton:hover {
+	background-color: rgb(30, 201, 156);
+	border-left:  1px solid rgb(91, 179, 155);
+	border-right: 1px solid rgb(91, 179, 155);
+	border-bottom: 5px solid rgb(91, 179, 155);
+}
+QPushButton:pressed {
+	background-color: rgb(11, 189, 140);
+	border-left:  1px solid rgb(3, 128, 93);
+	border-right: 1px solid rgb(3, 128, 93);
+	border-top: 5px solid rgb(3, 128, 93);
+	padding-top: -5px;
+	border-bottom: none;
+}</string>
+               </property>
+               <property name="text">
+                <string>Answer!</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>17</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>228</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="actionResponse">
+         <property name="maximumSize">
+          <size>
+           <width>581</width>
+           <height>31</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">	border: none;
+	padding-top: 5px;
+	color: rgb();
+	border-radius:10px;
+	border-top:2px solid rgb(11, 189, 140);
+	border-left:  2px solid rgb(11, 189, 140);
+	border-right: 2px solid rgb(11, 189, 140);
+	border-bottom: 2px solid rgb(11, 189, 140);
+background-color: rgb(195, 232, 222);</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
