@@ -1,5 +1,5 @@
 #include "_2PlayersMap.h"
-
+#include <QDateTime>
 
 void _2PlayersMap::multipleQuestion(crow::json::rvalue Question) {
 	//numeric widget
@@ -34,6 +34,10 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 {
 	ui.setupUi(this);
 	setWindowIcon(QIcon(":/new/prefix1/images/ship2.png"));
+	m_timer = new QTimer(this);
+	connect(m_timer, SIGNAL(timeout()), this, SLOT(updateBackground()));
+	m_timer->start(1000);
+
 	islandButtons.resize(3);
 	islandButtons[0].resize(3);
 	islandButtons[1].resize(3);
@@ -142,6 +146,18 @@ void _2PlayersMap::sendMultipleAnswerToServer() {
 
 	setGameState();
 }
+void _2PlayersMap::updateBackground()
+{
+	std::vector<QString> backgroundImages;
+	backgroundImages.push_back(":/new/prefix1/images/water-2.png");
+	backgroundImages.push_back(":/new/prefix1/images/water-3.png");
+	backgroundImages.push_back(":/new/prefix1/images/water-4.png");
+	backgroundImages.push_back(":/new/prefix1/images/water-5.png");
+	backgroundImages.push_back(":/new/prefix1/images/water-6.png");
+	int index = QTime::currentTime().second() % backgroundImages.size();
+	this->setStyleSheet("background-image: url(" + backgroundImages[index] + ");");
 
+
+}
 _2PlayersMap::~_2PlayersMap()
 {}

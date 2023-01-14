@@ -5,9 +5,9 @@ _4PlayersMap::_4PlayersMap(QWidget *parent)
 {
 	ui.setupUi(this);
 	setWindowIcon(QIcon(":/new/prefix1/images/ship2.png"));
-	timer = new QTimer(this);
-	connect(timer, SIGNAL(timeout()), this, SLOT(updateBackground()));
-	timer->start(1000);
+	m_timer = new QTimer(this);
+	connect(m_timer, SIGNAL(timeout()), this, SLOT(updateBackground()));
+	m_timer->start(1000);
 }
 
 void _4PlayersMap::updateBackground()

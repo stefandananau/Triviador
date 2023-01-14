@@ -48,4 +48,4 @@ void multipleAnswerDialog::on_answer4Button_pressed() {
 
 uint64_t multipleAnswerDialog::getAnswerTime() {
 	return m_elapsedTime;
-}
+}	

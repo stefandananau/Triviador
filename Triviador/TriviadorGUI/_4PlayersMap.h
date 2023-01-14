@@ -17,7 +17,7 @@ public:
 
 private:
 	Ui::_4PlayersMapClass ui;
-	QTimer* timer;
+	QTimer* m_timer;
 
 public slots:
 	void updateBackground();

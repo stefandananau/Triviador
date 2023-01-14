@@ -6,75 +6,293 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>590</width>
-    <height>400</height>
+    <width>693</width>
+    <height>407</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>multipleAnswerDialog</string>
   </property>
-  <widget class="QTextEdit" name="question">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>30</y>
-     <width>541</width>
-     <height>51</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="answer1Button">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>110</y>
-     <width>75</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Answer</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="answer2Button">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>120</y>
-     <width>75</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>PushButton</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="answer3Button">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>230</y>
-     <width>75</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>PushButton</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="answer4Button">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>230</y>
-     <width>75</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>PushButton</string>
-   </property>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(245, 203, 209)</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QTextEdit" name="question">
+     <property name="styleSheet">
+      <string notr="true">	border: none;
+	padding-top: 5px;
+	color: rgb();
+	border-radius:10px;
+	border-top:2px solid rgb(217, 26, 74);
+	border-left:  2px solid rgb(217, 26, 74);
+	border-right: 2px solid rgb(217, 26, 74);
+	border-bottom: 2px solid rgb(217, 26, 74);
+background-color: rgb(219, 191, 195);</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>25</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>68</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="answer1Button">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	background-color: rgb(217, 26, 74);
+	border: none;
+	padding-top: 5px;
+	color: rgb(31, 22, 1);
+	border-radius:10px;
+	border-left:  1px solid rgb(135, 32, 58);
+	border-right: 1px solid rgb(135, 32, 58);
+	border-bottom: 5px solid rgb(135, 32, 58);
+	font: bold large &quot;Monospace&quot;;
+	
+
+}
+QPushButton:hover {
+	background-color: rgb(212, 63, 101);
+	border-left:  1px solid rgb(128, 51, 71);
+	border-right: 1px solid rgb(128, 51, 71);
+	border-bottom: 5px solid rgb(128, 51, 71);
+}
+QPushButton:pressed {
+	background-color: rgb(128, 51, 71);
+	border-left:  1px solid rgb(161, 5, 31);
+	border-right: 1px solid rgb(161, 5, 31);
+	border-top: 5px solid rgb(161, 5, 31);
+	padding-top: -5px;
+	border-bottom: none;
+}</string>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>208</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="answer2Button">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	background-color: rgb(217, 26, 74);
+	border: none;
+	padding-top: 5px;
+	color: rgb(31, 22, 1);
+	border-radius:10px;
+	border-left:  1px solid rgb(135, 32, 58);
+	border-right: 1px solid rgb(135, 32, 58);
+	border-bottom: 5px solid rgb(135, 32, 58);
+	font: bold large &quot;Monospace&quot;;
+	
+
+}
+QPushButton:hover {
+	background-color: rgb(212, 63, 101);
+	border-left:  1px solid rgb(128, 51, 71);
+	border-right: 1px solid rgb(128, 51, 71);
+	border-bottom: 5px solid rgb(128, 51, 71);
+}
+QPushButton:pressed {
+	background-color: rgb(128, 51, 71);
+	border-left:  1px solid rgb(161, 5, 31);
+	border-right: 1px solid rgb(161, 5, 31);
+	border-top: 5px solid rgb(161, 5, 31);
+	padding-top: -5px;
+	border-bottom: none;
+}</string>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>68</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>98</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>68</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="answer3Button">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	background-color: rgb(217, 26, 74);
+	border: none;
+	padding-top: 5px;
+	color: rgb(31, 22, 1);
+	border-radius:10px;
+	border-left:  1px solid rgb(135, 32, 58);
+	border-right: 1px solid rgb(135, 32, 58);
+	border-bottom: 5px solid rgb(135, 32, 58);
+	font: bold large &quot;Monospace&quot;;
+	
+
+}
+QPushButton:hover {
+	background-color: rgb(212, 63, 101);
+	border-left:  1px solid rgb(128, 51, 71);
+	border-right: 1px solid rgb(128, 51, 71);
+	border-bottom: 5px solid rgb(128, 51, 71);
+}
+QPushButton:pressed {
+	background-color: rgb(128, 51, 71);
+	border-left:  1px solid rgb(161, 5, 31);
+	border-right: 1px solid rgb(161, 5, 31);
+	border-top: 5px solid rgb(161, 5, 31);
+	padding-top: -5px;
+	border-bottom: none;
+}</string>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>208</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="answer4Button">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	background-color: rgb(217, 26, 74);
+	border: none;
+	padding-top: 5px;
+	color: rgb(31, 22, 1);
+	border-radius:10px;
+	border-left:  1px solid rgb(135, 32, 58);
+	border-right: 1px solid rgb(135, 32, 58);
+	border-bottom: 5px solid rgb(135, 32, 58);
+	font: bold large &quot;Monospace&quot;;
+	
+
+}
+QPushButton:hover {
+	background-color: rgb(212, 63, 101);
+	border-left:  1px solid rgb(128, 51, 71);
+	border-right: 1px solid rgb(128, 51, 71);
+	border-bottom: 5px solid rgb(128, 51, 71);
+}
+QPushButton:pressed {
+	background-color: rgb(128, 51, 71);
+	border-left:  1px solid rgb(161, 5, 31);
+	border-right: 1px solid rgb(161, 5, 31);
+	border-top: 5px solid rgb(161, 5, 31);
+	padding-top: -5px;
+	border-bottom: none;
+}</string>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>68</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

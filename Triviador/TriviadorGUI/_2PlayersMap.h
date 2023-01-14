@@ -5,7 +5,7 @@
 #include "numericAnswerDialog.h"
 #include "multipleAnswerDialog.h"
 #include "Client.h"
-
+#include <QTimer>
 class _2PlayersMap : public QDialog
 {
 	Q_OBJECT
@@ -18,7 +18,7 @@ private slots:
 	void setGameState();
 	void sendNumericAnswerToServer();
 	void sendMultipleAnswerToServer();
-
+	void updateBackground();
 
 private:
 	Ui::_2PlayersMapClass ui;
@@ -26,7 +26,7 @@ private:
 	multipleAnswerDialog* m_mad;
 	std::vector < std::vector<QPushButton*>> islandButtons;
 	Client* m_client;
-
+	QTimer* m_timer;
 	void numericQuestion(std::string Question);
 	void multipleQuestion(crow::json::rvalue question);
 
