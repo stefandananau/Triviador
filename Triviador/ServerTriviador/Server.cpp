@@ -582,18 +582,40 @@ crow::json::wvalue Server::ValidateAnswer()
 	{
 		int diffCur = INT_MAX;
 		std::string userWinner;
-
+		std::vector<Player> PlayerMapToVect;
 		
 		for (const auto& player : m_PlayersInGame)
 		{
-			int diff = std::abs(stoi(player.second.GetAnswer()) - stoi(m_CurrentNumericQuestion.m_correctAnswer));
-			if (diff < diffCur)
-			{
-				diffCur = diff;
-				userWinner = player.first;
-			}
+			PlayerMapToVect.push_back(player.second);
+			//int diff = std::abs(stoi(player.second.GetAnswer()) - stoi(m_CurrentNumericQuestion.m_correctAnswer));
+			//if (diff < diffCur)
+			//{
+			//	diffCur = diff;
+			//	userWinner = player.first;
+			//}
 		}
-		res["winner"] = userWinner;
+		std::sort(PlayerMapToVect.begin(), PlayerMapToVect.end(), [this](Player p1, Player p2) {
+			if (p1.GetTime() != 0 && p2.GetTime() != 0) {
+				int diff1 = std::abs(stoi(p1.GetAnswer()) - 
+					stoi(m_CurrentNumericQuestion.m_correctAnswer));
+				int diff2 = std::abs(stoi(p2.GetAnswer()) - 
+					stoi(m_CurrentNumericQuestion.m_correctAnswer));
+				return (diff1 < diff2 || (diff1 == diff2) && (p1.GetTime() < p2.GetTime()));
+			}
+			else {
+				int diff1 = std::abs(stoi(p1.GetAnswer()) -
+					stoi(m_CurrentNumericQuestion.m_correctAnswer));
+				int diff2 = std::abs(stoi(p2.GetAnswer()) -
+					stoi(m_CurrentNumericQuestion.m_correctAnswer));
+				return diff1 < diff2;
+			}
+			});
+		std::vector<std::string> playersToString;
+		int index = 0;
+		for (auto& player : PlayerMapToVect) {
+			res[index] =  { player.GetUser()} ;
+			index++;
+		}
 	}
 	else if (m_CurrentQuestionType == MULTIPLE_ANSWER)
 	{

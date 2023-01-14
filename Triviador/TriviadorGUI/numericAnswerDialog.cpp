@@ -21,12 +21,14 @@ QString numericAnswerDialog::getAnswer() {
 }
 
 void numericAnswerDialog::on_answerButton_pressed() {
-	if (ui.answer->text() != "")
+	if (ui.answer->text() != "") {
+		m_elapsedTime = static_cast<uint64_t>(timer.elapsed());
 		emit dialogShouldClose();
+	}
 	else
 		ui.actionResponse->setText("Answer should not be empty!");
-	m_elapsedTime = static_cast<uint64_t>(timer.elapsed());
-	
+
+	qDebug() << m_elapsedTime;
 	//delete this;
 }
 

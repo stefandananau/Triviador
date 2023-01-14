@@ -1,6 +1,6 @@
 #include "_2PlayersMap.h"
 #include <QDateTime>
-
+#include <sstream>
 void _2PlayersMap::multipleQuestion(crow::json::rvalue Question) {
 	//numeric widget
 	m_mad = new multipleAnswerDialog(nullptr, Question["question"].s(), Question["answer"].s(), Question["wrong_answer1"].s(), Question["wrong_answer2"].s(), Question["wrong_answer3"].s());
@@ -31,7 +31,7 @@ void _2PlayersMap::getMap()
 
 void _2PlayersMap::numericQuestion(std::string Question) {
 	//numeric widget
-	m_nad = new numericAnswerDialog(nullptr, Question);
+	m_nad = new numericAnswerDialog(nullptr, Question+m_client->getCurrentUser());
 
 	//m_nad communitcates with game loop through following connect(calls sendAnswerToServer on answer button press)
 
@@ -92,7 +92,9 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 void _2PlayersMap::setGameState(){
 	if (m_client->getGameState() == "show_answers") {
 		QString winner;
+
 		std::string roundwinner = m_client->getRoundWinner();
+
 		for (uint16_t i = 0; i < roundwinner.size(); i++) {
 			winner.push_back(roundwinner[i]);
 		}
@@ -113,8 +115,10 @@ void _2PlayersMap::sendNumericAnswerToServer() {
 	}
 	//ok. 
 	// Send answer to server
-	cpr::Response answerQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/questionAnswer?email=" + thisClientEmail + "&answer=" + answerToStdString));
+	uint64_t time = m_nad->getAnswerTime();
 
+	qDebug() << time;
+	cpr::Response answerQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/questionAnswer?email=" + thisClientEmail + "&answer=" + answerToStdString +"&time=" + std::to_string(time)));
 
 	//terminate dialog
 	delete m_nad;
