@@ -543,6 +543,40 @@ crow::response Server::OwnerIsland(const crow::request& req)
 	}
 }
 
+crow::response Server::IslandMap()
+{
+	
+
+	auto width = m_Board.GetWidth();
+	auto heigth = m_Board.GetHeight();
+	auto board = m_Board.GetBoard();
+	
+
+	crow::json::wvalue::list islands;
+
+	for (const auto& row : board)
+	{	
+		for (const auto& island : row)
+		{
+			islands.push_back(crow::json::wvalue({
+					{ "owner",island.GetOwner().GetUser() },
+					{"attaker",island.GetAttacker().GetUser()},
+					{"points",island.GetIslandScore()}
+				})
+			);
+				
+		}
+	}
+
+	return crow::response(std::move(crow::json::wvalue({
+				{"width", width},
+				{"height", heigth},
+				{"islands",islands}
+			})
+		)
+	);
+}
+
 crow::json::wvalue Server::ValidateAnswer()
 {
 	int diffCur = INT_MAX;
@@ -717,6 +751,10 @@ void Server::SetupServer() {
 	CROW_ROUTE(m_crowApp, "/game/numberOfPlayersInLobby")([this]() {
 		return NumberOfPlayersInLobby();
 		});
+	CROW_ROUTE(m_crowApp, "/game/islandMap")([this]() {
+		return IslandMap();
+		});
+
 
 	m_crowApp.port(80);
 	m_crowApp.multithreaded();

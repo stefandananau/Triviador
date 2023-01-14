@@ -79,6 +79,7 @@ protected:
 	crow::response RemovePowerUp(const crow::request& req);
 	crow::response AttackIsland(const crow::request& req);
 	crow::response OwnerIsland(const crow::request& req);
+	crow::response IslandMap();
 	crow::json::wvalue ReturnReadyUsersInLobby();
 	crow::json::wvalue ReturnUnreadyUsersInLobby();
 	crow::json::wvalue ValidateAnswer();
