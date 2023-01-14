@@ -7,6 +7,7 @@
 #include <crow/json.h>
 #include <random>
 #include <map>
+#include <utility>
 
 #include "DataBase.h"
 
@@ -57,6 +58,9 @@ protected:
 	state m_GameState;
 	std::default_random_engine m_Generator;
 	std::map<std::string,bool> m_Lobby;
+	std::vector<std::pair<std::string, int>> m_firstQuestionAnswerOrderAndWinner;
+
+	uint16_t m_roundCounter;
 
 	//Game m_Game;
 	

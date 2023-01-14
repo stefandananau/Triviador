@@ -84,6 +84,12 @@ int Client::getNumberOfPlayersInLobby()
 	return numberOfPlayers["numberOfPlayers"];
 }
 
+std::string Client::getRoundWinner() {
+	cpr::Response winnerResponse = cpr::Get(cpr::Url("http://localhost/game/validateAnswer"));
+	auto winner = nlohmann::json::parse(winnerResponse.text);
+	return winner["winner"];
+}
+
 Client* Client::getClient()
 {
 	if (client == nullptr) {

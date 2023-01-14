@@ -31,7 +31,7 @@ public:
 	void setCurrentUser(const std::string email);
 	const std::string getCurrentUser();
 	const std::vector<std::pair<std::string, bool>> getLobbyUsers();
-
+	std::string getRoundWinner();
 	static Client* getClient();
 
 

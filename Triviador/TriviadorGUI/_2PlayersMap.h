@@ -2,7 +2,8 @@
 
 #include <qdialog.h>
 #include "ui__2PlayersMap.h"
-#include "GameLoop.h"
+#include "numericAnswerDialog.h"
+#include "Client.h"
 
 class _2PlayersMap : public QDialog
 {
@@ -10,9 +11,16 @@ class _2PlayersMap : public QDialog
 
 public:
 	_2PlayersMap(QWidget *parent = nullptr);
-	~_2PlayersMap();
-	
+
+;	~_2PlayersMap();
+
+private slots:
+	void setGameState();
+	void sendAnswerToServer();
+
 private:
 	Ui::_2PlayersMapClass ui;
-	GameLoop *gameLoop;
+	numericAnswerDialog* m_nad;
+	Client* m_client;
+
 };

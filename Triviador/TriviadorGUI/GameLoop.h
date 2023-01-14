@@ -20,9 +20,13 @@ public:
 	};
 	GameLoop(QObject *parent = nullptr);
 	state m_clientState;
+	QString getGameState();
 	~GameLoop();
 public slots:
 	void sendAnswerToServer();
+
+signals:
+	void shouldSetGameState();
 	
 
 private:

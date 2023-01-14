@@ -411,6 +411,9 @@ background: rgba(0, 0, 255, 0.4)</string>
      </item>
     </layout>
    </item>
+   <item>
+    <widget class="QTextEdit" name="GameState"/>
+   </item>
   </layout>
  </widget>
  <resources>

@@ -10,12 +10,35 @@ void GameLoop::sendAnswerToServer() {
 	for (uint16_t i = 0; i < answer.size(); i++) {
 		answerToStdString.push_back(answer[i].unicode());
 	}
-	//ok.
+	//ok. 
+	// Send answer to server
 	cpr::Response answerQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/questionAnswer?email=" + thisClientEmail + "&answer=" + answerToStdString));
 	
+
 	//terminate dialog
 	delete m_nad;
 
+	std::string gameState = m_client->getGameState();
+	while (gameState != "show_answers")
+	{
+		Sleep(1000);
+		gameState = m_client->getGameState();
+	}
+	emit(shouldSetGameState());
+
+	
+	qDebug() << "All players answered!\n";
+}
+
+QString GameLoop::getGameState() {
+	std::string gameState = m_client->getGameState();
+
+	QString stdStringToQString;
+	for (int i = 0; i < gameState.size(); i++) {
+		stdStringToQString.push_back(gameState[i]);
+	}
+
+	return stdStringToQString;
 }
 
 GameLoop::GameLoop(QObject *parent)
