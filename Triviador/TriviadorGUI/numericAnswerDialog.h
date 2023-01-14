@@ -12,7 +12,6 @@ public:
 	QString getAnswer();
 	~numericAnswerDialog();
 	uint64_t getAnswerTime();
-
 private slots:
 	void on_answerButton_pressed();
 

@@ -45,3 +45,7 @@ void multipleAnswerDialog::on_answer4Button_pressed() {
 	m_elapsedTime = static_cast<uint64_t>(m_timer.elapsed());
 	emit dialogShouldClose();
 }
+
+uint64_t multipleAnswerDialog::getAnswerTime() {
+	return m_elapsedTime;
+}

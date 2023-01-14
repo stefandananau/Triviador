@@ -14,6 +14,7 @@ public:
 	multipleAnswerDialog(QWidget *parent = nullptr, std::string question = "",std::string ranswer="", std::string wanswer1 = "", std::string wanswer2 = "", std::string wanswer3 = "" );
 	QString getAnswer();
 	~multipleAnswerDialog();
+	uint64_t getAnswerTime();
 private slots:
 	void on_answer1Button_pressed();
 	void on_answer2Button_pressed();
