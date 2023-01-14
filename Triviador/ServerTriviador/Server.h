@@ -39,6 +39,7 @@ public:
 		MULTIPLE_ANSWER
 	};
 	enum matchState {
+		NOT_STARTED,
 		FIRST_QUESTION_PHASE,
 		MAP_DIVISION_PHASE,
 		DUEL_PHASE
@@ -96,6 +97,8 @@ protected:
 	crow::json::wvalue ValidateAnswer();
 	crow::json::wvalue CheckGameState();
 	crow::json::wvalue CurrentQuestionToJson();
+	crow::json::wvalue CurrentMatchState();
+
 	bool AllAnswersAreGiven();
 	void matchStarted();
 

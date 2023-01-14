@@ -6,6 +6,7 @@
 Server::Server() {
 	m_DataBase = DataBase::GetInstance();
 	m_DataBase->Sync();
+	m_MatchState = matchState::NOT_STARTED;
 
 	/*wipeUsers();
 	wipeQuestions();*/
@@ -29,6 +30,7 @@ void Server::drawBoard() {
 
 void Server::matchStarted() {
 	//1. first question has to be numerical and decides which client gets to pick a piece of land first
+	m_MatchState = matchState::FIRST_QUESTION_PHASE;
 
 	size_t numberOfClients = GetNumberOfPlayersInLobby();
 
@@ -76,6 +78,30 @@ crow::json::wvalue Server::CurrentQuestionToJson() {
 		return outJson;
 	}
 	return crow::json::wvalue(409);
+}
+
+crow::json::wvalue Server::CurrentMatchState()
+{
+	crow::json::wvalue outJson;
+	switch (m_MatchState)
+	{
+	case Server::FIRST_QUESTION_PHASE:
+		outJson = "FIRST_QUESTION_PHASE";
+		break;
+	case Server::MAP_DIVISION_PHASE:
+		outJson = "MAP_DIVISION_PHASE";
+		break;
+	case Server::DUEL_PHASE:
+		outJson = "DUEL_PHASE";
+		break;
+	case Server::NOT_STARTED:
+		outJson = "NOT_STARTED";
+		break;
+	default:
+		outJson = crow::json::wvalue(500);
+		break;
+	}
+	return outJson;
 }
 
 crow::json::wvalue Server::ReturnReadyUsersInLobby()
@@ -827,6 +853,9 @@ void Server::SetupServer() {
 		});
 	CROW_ROUTE(m_crowApp, "/game/popCurrentPlayer")([this]() {
 		return PopCurrentPlayer();
+		});
+	CROW_ROUTE(m_crowApp, "/game/matchState")([this]() {
+		return CurrentMatchState();
 		});
 
 	m_crowApp.port(80);
