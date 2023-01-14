@@ -72,9 +72,23 @@ std::string Client::getGameState()
 
 std::pair<std::string, std::string> Client::getUserStats(const std::string& email)
 {
-	cpr::Response currentState = cpr::Get(cpr::Url("http://localhost/database/getStats?email=" + email));
-	auto responseInJson = nlohmann::json::parse(currentState.text);
+	cpr::Response currentStats = cpr::Get(cpr::Url("http://localhost/database/getStats?email=" + email));
+	auto responseInJson = nlohmann::json::parse(currentStats.text);
 	return std::make_pair<std::string, std::string>(responseInJson["Number of played games"], responseInJson["Number of won games"]);
+}
+
+std::vector<Island> Client::getIslands()
+{
+	cpr::Response IslandsResponse = cpr::Get(cpr::Url("http://localhost/game/islandMap"));
+	auto responseInJson = nlohmann::json::parse(IslandsResponse.text);
+	std::vector<Island> islands;
+	for (auto isl : responseInJson["islands"]) {
+		Island is;
+		Player player = Player(isl["owner"]);
+		is.SetOwner(player);
+		is.SetIslandScore(isl["points"]);
+	}
+	return std::vector<Island>();
 }
 
 int Client::getNumberOfPlayersInLobby()

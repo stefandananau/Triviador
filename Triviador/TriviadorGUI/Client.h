@@ -4,6 +4,8 @@
 #include <cpr/cpr.h>
 #include <vector>
 #include <nlohmann/json.hpp>
+#include <Island.h>
+
 class Client
 {
 private:
@@ -27,6 +29,7 @@ public:
 	std::string userUnreadyInLobby();
 	std::string getGameState();
 	std::pair <std::string, std::string> getUserStats(const std::string& email);
+	std::vector<Island> getIslands();
 	int getNumberOfPlayersInLobby();
 	void setCurrentUser(const std::string email);
 	const std::string getCurrentUser();
