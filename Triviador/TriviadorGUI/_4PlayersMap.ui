@@ -130,7 +130,7 @@ background:rgba(236, 0, 0, 0.4);
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_44">
          <item>
-          <widget class="QPushButton" name="pushButton_145">
+          <widget class="QPushButton" name="island_00">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -147,7 +147,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_146">
+          <widget class="QPushButton" name="island_10">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -164,7 +164,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_147">
+          <widget class="QPushButton" name="island_20">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -181,7 +181,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_148">
+          <widget class="QPushButton" name="island_30">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -202,7 +202,7 @@ background: transparent;</string>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_45">
          <item>
-          <widget class="QPushButton" name="pushButton_149">
+          <widget class="QPushButton" name="island01">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -219,7 +219,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_150">
+          <widget class="QPushButton" name="island_11">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -236,7 +236,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_151">
+          <widget class="QPushButton" name="island_21">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -253,7 +253,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_152">
+          <widget class="QPushButton" name="island_31">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -274,7 +274,7 @@ background: transparent;</string>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_46">
          <item>
-          <widget class="QPushButton" name="pushButton_153">
+          <widget class="QPushButton" name="island02">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -291,7 +291,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_154">
+          <widget class="QPushButton" name="island_12">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -308,7 +308,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_155">
+          <widget class="QPushButton" name="island_22">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -325,7 +325,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_156">
+          <widget class="QPushButton" name="island_32">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -346,7 +346,7 @@ background: transparent;</string>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_47">
          <item>
-          <widget class="QPushButton" name="pushButton_157">
+          <widget class="QPushButton" name="island03">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -366,7 +366,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_158">
+          <widget class="QPushButton" name="island_13">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -383,7 +383,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_159">
+          <widget class="QPushButton" name="island_23">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -400,7 +400,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_160">
+          <widget class="QPushButton" name="island_33">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -421,7 +421,7 @@ background: transparent;</string>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_48">
          <item>
-          <widget class="QPushButton" name="pushButton_161">
+          <widget class="QPushButton" name="island04">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -439,7 +439,7 @@ background: transparent;
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_162">
+          <widget class="QPushButton" name="island_14">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -456,7 +456,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_163">
+          <widget class="QPushButton" name="island_24">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -473,7 +473,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_164">
+          <widget class="QPushButton" name="island_34">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -494,7 +494,7 @@ background: transparent;</string>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_49">
          <item>
-          <widget class="QPushButton" name="pushButton_165">
+          <widget class="QPushButton" name="island05">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -514,7 +514,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_166">
+          <widget class="QPushButton" name="island_15">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -534,7 +534,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_167">
+          <widget class="QPushButton" name="island_25">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -554,7 +554,7 @@ background: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_168">
+          <widget class="QPushButton" name="island_35">
            <property name="minimumSize">
             <size>
              <width>100</width>

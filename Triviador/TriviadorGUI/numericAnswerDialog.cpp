@@ -6,6 +6,7 @@ numericAnswerDialog::numericAnswerDialog(QWidget *parent,std::string question)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	setWindowIcon(QIcon(":/new/prefix1/images/island5-removebg-preview.png"));
 	ui.question->setText(question.c_str());
 }
 

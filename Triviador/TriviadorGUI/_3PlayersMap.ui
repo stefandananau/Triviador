@@ -28,7 +28,7 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QPushButton" name="pushButton_18">
+        <widget class="QPushButton" name="island00">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
            <horstretch>0</horstretch>
@@ -51,7 +51,7 @@ background: transparent;</string>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_16">
+        <widget class="QPushButton" name="island01">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
            <horstretch>0</horstretch>
@@ -74,7 +74,7 @@ background: transparent;</string>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_8">
+        <widget class="QPushButton" name="island02">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
            <horstretch>0</horstretch>
@@ -97,7 +97,7 @@ background: transparent;</string>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_12">
+        <widget class="QPushButton" name="island03">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
            <horstretch>0</horstretch>
@@ -120,7 +120,7 @@ background: transparent;</string>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_7">
+        <widget class="QPushButton" name="island04">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
            <horstretch>0</horstretch>
@@ -149,7 +149,7 @@ background: transparent;</string>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <widget class="QPushButton" name="pushButton_19">
+      <widget class="QPushButton" name="island10">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -172,7 +172,7 @@ background: transparent;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_14">
+      <widget class="QPushButton" name="island11">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -195,7 +195,7 @@ background: transparent;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_17">
+      <widget class="QPushButton" name="island12">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -218,7 +218,7 @@ background: transparent;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_13">
+      <widget class="QPushButton" name="island13">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -241,7 +241,7 @@ background: transparent;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_15">
+      <widget class="QPushButton" name="island14">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -268,7 +268,7 @@ background: transparent;</string>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
-      <widget class="QPushButton" name="pushButton_20">
+      <widget class="QPushButton" name="island20">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -291,7 +291,7 @@ background: transparent;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="island21">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -314,7 +314,7 @@ background: transparent;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_5">
+      <widget class="QPushButton" name="island22">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -337,7 +337,7 @@ background: transparent;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="island23">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -360,7 +360,7 @@ background: transparent;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_6">
+      <widget class="QPushButton" name="island24">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>

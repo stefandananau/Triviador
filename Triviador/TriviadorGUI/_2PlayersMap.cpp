@@ -34,6 +34,19 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 {
 	ui.setupUi(this);
 	setWindowIcon(QIcon(":/new/prefix1/images/ship2.png"));
+	islandButtons.reserve(3);
+	islandButtons[0].reserve(3);
+	islandButtons[1].reserve(3);
+	islandButtons[2].reserve(3);
+	std::string island = "island";
+	for (QObject* push : this->children()) {
+		std::string name = push->objectName().toUtf8().constData();
+		if (name.find(island) != std::string::npos) {
+			int pos1 = name[name.length() - 2] - '0';
+			int pos2 = name[name.length() - 1] - '0';
+			islandButtons[pos1][pos2] = (QPushButton*)push;
+		}
+	}
 	m_client = Client::getClient();
 
 	//this is where match script will go, 
