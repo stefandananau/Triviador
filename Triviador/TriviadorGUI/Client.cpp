@@ -90,6 +90,20 @@ std::string Client::getRoundWinner() {
 	return winner["winner"];
 }
 
+void Client::waitGameState(std::string state) {
+	std::string currentState = getGameState();
+	while (currentState != state) {
+		Sleep(1000);
+		currentState = getGameState();
+	}
+}
+
+crow::json::rvalue Client::getCurrentQuestion() {
+	cpr::Response currentQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/currentQuestion"));
+	auto questionJson = crow::json::load(currentQuestionResponse.text);
+	return questionJson;
+}
+
 Client* Client::getClient()
 {
 	if (client == nullptr) {

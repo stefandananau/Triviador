@@ -68,7 +68,7 @@ crow::json::wvalue Server::CurrentQuestionToJson() {
 			break;
 			outJson = {
 				{"question", m_CurrentMultipleChoiceQuestion.m_question},
-				{"answers", m_CurrentMultipleChoiceQuestion.m_correctAnswer},
+				{"answer", m_CurrentMultipleChoiceQuestion.m_correctAnswer},
 				{"wrong_answer1", m_CurrentMultipleChoiceQuestion.m_wrongAnswer1},
 				{"wrong_answer2", m_CurrentMultipleChoiceQuestion.m_wrongAnswer2},
 				{"wrong_answer3", m_CurrentMultipleChoiceQuestion.m_wrongAnswer3},

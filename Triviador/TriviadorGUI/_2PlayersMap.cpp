@@ -1,5 +1,34 @@
 #include "_2PlayersMap.h"
 
+
+void _2PlayersMap::multipleQuestion(crow::json::rvalue Question) {
+	//numeric widget
+	m_mad = new multipleAnswerDialog(nullptr, Question["question"].s(), Question["answer"].s(), Question["wrong_answer1"].s(), Question["wrong_answer2"].s(), Question["wrong_answer3"].s());
+
+	//m_nad communitcates with game loop through following connect(calls sendAnswerToServer on answer button press)
+
+	connect(m_mad, SIGNAL(dialogShouldClose()), this, SLOT(sendMultipleAnswerToServer()));
+	m_mad->show();
+	qDebug() << "In game loop";
+
+	//with show, it runs multithreaded
+	//with exec, it waits for the dialog to close 
+}
+
+void _2PlayersMap::numericQuestion(std::string Question) {
+	//numeric widget
+	m_nad = new numericAnswerDialog(nullptr, Question);
+
+	//m_nad communitcates with game loop through following connect(calls sendAnswerToServer on answer button press)
+
+	connect(m_nad, SIGNAL(dialogShouldClose()), this, SLOT(sendNumericAnswerToServer()));
+	m_nad->show();
+	qDebug() << "In game loop";
+
+	//with show, it runs multithreaded
+	//with exec, it waits for the dialog to close 
+}
+
 _2PlayersMap::_2PlayersMap(QWidget *parent)
 	: QDialog(parent)
 {
@@ -12,35 +41,15 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 	//		 Create second dialog for multiple choice questions
 	//		 Implement dueling and keep track of player score, assign colors to each player and declare winner
 	//
-	m_client = Client::getClient();
-	std::string serverState = m_client->getGameState();
+	m_client->waitGameState("waiting_for_question_answer");
 
-	while (serverState != "waiting_for_question_answer") {
-		Sleep(1000);
-		//m_clientState = GameLoop::state::WAITING_ON_SERVER_STATE;
-		serverState = m_client->getGameState();
-	}
+	crow::json::rvalue question = m_client->getCurrentQuestion();
 
-	cpr::Response currentQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/currentQuestion"));
-	auto questionJson = crow::json::load(currentQuestionResponse.text);
-
-	if (questionJson["type"] == "numeric") {
-		//numeric widget
-		m_nad = new numericAnswerDialog(nullptr, questionJson["question"].s());
-
-		//m_nad communitcates with game loop through following connect(calls sendAnswerToServer on answer button press)
-
-		connect(m_nad, SIGNAL(dialogShouldClose()), this, SLOT(sendAnswerToServer()));
-		m_nad->show();
-		qDebug() << "In game loop";
-
-		//with show, it runs multithreaded
-		//with exec, it waits for the dialog to close 
+	if (question["type"] == "numeric") {
+		numericQuestion(question["question"].s());
 	}
 	else {
-		//multiple widget
-
-
+		multipleQuestion(question);
 	}
 
 
@@ -61,7 +70,7 @@ void _2PlayersMap::setGameState(){
 
 }
 
-void _2PlayersMap::sendAnswerToServer() {
+void _2PlayersMap::sendNumericAnswerToServer() {
 	QString answer;
 	std::string thisClientEmail = m_client->getCurrentUser();
 

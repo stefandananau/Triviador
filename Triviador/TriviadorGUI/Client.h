@@ -32,6 +32,8 @@ public:
 	const std::string getCurrentUser();
 	const std::vector<std::pair<std::string, bool>> getLobbyUsers();
 	std::string getRoundWinner();
+	void waitGameState(std::string state);
+	crow::json::rvalue getCurrentQuestion();
 	static Client* getClient();
 
 

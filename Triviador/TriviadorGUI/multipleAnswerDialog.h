@@ -3,6 +3,7 @@
 #include <QDialog>
 #include "ui_multipleAnswerDialog.h"
 #include <algorithm>
+#include <random>
 
 class multipleAnswerDialog : public QDialog
 {
@@ -10,6 +11,7 @@ class multipleAnswerDialog : public QDialog
 
 public:
 	multipleAnswerDialog(QWidget *parent = nullptr, std::string question = "",std::string ranswer="", std::string wanswer1 = "", std::string wanswer2 = "", std::string wanswer3 = "" );
+	QString getAnswer();
 	~multipleAnswerDialog();
 private slots:
 	

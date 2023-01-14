@@ -1,5 +1,7 @@
 #include "numericAnswerDialog.h"
 
+
+
 numericAnswerDialog::numericAnswerDialog(QWidget *parent,std::string question)
 	: QDialog(parent)
 {
