@@ -560,7 +560,6 @@ crow::response Server::IslandMap()
 		{
 			islands.push_back(crow::json::wvalue({
 					{ "owner",island.GetOwner().GetUser() },
-					{"attaker",island.GetAttacker().GetUser()},
 					{"points",island.GetIslandScore()}
 				})
 			);
