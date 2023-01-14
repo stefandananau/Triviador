@@ -578,20 +578,34 @@ crow::response Server::IslandMap()
 }
 
 crow::json::wvalue Server::ValidateAnswer()
-{
-	int diffCur = INT_MAX;
-	std::string userWinner;
-	crow::json::wvalue res;
-	for (const auto& player : m_PlayersInGame)
+{	crow::json::wvalue res;
+	if (m_CurrentQuestionType == NUMERIC)
 	{
-		int diff = std::abs(stoi(player.second.GetAnswer()) - stoi(m_CurrentNumericQuestion.m_correctAnswer));
-		if (diff < diffCur)
+		int diffCur = INT_MAX;
+		std::string userWinner;
+
+		
+		for (const auto& player : m_PlayersInGame)
 		{
-			diffCur = diff;
-			userWinner = player.first;
+			int diff = std::abs(stoi(player.second.GetAnswer()) - stoi(m_CurrentNumericQuestion.m_correctAnswer));
+			if (diff < diffCur)
+			{
+				diffCur = diff;
+				userWinner = player.first;
+			}
 		}
+		res["winner"] = userWinner;
 	}
-	res["winner"] = userWinner;
+	else if (m_CurrentQuestionType == MULTIPLE_ANSWER)
+	{
+		std::vector<std::string> usersWinner;
+		for (const auto& player : m_PlayersInGame)
+		{
+			if(player.second.GetAnswer() == m_CurrentMultipleChoiceQuestion.m_correctAnswer);
+			usersWinner.push_back(player.first);
+		}
+		res["winner"] = usersWinner;
+	}
 	return res;
 }
 
@@ -625,8 +639,13 @@ void Server::PopulateServerDatabase() {
 crow::response Server::AddQuestionAnswerToUser(const crow::request& req) {
 	auto userName = req.url_params.get("email");
 	auto answer = req.url_params.get("answer");
+	uint64_t timer=0;
+	if (req.url_params.get("time"))
+	{
+		timer = std::stoi(req.url_params.get("time"));
+	}
 	//m_Game.PlayerSetAnswer(userName, answer);
-	m_PlayersInGame[userName].SetAnswer(answer);
+	m_PlayersInGame[userName].SetAnswer(answer,timer);
 	if (AllAnswersAreGiven())
 		m_GameState = state::showAnswers;
 	return crow::response(200); //ok

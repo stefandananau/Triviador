@@ -26,13 +26,18 @@ void Player::RemovePowerUp(std::string powerUp)
 	m_AvailablePowerUp.erase(std::remove(m_AvailablePowerUp.begin(), m_AvailablePowerUp.end(), powerUp), m_AvailablePowerUp.end());
 }
 
-void Player::SetAnswer(std::string answer) {
-	m_Answer = answer;
+void Player::SetAnswer(std::string answer,uint64_t time) {
+	m_Answer = make_pair(answer,time);
 }
 
 const std::string& Player::GetAnswer() const
 {
-	return m_Answer;
+	return m_Answer.first;
+}
+
+const uint64_t& Player::GetTime() const
+{
+	return m_Answer.second;
 }
 
 int Player::NumberOfPowerUp()

@@ -11,8 +11,9 @@ public:
 
 	Player(std::string userEmail="unowned");
 
-	void SetAnswer(std::string answer);
+	void SetAnswer(std::string answer,uint64_t time=0);
 	const std::string& GetAnswer() const;
+	const uint64_t& GetTime() const;
 
 	void AddPoints(uint16_t pointsToAdd);
 	const uint16_t& GetPoints()const;
@@ -27,6 +28,6 @@ public:
 private:
 	std::vector<std::string> m_AvailablePowerUp = {"50/50","PickAnswer","SuggestAnswer"};
 	std::string m_UserEmail;
-	std::string m_Answer;
+	std::pair<std::string,uint64_t> m_Answer;
 	uint16_t m_Points;
 };
