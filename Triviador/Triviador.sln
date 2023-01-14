@@ -29,6 +29,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataBaseLib", "DataBaseLib\DataBaseLib.vcxproj", "{72920B01-4FB2-4D50-B026-2949E05922AE}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TriviadorGUI", "TriviadorGUI\TriviadorGUI.vcxproj", "{51C79335-2167-4AE6-BA4D-EFCF77389E0C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1E171EF3-9344-4F4E-B945-8C83E474EC61} = {1E171EF3-9344-4F4E-B945-8C83E474EC61}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

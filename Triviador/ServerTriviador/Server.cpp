@@ -7,9 +7,6 @@ Server::Server() {
 	m_DataBase = DataBase::GetInstance();
 	m_DataBase->Sync();
 
-
-	PopulateServerDatabase();
-
 	/*wipeUsers();
 	wipeQuestions();*/
 

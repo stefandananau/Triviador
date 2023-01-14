@@ -34,10 +34,10 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 {
 	ui.setupUi(this);
 	setWindowIcon(QIcon(":/new/prefix1/images/ship2.png"));
-	islandButtons.reserve(3);
-	islandButtons[0].reserve(3);
-	islandButtons[1].reserve(3);
-	islandButtons[2].reserve(3);
+	islandButtons.resize(3);
+	islandButtons[0].resize(3);
+	islandButtons[1].resize(3);
+	islandButtons[2].resize(3);
 	std::string island = "island";
 	for (QObject* push : this->children()) {
 		std::string name = push->objectName().toUtf8().constData();

@@ -38,6 +38,11 @@ public:
 		NUMERIC,
 		MULTIPLE_ANSWER
 	};
+	enum matchState {
+		FIRST_QUESTION_PHASE,
+		MAP_DIVISION_PHASE,
+		DUEL_PHASE
+	};
 
 protected:
 	//game logic
@@ -55,7 +60,10 @@ protected:
 	//
 
 	DataBase* m_DataBase;
+	
 	state m_GameState;
+	matchState m_MatchState;
+
 	std::default_random_engine m_Generator;
 	std::map<std::string,bool> m_Lobby;
 	std::vector<std::pair<std::string, int>> m_firstQuestionAnswerOrderAndWinner;
