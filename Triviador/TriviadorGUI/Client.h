@@ -36,6 +36,7 @@ public:
 	void waitGameState(std::string state);
 	crow::json::rvalue getCurrentQuestion();
 	static Client* getClient();
+	std::string getMatchState();
 
 
 };
