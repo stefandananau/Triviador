@@ -1,5 +1,4 @@
 #include "Client.h"
-
 Client* Client::client;
 
 std::string Client::registerUser(const std::string& email, const std::string& password) {
@@ -74,22 +73,23 @@ std::pair<std::string, std::string> Client::getUserStats(const std::string& emai
 {
 	cpr::Response currentStats = cpr::Get(cpr::Url("http://localhost/database/getStats?email=" + email));
 	auto responseInJson = nlohmann::json::parse(currentStats.text);
+
 	return std::make_pair<std::string, std::string>(responseInJson["Number of played games"], responseInJson["Number of won games"]);
 }
 
-//std::vector<Island> Client::getIslands()
-//{
-//	cpr::Response IslandsResponse = cpr::Get(cpr::Url("http://localhost/game/islandMap"));
-//	auto responseInJson = nlohmann::json::parse(IslandsResponse.text);
-//	std::vector<Island> islands;
-//	for (auto isl : responseInJson["islands"]) {
-//		Island is;
-//		Player player = Player(isl["owner"]);
-//		is.SetOwner(player);
-//		is.SetIslandScore(isl["points"]);
-//	}
-//	return islands;
-//}
+std::vector<std::pair<std::string, int>> Client::getIslands()
+{
+	cpr::Response IslandsResponse = cpr::Get(cpr::Url("http://localhost/game/islandMap"));
+	auto responseInJson = nlohmann::json::parse(IslandsResponse.text);
+	std::vector<std::pair<std::string, int>> islands;
+	for (auto& j : responseInJson) {
+		std::string po = j["points"];
+		std::string owner = j["owner"];
+		int points = std::stoi(po);
+		std::pair<std::string, int> p = std::make_pair(owner, points);	
+	}
+	return islands;
+}
 
 int Client::getNumberOfPlayersInLobby()
 {

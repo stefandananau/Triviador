@@ -15,6 +15,19 @@ void _2PlayersMap::multipleQuestion(crow::json::rvalue Question) {
 	//with exec, it waits for the dialog to close 
 }
 
+void _2PlayersMap::getMap()
+{
+	std::vector <std::pair<std::string, int>> islands = Client::getClient()->getIslands();
+	int n = 0;
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; i++) {
+			std::string str = std::to_string(islands[n].second);
+			islandButtons[i][j]->setText(str.c_str());
+			n++;
+		}
+	}
+}
+
 void _2PlayersMap::numericQuestion(std::string Question) {
 	//numeric widget
 	m_nad = new numericAnswerDialog(nullptr, Question);
@@ -52,7 +65,7 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 		}
 	}
 	m_client = Client::getClient();
-
+	getMap();
 	//this is where match script will go, 
 	//TO DO: Make methods out of bare code.
 	//		 Create second dialog for multiple choice questions

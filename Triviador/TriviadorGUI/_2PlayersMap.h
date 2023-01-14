@@ -26,7 +26,13 @@ private:
 	multipleAnswerDialog* m_mad;
 	std::vector < std::vector<QPushButton*>> islandButtons;
 	Client* m_client;
+
 	QTimer* m_timer;
+
+	int height = 3;
+	int width = 3;
+	void getMap();
+
 	void numericQuestion(std::string Question);
 	void multipleQuestion(crow::json::rvalue question);
 

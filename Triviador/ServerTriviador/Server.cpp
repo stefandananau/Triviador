@@ -563,14 +563,8 @@ crow::response Server::IslandMap()
 				
 		}
 	}
-
-	return crow::response(std::move(crow::json::wvalue({
-				{"width", width},
-				{"height", heigth},
-				{"islands",islands}
-			})
-		)
-	);
+	return crow::response(crow::json::wvalue(islands));
+	
 }
 
 crow::json::wvalue Server::ValidateAnswer()
