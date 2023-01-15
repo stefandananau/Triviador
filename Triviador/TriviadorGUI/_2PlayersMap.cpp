@@ -145,6 +145,11 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 	m_timer = new QTimer(this);
 	connect(m_timer, SIGNAL(timeout()), this, SLOT(updateBackground()));
 	m_timer->start(1000);
+
+	m_updateTimer = new QTimer(this);
+	connect(m_updateTimer, SIGNAL(timeout()), this, SLOT(updateGame()));
+	m_timer->start(1000);
+
 	for (QPushButton* button : findChildren<QPushButton*>())
 	{
 		connect(button, &QPushButton::clicked, this, [this, button]() {pressedButton(button->objectName()); });

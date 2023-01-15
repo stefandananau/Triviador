@@ -22,7 +22,10 @@ private slots:
 	void updateBackground();
 	void on_island00_clicked();
 	void pressedButton(const QString& name);
-
+	void updateGame()
+	{
+		getMap();
+	}
 private:
 	Ui::_2PlayersMapClass ui;
 	numericAnswerDialog* m_nad;
@@ -31,7 +34,7 @@ private:
 	Client* m_client;
 
 	QTimer* m_timer;
-
+	QTimer* m_updateTimer;
 	int height = 3;
 	int width = 3;
 	void getMap();
