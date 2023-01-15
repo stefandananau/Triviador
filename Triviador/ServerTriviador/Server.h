@@ -48,10 +48,11 @@ protected:
 	//game logic
 	
 	Board m_Board;
+	
 	//state m_GameState;
 	questionType m_CurrentQuestionType;
 	std::map<std::string, Player> m_PlayersInGame;
-
+	std::vector<std::string> m_playersInGameOrder;
 
 	QuestionMultipleChoiceRecord m_CurrentMultipleChoiceQuestion;
 	QuestionNumericRecord m_CurrentNumericQuestion;
@@ -88,6 +89,8 @@ protected:
 	crow::response AttackIsland(const crow::request& req);
 	crow::response OwnerIsland(const crow::request& req);
 	crow::response IslandMap();
+	crow::response GetCurrentPlayer();
+	crow::response PopCurrentPlayer();
 	crow::json::wvalue ReturnReadyUsersInLobby();
 	crow::json::wvalue ReturnUnreadyUsersInLobby();
 	crow::json::wvalue ValidateAnswer();

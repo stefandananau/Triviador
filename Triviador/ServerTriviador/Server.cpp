@@ -576,6 +576,29 @@ crow::response Server::IslandMap()
 	
 }
 
+crow::response Server::GetCurrentPlayer()
+{
+	if (m_MatchState == FIRST_QUESTION_PHASE)
+	{
+		return crow::response(crow::json::wvalue(m_playersInGameOrder.front()));
+	}
+	else if (m_MatchState != FIRST_QUESTION_PHASE)
+	{
+		if (m_playersInGameOrder.size() != 1)
+		{
+			return crow::response(crow::json::wvalue(m_playersInGameOrder.front()));
+		}
+		else
+			return crow::response("205");//Reset Content / Last Player
+	}
+}
+
+crow::response Server::PopCurrentPlayer()
+{	
+	m_playersInGameOrder.erase(m_playersInGameOrder.begin());
+	return crow::response(200);
+}
+
 crow::json::wvalue Server::ValidateAnswer()
 {	crow::json::wvalue res;
 	if (m_CurrentQuestionType == NUMERIC)
@@ -610,10 +633,15 @@ crow::json::wvalue Server::ValidateAnswer()
 				return diff1 < diff2;
 			}
 			});
-		std::vector<std::string> playersToString;
 		int index = 0;
+		bool playerInGameOrderEmpty = m_playersInGameOrder.empty();
+		
 		for (auto& player : PlayerMapToVect) {
-			res[index] =  { player.GetUser()} ;
+			res[index] = { player.GetUser() };
+			if (playerInGameOrderEmpty)
+			{
+				m_playersInGameOrder.push_back(player.GetUser());
+			}
 			index++;
 		}
 	}
@@ -794,7 +822,12 @@ void Server::SetupServer() {
 	CROW_ROUTE(m_crowApp, "/game/islandMap")([this]() {
 		return IslandMap();
 		});
-
+	CROW_ROUTE(m_crowApp, "/game/getCurrentPlayer")([this]() {
+		return GetCurrentPlayer();
+		});
+	CROW_ROUTE(m_crowApp, "/game/popCurrentPlayer")([this]() {
+		return PopCurrentPlayer();
+		});
 
 	m_crowApp.port(80);
 	m_crowApp.multithreaded();
