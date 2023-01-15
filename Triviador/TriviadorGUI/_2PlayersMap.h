@@ -21,6 +21,7 @@ private slots:
 	void sendMultipleAnswerToServer();
 	void updateBackground();
 	void on_island00_clicked();
+	void pressedButton(const QString& name);
 
 private:
 	Ui::_2PlayersMapClass ui;

@@ -90,7 +90,10 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 	m_timer = new QTimer(this);
 	connect(m_timer, SIGNAL(timeout()), this, SLOT(updateBackground()));
 	m_timer->start(1000);
-
+	for (QPushButton* button : findChildren<QPushButton*>())
+	{
+		connect(button, &QPushButton::clicked, this, [this, button]() {pressedButton(button->objectName()); });
+	}
 	islandButtons.resize(height);
 	islandButtons[0].resize(width);
 	islandButtons[1].resize(width);
@@ -222,5 +225,13 @@ void _2PlayersMap::on_island00_clicked()
 	std::string error = "server is offline";
 	QMessageBox::warning(this, "ERROR", error.c_str());
 }
+
+void _2PlayersMap::pressedButton(const QString& name)
+{
+	QMessageBox msgBox;
+	msgBox.setText(name);
+	msgBox.exec();
+}
+
 _2PlayersMap::~_2PlayersMap()
 {}

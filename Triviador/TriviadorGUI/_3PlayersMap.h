@@ -13,6 +13,8 @@ public:
 
 public slots:
 	void updateBackground();
+	void pressedButton(const QString& name); 
+
 private:
 	Ui::_3PlayersMapClass ui;
 	QTimer* m_timer;

@@ -1,6 +1,8 @@
 #include "_3PlayersMap.h"
 #include  <QDateTime>
-_3PlayersMap::_3PlayersMap(QWidget *parent)
+#include <QMessageBox>
+
+_3PlayersMap::_3PlayersMap(QWidget* parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
@@ -8,8 +10,15 @@ _3PlayersMap::_3PlayersMap(QWidget *parent)
 	m_timer = new QTimer(this);
 	connect(m_timer, SIGNAL(timeout()), this, SLOT(updateBackground()));
 	m_timer->start(1000);
+	
+	for (QPushButton* button : findChildren<QPushButton*>())
+	{
+		connect(button, &QPushButton::clicked, this, [this, button]() {pressedButton(button->objectName()); });
+	}
 
+	
 }
+
 void _3PlayersMap::updateBackground()
 {
 	std::vector<QString> backgroundImages;
@@ -22,6 +31,15 @@ void _3PlayersMap::updateBackground()
 	this->setStyleSheet("background-image: url(" + backgroundImages[index] + ");");
 
 
+}
+
+
+
+void _3PlayersMap::pressedButton(const QString& name)
+{
+	QMessageBox msgBox;
+	msgBox.setText(name);
+	msgBox.exec();
 }
 _3PlayersMap::~_3PlayersMap()
 {}
