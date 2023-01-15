@@ -636,12 +636,15 @@ crow::response Server::GetCurrentPlayer()
 	}
 	else if (m_MatchState == MAP_DIVISION_PHASE)
 	{
-		if (m_playersInGameOrder.size() != 1)
+		if (m_playersInGameOrder.size() > 1)
 		{
 			return crow::response(crow::json::wvalue(m_playersInGameOrder.front()));
 		}
-		else
+		else if (m_playersInGameOrder.size() == 1)
+		{
 			return crow::response(crow::json::wvalue("-"));//Reset Content / Last Player
+		}
+		
 	}
 	return crow::response(crow::json::wvalue("-"));
 }
@@ -649,12 +652,18 @@ crow::response Server::GetCurrentPlayer()
 crow::response Server::PopCurrentPlayer()
 {	
 	///if cu division
-	if (m_MatchState == matchState::MAP_BASE_PHASE && m_playersInGameOrder.size() > 0) {
+	if (m_MatchState == matchState::MAP_BASE_PHASE)
+	{
 		m_playersInGameOrder.erase(m_playersInGameOrder.begin());
-		
+		if (m_playersInGameOrder.size() == 0) {
+			m_MatchState = matchState::MAP_DIVISION_PHASE;
+		}
+
 	}
-	else {
-		m_MatchState = matchState::MAP_DIVISION_PHASE;
+	
+
+	else if (m_MatchState == matchState::MAP_DIVISION_PHASE) {
+		
 
 	}
 	return crow::response(200);
