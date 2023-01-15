@@ -228,7 +228,7 @@ void _2PlayersMap::on_island00_clicked()
 
 void _2PlayersMap::pressedButton(const QString& name)
 {
-	QMessageBox msgBox;
+	QMessageBox msgBox(this);
 	msgBox.setText(name);
 	msgBox.exec();
 }
