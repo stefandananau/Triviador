@@ -294,6 +294,7 @@ void _2PlayersMap::pressedButton(const QString& name)
 	Client::getClient()->attackIsland(hei, wid);
 	getMap();
 	Client::getClient()->popCurrentPlayer();
+
 }
 
 void _2PlayersMap::updateGame()

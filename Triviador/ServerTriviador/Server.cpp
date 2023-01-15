@@ -666,8 +666,11 @@ crow::response Server::PopCurrentPlayer()
 		if (m_playersInGameOrder.size() > 1) {
 			m_playersInGameOrder.erase(m_playersInGameOrder.begin());
 			if (m_playersInGameOrder.size() == 1) {
-				//se seteaza toate chestiile potrivit pentru MAP DIVISION
+				m_GameState = state::waitingForQuestionResponse;
+
 				//if(boardfull) se seteaza pentru DUEL_PHASE
+				204
+					205
 			}
 		}
 	}
