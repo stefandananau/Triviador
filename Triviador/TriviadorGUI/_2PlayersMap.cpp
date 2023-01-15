@@ -37,6 +37,17 @@ bool _2PlayersMap::islandMine(int i, int j) {
 	return false;
 }
 
+bool _2PlayersMap::islandUnowned(int i, int j)
+{
+	std::string unowned = "unowned";
+	std::string buttonText = islandButtons[i][j]->text().toUtf8().constData();
+	if (buttonText.find(unowned) != std::string::npos) {
+		return true;
+	}
+	return false;
+}
+
+
 void _2PlayersMap::disableButtons()
 {
 	for (int i = 0; i < height; i++) {
@@ -47,20 +58,64 @@ void _2PlayersMap::disableButtons()
 }
 
 void _2PlayersMap::enableButtons() {
-	for (int i = 0; i < height; i++) {
-		for (int j = 0; j < width; j++) {
-			if (!islandMine(i, j)) {
-				if (i > 0 && islandMine(i - 1, j)) {
-					islandButtons[i][j]->setEnabled(true);
+	std::string matchState = Client::getClient()->getMatchState();
+	if (matchState == "DUEL_PHASE") {
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {
+				if (!islandMine(i, j)) {
+					if (i > 0 && islandMine(i - 1, j)) {
+						islandButtons[i][j]->setEnabled(true);
+					}
+					else if (j > 0 && islandMine(i, j - 1)) {
+						islandButtons[i][j]->setEnabled(true);
+					}
+					else if (i < height - 1 && islandMine(i + 1, j)) {
+						islandButtons[i][j]->setEnabled(true);
+					}
+					else if (j < width - 1 && islandMine(i, j + 1)) {
+						islandButtons[i][j]->setEnabled(true);
+					}
 				}
-				else if (j > 0 && islandMine(i, j - 1)) {
+			}
+		}
+	}
+	else if (matchState == "MAP_BASE_PHASE") {
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {
+				if (islandUnowned(i, j)) {
 					islandButtons[i][j]->setEnabled(true);
+					if (i > 0 && !islandUnowned(i - 1, j)) {
+						islandButtons[i][j]->setEnabled(false);
+					}
+					if (j > 0 && !islandUnowned(i, j - 1)) {
+						islandButtons[i][j]->setEnabled(false);
+					}
+					if (i < height - 1 && !islandUnowned(i + 1, j)) {
+						islandButtons[i][j]->setEnabled(false);
+					}
+					if (j < width - 1 && !islandUnowned(i, j + 1)) {
+						islandButtons[i][j]->setEnabled(false);
+					}
 				}
-				else if (i < height - 1 && islandMine(i + 1, j)) {
-					islandButtons[i][j]->setEnabled(true);
-				}
-				else if (j < width - 1 && islandMine(i, j + 1)) {
-					islandButtons[i][j]->setEnabled(true);
+			}
+		}
+	}
+	else if (matchState == "MAP_DIVISION_PHASE") {
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {
+				if (islandUnowned(i,j)) {
+					if (i > 0 && islandMine(i - 1, j)) {
+						islandButtons[i][j]->setEnabled(true);
+					}
+					else if (j > 0 && islandMine(i, j - 1)) {
+						islandButtons[i][j]->setEnabled(true);
+					}
+					else if (i < height - 1 && islandMine(i + 1, j)) {
+						islandButtons[i][j]->setEnabled(true);
+					}
+					else if (j < width - 1 && islandMine(i, j + 1)) {
+						islandButtons[i][j]->setEnabled(true);
+					}
 				}
 			}
 		}
