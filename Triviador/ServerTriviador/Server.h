@@ -102,6 +102,7 @@ protected:
 	crow::response OwnerIsland(const crow::request& req);
 	crow::response IslandMap();
 	crow::response PermutationMade();
+
 	crow::response SwapToGameInProgress();
 	crow::response GetCurrentPlayer();
 	crow::response PopCurrentPlayer();

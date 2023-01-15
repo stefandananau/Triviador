@@ -866,6 +866,10 @@ crow::response Server::MakePermutation() {
 	return crow::response(200);
 }
 
+crow::response Server::PermutationMade() {
+	return crow::response(m_permutationMade);
+}
+
 
 void Server::wipeUsers()
 {
@@ -1004,6 +1008,9 @@ void Server::SetupServer() {
 		});
 	CROW_ROUTE(m_crowApp, "/game/makePermutation")([this]() {
 		return MakePermutation();
+		});
+	CROW_ROUTE(m_crowApp, "/game/permutationMade")([this]() {
+		return PermutationMade();
 		});
 	m_crowApp.port(80);
 	m_crowApp.multithreaded();
