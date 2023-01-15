@@ -9,8 +9,10 @@ Triviador::Triviador(QWidget* parent)
     ui->setupUi(this);
     setWindowIcon(QIcon(":/new/prefix1/images/ship2.png"));
 
+	std::pair<std::string, std::string> stats = Client::getClient()->getUserStats(Client::getClient()->getLoggedInUser());
     ui->label_3->setText(Client::getClient()->getLoggedInUser().c_str());
-    
+	ui->label_6->setText(stats.first.c_str());
+	ui->label_7->setText(stats.second.c_str());
     this->updateThread = new UpdateThread(this);
 }
 

@@ -889,6 +889,30 @@ crow::response Server::PermutationMade() {
 	return crow::response(m_permutationMade);
 }
 
+crow::response Server::DeterminateWinner()
+{
+	for (const auto& row : m_Board.GetBoard())
+	{
+		for (const auto& el : row)
+		{
+			int score = el.GetIslandScore();
+			std::string user = el.GetOwner().GetUser();
+			m_PlayersInGame[user].AddPoints(score);
+		}
+	}
+	int max = 0;
+	std::string winner;
+	for (const auto& user : m_PlayersInGame)
+	{
+		if (user.second.GetPoints() > max)
+		{
+			max = user.second.GetPoints();
+			winner = user.first;
+		}
+	}
+	return crow::response(winner);
+}
+
 
 void Server::wipeUsers()
 {
