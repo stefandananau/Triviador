@@ -622,14 +622,15 @@ crow::response Server::GetCurrentPlayer()
 }
 
 crow::response Server::PopCurrentPlayer()
-{
+{	
+	///if cu division
 	if (m_MatchState == matchState::MAP_BASE_PHASE && m_playersInGameOrder.size() > 0) {
 		m_playersInGameOrder.erase(m_playersInGameOrder.begin());
 		
 	}
 	else {
 		m_MatchState = matchState::MAP_DIVISION_PHASE;
-		//call method to mapDivisionPhase???
+
 	}
 	return crow::response(200);
 }

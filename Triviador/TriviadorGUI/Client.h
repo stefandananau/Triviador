@@ -28,6 +28,8 @@ public:
 	std::string getGameState();
 	std::pair <std::string, std::string> getUserStats(const std::string& email);
 	std::vector<std::pair<std::string, int>> getIslands();
+	std::string getCurrentPlayer();
+	void popCurrentPlayer();
 	int getNumberOfPlayersInLobby();
 	void setLoggedInUser(const std::string email);
 	const std::string getLoggedInUser();

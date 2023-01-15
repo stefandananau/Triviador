@@ -97,6 +97,25 @@ std::vector<std::pair<std::string, int>> Client::getIslands()
 	return islands;
 }
 
+std::string Client::getCurrentPlayer()
+{
+	cpr::Response currentPlayer = cpr::Get(cpr::Url("http://localhost/game/getCurrentPlayer"));
+	if (currentPlayer.status_code != 205)
+	{
+		return currentPlayer.text;
+	}
+	else
+	{
+		return std::string("null");
+	}
+	}
+
+void Client::popCurrentPlayer()
+{
+	cpr::Response numberOfPlayersResponse = cpr::Get(cpr::Url("http://localhost/game/popCurrentPlayer"));
+}
+
+
 int Client::getNumberOfPlayersInLobby()
 {
 	cpr::Response numberOfPlayersResponse = cpr::Get(cpr::Url("http://localhost/game/numberOfPlayersInLobby"));
