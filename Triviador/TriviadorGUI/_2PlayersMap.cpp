@@ -5,7 +5,7 @@ void _2PlayersMap::multipleQuestion(crow::json::rvalue Question) {
 	std::string questionStr = Question["question"].s();
 	toUTF8(questionStr);
 
-	m_mad = new multipleAnswerDialog(nullptr, Question["question"].s(), Question["answer"].s(), Question["wrong_answer1"].s(), Question["wrong_answer2"].s(), Question["wrong_answer3"].s());
+	m_mad = new multipleAnswerDialog(nullptr, questionStr, Question["answer"].s(), Question["wrong_answer1"].s(), Question["wrong_answer2"].s(), Question["wrong_answer3"].s());
 
 	connect(m_mad, SIGNAL(dialogShouldClose()), this, SLOT(sendMultipleAnswerToServer()));
 	m_mad->show();
@@ -351,11 +351,12 @@ void _2PlayersMap::updateGame()
 	{
 		m_updateTimer->stop();
 		crow::json::rvalue question = m_client->getCurrentQuestion();
-		if (Client::getClient()->getGameState() == "duel")
+
+		if (Client::getClient()->getDuelState() == "duel")
 		{
 			multipleQuestion(question);
 		}
-		else if(Client::getClient()->getGameState() == "duel_continues")
+		else if(Client::getClient()->getDuelState() == "duel_continues")
 		{
 			numericQuestion(question["question"].s());
 		}

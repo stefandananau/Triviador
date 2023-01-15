@@ -767,15 +767,14 @@ crow::response Server::PopCurrentPlayer()
 
 				if (IsBoardFull()) {
 					m_MatchState = matchState::DUEL_PHASE;
+					m_GameState = showAnswers;
 					RandomQuestion("Multiple", m_Generator);
 				}
 
 			}
 		}
 	}
-	else if (m_MatchState == DUEL_PHASE) {
 
-	}
 	return crow::response(200);
 }
 
@@ -887,6 +886,7 @@ crow::response Server::AddQuestionAnswerToUser(const crow::request& req) {
 crow::response Server::MakePermutation() {
 	m_permutationMade = true;
 	return crow::response(200);
+
 }
 
 crow::response Server::GetDuelPlayers()
@@ -899,7 +899,27 @@ crow::response Server::GetDuelPlayers()
 
 crow::response Server::GetDuelState()
 {
-	return crow::response(m_duelState);
+	crow::json::wvalue outJson;
+	switch (m_duelState)
+	{
+	case pickOponent:
+	outJson = "pick_oponent";
+	break;
+	case duel:
+		outJson = "duel";
+		break;
+	case duelContinues:
+		outJson = "duel_continues";
+		break;
+	case waitOutDuel:
+		outJson = "wait_out_duel";
+		break;
+	
+	default:
+		outJson = crow::json::wvalue(500);
+		break;
+	}
+	return crow::response(std::move(outJson));
 }
 
 crow::response Server::SetDuelStateAndPlayers(const crow::request& req)
@@ -908,6 +928,7 @@ crow::response Server::SetDuelStateAndPlayers(const crow::request& req)
 	auto defender = req.url_params.get("defender");
 	m_duelPlayers.first = attacker;
 	m_duelPlayers.second = defender;
+	m_duelState = duel;
 
 	return crow::response(200);
 }

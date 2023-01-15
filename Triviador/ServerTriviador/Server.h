@@ -37,6 +37,7 @@ public:
 		
 	};
 	enum duelState {
+		pickOponent,
 		duel,
 		duelContinues,
 		waitOutDuel

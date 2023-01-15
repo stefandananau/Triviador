@@ -166,9 +166,17 @@ bool Client::multipleWinners() {
 	return true;
 }
 
+std::string Client::getDuelState()
+{
+	cpr::Response state = cpr::Get(cpr::Url("http://localhost/game/getDuelState"));
+auto stateParse = nlohmann::json::parse(state.text);
+	return stateParse;
+}
+
 void Client::changeState()
 {
 	cpr::Response state = cpr::Get(cpr::Url("http://localhost/game/changeState"));
+	
 
 
 }
