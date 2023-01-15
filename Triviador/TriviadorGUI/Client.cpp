@@ -91,6 +91,7 @@ std::vector<std::pair<std::string, int>> Client::getIslands()
 		int points = responseInJson[i][j][1].get<int>();
 		
 		std::pair<std::string, int> p = std::make_pair(owner, points);	
+		islands.push_back(p);
 		}
 	}
 	return islands;

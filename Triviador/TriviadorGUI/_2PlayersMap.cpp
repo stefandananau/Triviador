@@ -20,8 +20,9 @@ void _2PlayersMap::getMap()
 	std::vector <std::pair<std::string, int>> islands = Client::getClient()->getIslands();
 	int n = 0;
 	for (int i = 0; i < height; i++) {
-		for (int j = 0; j < width; i++) {
-			std::string str = std::to_string(islands[n].second);
+		for (int j = 0; j < width; j++) {
+			
+			std::string str = std::to_string(islands[n].second) + "\n" + islands[n].first;
 			islandButtons[i][j]->setText(str.c_str());
 			n++;
 		}
@@ -171,6 +172,11 @@ void _2PlayersMap::updateBackground()
 	this->setStyleSheet("background-image: url(" + backgroundImages[index] + ");");
 
 
+}
+void _2PlayersMap::on_island00_clicked()
+{
+	std::string error = "server is offline";
+	QMessageBox::warning(this, "ERROR", error.c_str());
 }
 _2PlayersMap::~_2PlayersMap()
 {}

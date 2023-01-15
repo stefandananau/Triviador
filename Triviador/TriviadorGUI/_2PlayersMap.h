@@ -5,6 +5,7 @@
 #include "numericAnswerDialog.h"
 #include "multipleAnswerDialog.h"
 #include "Client.h"
+#include "qmessagebox.h"
 #include <QTimer>
 class _2PlayersMap : public QDialog
 {
@@ -19,6 +20,7 @@ private slots:
 	void sendNumericAnswerToServer();
 	void sendMultipleAnswerToServer();
 	void updateBackground();
+	void on_island00_clicked();
 
 private:
 	Ui::_2PlayersMapClass ui;
