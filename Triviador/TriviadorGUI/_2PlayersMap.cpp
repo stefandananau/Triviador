@@ -233,12 +233,12 @@ void _2PlayersMap::sendNumericAnswerToServer() {
 	std::string gameState = m_client->getGameState();
 	while (gameState != "show_answers")
 	{
-		Sleep(1000);
 		gameState = m_client->getGameState();
-		if (gameState == "show_answers") {
-			m_updateTimer->start(1000);
-		}
+		Sleep(1000);
+		
 	}
+
+	m_updateTimer->start(1000);
 
 	qDebug() << "All players answered!\n";
 
