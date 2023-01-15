@@ -82,7 +82,7 @@ void _2PlayersMap::enableButtons() {
 	else if (matchState == "MAP_BASE_PHASE") {
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
-				/*if (islandUnowned(i, j)) {
+				if (islandUnowned(i, j)) {
 					islandButtons[i][j]->setEnabled(true);
 					if (i > 0 && !islandUnowned(i - 1, j)) {
 						islandButtons[i][j]->setEnabled(false);
@@ -97,8 +97,8 @@ void _2PlayersMap::enableButtons() {
 						islandButtons[i][j]->setEnabled(false);
 					}
 				}
-				*/
-				islandButtons[i][j]->setEnabled(true);
+			
+			
 			}
 		}
 	}
