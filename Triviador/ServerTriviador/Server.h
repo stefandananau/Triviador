@@ -104,7 +104,7 @@ protected:
 	crow::json::wvalue CurrentQuestionToJson();
 	crow::json::wvalue GetCurrentMatchPhase();
 
-	bool BoardIsFull();
+	bool IsBoardFull();
 
 	bool AllAnswersAreGiven();
 	void matchStarted();

@@ -105,6 +105,23 @@ crow::json::wvalue Server::GetCurrentMatchPhase()
 	return outJson;
 }
 
+bool Server::IsBoardFull()
+{
+	
+	for (const auto& row : m_Board.GetBoard())
+
+	{
+		for (const auto& island : row)
+		{
+			if (island.GetOwner().GetUser() == "unowned")
+			{
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
 crow::json::wvalue Server::ReturnReadyUsersInLobby()
 {
 	crow::json::wvalue outJson;
@@ -669,8 +686,7 @@ crow::response Server::PopCurrentPlayer()
 				m_GameState = state::waitingForQuestionResponse;
 
 				//if(boardfull) se seteaza pentru DUEL_PHASE
-				204
-					205
+
 			}
 		}
 	}
