@@ -124,10 +124,10 @@ crow::json::rvalue Client::getCurrentQuestion() {
 	return questionJson;
 }
 
-std::string getMatchState() {
+std::string Client::getMatchState() {
 	cpr::Response currentQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/matchState"));
-	auto questionJson = crow::json::load(currentQuestionResponse.text);
-	return questionJson.s();
+	auto questionJson = nlohmann::json::parse(currentQuestionResponse.text);
+	return questionJson;
 }
 
 Client* Client::getClient()

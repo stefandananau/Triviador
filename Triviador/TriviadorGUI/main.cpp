@@ -3,7 +3,7 @@
 #include  "_3PlayersMap.h"
 int main(int argc, char *argv[])
 {
-    Client::getClient()->getMatchState();
+    std::string state = Client::getClient()->getMatchState();
     QApplication a(argc, argv);
 
 
