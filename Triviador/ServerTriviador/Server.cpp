@@ -34,10 +34,28 @@ void Server::matchStarted() {
 
 	m_Board = Board(numberOfClients);
 
-
+	int index = 0;
 	for (auto player : m_Lobby) {
 		Player playerForMap(player.first);
+		switch (index)
+		{
+		case Red:
+			playerForMap.SetColor("Red");
+			break;
+		case Green:
+			playerForMap.SetColor("Green");
+			break;
+		case Blue:
+			playerForMap.SetColor("Blue");
+			break;
+		case Gray:
+			playerForMap.SetColor("Gray");
+			break;
+		default:
+			break;
+		}
 		m_PlayersInGame[player.first] = playerForMap;
+		index++;
 	}
 
 
@@ -678,6 +696,7 @@ crow::response Server::IslandMap()
 		{
 			islands[i][j][0] = board[i][j].GetOwner().GetUser();
 			islands[i][j][1] = board[i][j].GetIslandScore();
+			islands[i][j][2] = board[i][j].GetOwner().GetColor();
 
 		}
 	}

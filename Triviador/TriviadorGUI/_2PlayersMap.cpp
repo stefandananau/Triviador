@@ -14,13 +14,32 @@ void _2PlayersMap::multipleQuestion(crow::json::rvalue Question) {
 
 void _2PlayersMap::getMap()
 {
-	std::vector <std::pair<std::string, int>> islands = Client::getClient()->getIslands();
+	std::vector <std::tuple<std::string, int,std::string>> islands = Client::getClient()->getIslands();
 	int n = 0;
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
-
-			std::string str = std::to_string(islands[n].second) + "\n" + islands[n].first;
+			
+			std::string str = std::to_string(get<1>(islands[n])) + "\n" + get<0>(islands[n]);
+			
 			islandButtons[i][j]->setText(str.c_str());
+			std::string color = get<2>(islands[n]);
+			if (color == "Red")
+			{
+				islandButtons[i][j]->setStyleSheet("image: url(:/new/prefix1/images/island4-removebg-preview.png); background: rgba(245, 0, 5, 0.32); border: 0px;");
+			}
+			else if (color == "Green")
+			{
+				islandButtons[i][j]->setStyleSheet("image: url(:/new/prefix1/images/island8-removebg-preview.png); background: rgba(0, 245, 5, 0.32); border:0px;");
+			}
+			else if (color == "Blue")
+			{
+				islandButtons[i][j]->setStyleSheet("image: url(:/new/prefix1/images/island7-removebg-preview.png); background: rgba(0, 0, 245, 0.32); border: 0px;");
+			}
+			else if (color == "Gray")
+			{
+				islandButtons[i][j]->setStyleSheet("image: url(:/new/prefix1/images/island3-removebg-preview.png); background: rgba(44, 43, 43, 0.32); border: 0px;"
+				);
+			}
 			n++;
 		}
 	}

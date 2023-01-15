@@ -97,11 +97,11 @@ std::pair<std::string, std::string> Client::getUserStats(const std::string& emai
 	return std::make_pair<std::string, std::string>(responseInJson["Number of played games"], responseInJson["Number of won games"]);
 }
 
-std::vector<std::pair<std::string, int>> Client::getIslands()
+std::vector<std::tuple<std::string, int,std::string>> Client::getIslands()
 {
 	cpr::Response IslandsResponse = cpr::Get(cpr::Url("http://localhost/game/islandMap"));
 	auto responseInJson = nlohmann::json::parse(IslandsResponse.text);
-	std::vector<std::pair<std::string, int>> islands;
+	std::vector<std::tuple<std::string, int,std::string>> islands;
 
 	for (int i = 0; i < 3; i++)
 	{
@@ -109,8 +109,9 @@ std::vector<std::pair<std::string, int>> Client::getIslands()
 		{
 		std::string owner = responseInJson[i][j][0];
 		int points = responseInJson[i][j][1].get<int>();
+		std::string color = responseInJson[i][j][2];
 		
-		std::pair<std::string, int> p = std::make_pair(owner, points);	
+		std::tuple<std::string, int,std::string> p = std::make_tuple(owner, points,color);	
 		islands.push_back(p);
 		}
 	}

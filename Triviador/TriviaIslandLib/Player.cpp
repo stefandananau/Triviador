@@ -2,8 +2,9 @@
 
 
 
-Player::Player(std::string userEmail) {
+Player::Player(std::string userEmail,std::string color) {
 	m_UserEmail = userEmail;
+	m_Color = color;
 	m_Points = 0;
 }
 
@@ -19,6 +20,16 @@ const uint16_t& Player::GetPoints() const
 const std::string& Player::GetUser() const
 {
 	return m_UserEmail;
+}
+
+void Player::SetColor(std::string color)
+{
+	m_Color = color;
+}
+
+const std::string& Player::GetColor() const
+{
+	return m_Color;
 }
 
 void Player::RemovePowerUp(std::string powerUp)

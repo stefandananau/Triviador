@@ -29,7 +29,7 @@ public:
 	void attackIsland(int height, int width);
 	bool isPermutationMade();
 	std::pair <std::string, std::string> getUserStats(const std::string& email);
-	std::vector<std::pair<std::string, int>> getIslands();
+	std::vector<std::tuple<std::string, int,std::string>> getIslands();
 	std::string getCurrentPlayer();
 	void popCurrentPlayer();
 	void swapToGameInProgress();

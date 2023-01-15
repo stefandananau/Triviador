@@ -46,6 +46,13 @@ public:
 		MAP_DIVISION_PHASE,
 		DUEL_PHASE
 	};
+	enum playerColor
+	{
+		Red,
+		Blue,
+		Green,
+		Gray
+	};
 
 protected:
 	//game logic
