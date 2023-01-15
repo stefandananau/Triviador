@@ -166,7 +166,15 @@ crow::json::rvalue Client::getCurrentQuestion() {
 std::string Client::getMatchPhase() {
 	cpr::Response currentQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/matchPhase"));
 	auto questionJson = nlohmann::json::parse(currentQuestionResponse.text);
+
 	return questionJson;
+}
+
+std::vector<std::string> Client::nextPermutation()
+{
+	cpr::Response currentQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/nextPermutation"));
+	auto playersPermutations = nlohmann::json::parse(currentQuestionResponse.text);
+	return playersPermutations;
 }
 
 Client* Client::getClient()

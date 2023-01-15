@@ -541,6 +541,36 @@ crow::response Server::NumberOfPlayersInLobby()
 	return crow::response(crow::json::wvalue({ "numberOfPlayers", m_Lobby.size() }));
 }
 
+crow::response Server::NextPermutation()
+{
+	crow::json::wvalue res;
+	int index = 0;
+	if (m_playersPermutations.empty())
+	{
+		
+		
+		for (auto& elem : m_PlayersInGame)
+		{
+			m_playersPermutations.push_back(elem.first);
+			res[index] = { m_playersPermutations[index] };
+			index++;
+			
+			
+		}
+
+	}
+	else
+	{
+		std::next_permutation(m_playersPermutations.begin(), m_playersPermutations.end());
+		for (auto& elem : m_playersPermutations)
+		{
+			res[index] = { m_playersPermutations[index] };
+			index++;
+		}
+	}
+	return crow::response(res);
+}
+
 crow::response Server::RemovePowerUp(const crow::request& req)
 {
 	if (!req.url_params.get("user"))
@@ -964,7 +994,9 @@ void Server::SetupServer() {
 	CROW_ROUTE(m_crowApp, "/game/swapGameInProgress")([this]() {
 		return SwapToGameInProgress();
 		});
-
+	CROW_ROUTE(m_crowApp, "/game/nextPermutation")([this]() {
+		return NextPermutation();
+		});
 	m_crowApp.port(80);
 	m_crowApp.multithreaded();
 	m_crowApp.run_async();

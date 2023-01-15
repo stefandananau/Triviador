@@ -59,6 +59,7 @@ protected:
 	//state m_GameState;
 	questionType m_CurrentQuestionType;
 	std::map<std::string, Player> m_PlayersInGame;
+	std::vector<std::string> m_playersPermutations;
 	std::vector<std::string> m_playersInGameOrder;
 
 	QuestionMultipleChoiceRecord m_CurrentMultipleChoiceQuestion;
@@ -93,6 +94,7 @@ protected:
 	crow::response AddQuestionAnswerToUser(const crow::request& req);
 	crow::response ReturnUserStats(const crow::request& req);
 	crow::response NumberOfPlayersInLobby();
+	crow::response NextPermutation();
 	crow::response RemovePowerUp(const crow::request& req);
 	crow::response AttackIsland(const crow::request& req);
 	crow::response OwnerIsland(const crow::request& req);

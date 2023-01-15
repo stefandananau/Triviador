@@ -41,6 +41,6 @@ public:
 	crow::json::rvalue getCurrentQuestion();
 	static Client* getClient();
 	std::string getMatchPhase();
-	
+	std::vector<std::string> nextPermutation();
 
 };
