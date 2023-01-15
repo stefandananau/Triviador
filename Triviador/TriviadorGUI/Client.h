@@ -44,4 +44,5 @@ public:
 	std::string getMatchPhase();
 	std::vector<std::string> nextPermutation();
 	void makePermutation();
+	bool multipleWinners();
 };

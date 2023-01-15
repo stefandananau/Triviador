@@ -288,7 +288,11 @@ void _2PlayersMap::sendMultipleAnswerToServer() {
 	}
 
 	qDebug() << "All players answered!\n";
+	if (Client::getClient()->multipleWinners())
+	{
+		if()
 
+	}
 	setGameWinner();
 }
 void _2PlayersMap::updateBackground()
@@ -340,6 +344,20 @@ void _2PlayersMap::updateGame()
 			multipleQuestion(question);
 		}
 	}
+	if ( Client::getClient()->getMatchPhase() == "DUEL_PHASE")
+	{
+		m_updateTimer->stop();
+		crow::json::rvalue question = m_client->getCurrentQuestion();
+		if (Client::getClient()->getGameState() == "duel")
+		{
+			multipleQuestion(question);
+		}
+		else if(Client::getClient()->getGameState() == "duel_continues")
+		{
+			numericQuestion(question["question"].s());
+		}
+	}
+
 }
 
 int _2PlayersMap::toUTF8(std::string& s) {

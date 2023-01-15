@@ -199,6 +199,7 @@ crow::json::wvalue Server::CheckGameState() {
 	case state::showAnswers:
 		outJson = { {"state", "show_answers"} };
 		break;
+
 	default:
 		break;
 	}
@@ -589,6 +590,20 @@ crow::response Server::NextPermutation()
 	return crow::response(res);
 }
 
+void Server::GeneratePermutation()
+{
+	if (m_playersPermutations.empty())
+	{
+
+
+		for (auto& elem : m_PlayersInGame)
+		{
+			m_playersPermutations.push_back(elem.first);
+		}
+	}
+	std::next_permutation(m_playersPermutations.begin(), m_playersPermutations.end());
+}
+
 crow::response Server::RemovePowerUp(const crow::request& req)
 {
 	if (!req.url_params.get("user"))
@@ -731,6 +746,10 @@ crow::response Server::GetCurrentPlayer()
 			return crow::response(crow::json::wvalue("-"));//Reset Content / Last Player
 		}
 		
+	}
+	if (m_MatchState == DUEL_PHASE)
+	{
+
 	}
 	return crow::response(crow::json::wvalue("-"));
 }
@@ -882,6 +901,38 @@ crow::response Server::AddQuestionAnswerToUser(const crow::request& req) {
 
 crow::response Server::MakePermutation() {
 	m_permutationMade = true;
+	return crow::response(200);
+}
+
+crow::response Server::GetDuelPlayers()
+{
+	crow::json::wvalue x;
+	x[0] = m_duelPlayers.first;
+	x[1] = m_duelPlayers.second;
+	return crow::response(x);
+}
+
+crow::response Server::GetDuelState()
+{
+	return crow::response(m_duelState);
+}
+
+crow::response Server::SetDuelStateAndPlayers(const crow::request& req)
+{
+	auto attacker = req.url_params.get("attacker");
+	auto defender = req.url_params.get("defender");
+	m_duelPlayers.first = attacker;
+	m_duelPlayers.second = defender;
+
+	return crow::response(200);
+}
+
+crow::response Server::ChangeState()
+{
+	if (m_duelState == duel)
+	{
+		m_duelState = duelContinues;
+	}
 	return crow::response(200);
 }
 
@@ -1054,6 +1105,18 @@ void Server::SetupServer() {
 		});
 	CROW_ROUTE(m_crowApp, "/game/permutationMade")([this]() {
 		return PermutationMade();
+		});
+	CROW_ROUTE(m_crowApp,"/game/getDuelPlayer")([this]() {
+		return GetDuelPlayers();
+		});
+	CROW_ROUTE(m_crowApp, "/game/getDuelState")([this]() {
+		return GetDuelState();
+		});
+	CROW_ROUTE(m_crowApp, "/game/setDuelStateAndPlayers")([this](const crow::request& req) {
+		return SetDuelStateAndPlayers(req);
+		});
+	CROW_ROUTE(m_crowApp, "/game/changeState")([this]() {
+		return ChangeState();
 		});
 	m_crowApp.port(80);
 	m_crowApp.multithreaded();

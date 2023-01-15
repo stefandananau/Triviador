@@ -156,6 +156,15 @@ std::string Client::getRoundWinner() {
 	auto winner = nlohmann::json::parse(winnerResponse.text);
 	return winner[0];
 }
+bool Client::multipleWinners() {
+	cpr::Response winnerResponse = cpr::Get(cpr::Url("http://localhost/game/validateAnswer"));
+	auto winner = nlohmann::json::parse(winnerResponse.text);
+	if(winner.size()!=1)
+	{
+		return false;
+	}
+	return true;
+}
 
 void Client::waitGameState(std::string state) {
 	std::string currentState = getGameState();

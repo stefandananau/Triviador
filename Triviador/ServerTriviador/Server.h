@@ -33,7 +33,13 @@ public:
 		gameInProgress,
 		waitingForQuestionResponse,
 		showAnswers,
+
 		
+	};
+	enum duelState {
+		duel,
+		duelContinues,
+		waitOutDuel
 	};
 	enum questionType {
 		NUMERIC,
@@ -81,6 +87,8 @@ protected:
 	
 	state m_GameState;
 	matchState m_MatchState;
+	std::pair<std::string, std::string> m_duelPlayers;
+	duelState m_duelState;
 
 	std::default_random_engine m_Generator;
 	std::map<std::string,bool> m_Lobby;
@@ -104,6 +112,7 @@ protected:
 	crow::response ReturnUserStats(const crow::request& req);
 	crow::response NumberOfPlayersInLobby();
 	crow::response NextPermutation();
+	void GeneratePermutation();
 	crow::response RemovePowerUp(const crow::request& req);
 	crow::response AttackIsland(const crow::request& req);
 	crow::response OwnerIsland(const crow::request& req);
@@ -120,7 +129,10 @@ protected:
 	crow::json::wvalue CurrentQuestionToJson();
 	crow::json::wvalue GetCurrentMatchPhase();
 	crow::response MakePermutation();
-
+	crow::response GetDuelPlayers();
+	crow::response GetDuelState();
+	crow::response SetDuelStateAndPlayers(const crow::request& req);
+	crow::response ChangeState();
 
 	
 
