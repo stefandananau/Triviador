@@ -16,7 +16,7 @@ public:
 ;	~_2PlayersMap();
 
 private slots:
-	void setGameState();
+	void setGameWinner();
 	void sendNumericAnswerToServer();
 	void sendMultipleAnswerToServer();
 	void updateBackground();
@@ -28,7 +28,7 @@ private:
 	multipleAnswerDialog* m_mad;
 	std::vector < std::vector<QPushButton*>> islandButtons;
 	Client* m_client;
-
+	bool isWindowShowing = false;
 	QTimer* m_timer;
 	QTimer* m_updateTimer;
 	int height = 3;
