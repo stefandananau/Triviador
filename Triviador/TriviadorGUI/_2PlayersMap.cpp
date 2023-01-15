@@ -196,7 +196,7 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 	qDebug() << "Back to main";
 }
 
-void _2PlayersMap::setGameState(){
+void _2PlayersMap::setGameWinner(){
 	if (m_client->getGameState() == "show_answers") {
 		QString winner;
 
@@ -239,7 +239,7 @@ void _2PlayersMap::sendNumericAnswerToServer() {
 
 	qDebug() << "All players answered!\n";
 
-	setGameState();
+	setGameWinner();
 }
 
 void _2PlayersMap::sendMultipleAnswerToServer() {
@@ -269,7 +269,7 @@ void _2PlayersMap::sendMultipleAnswerToServer() {
 
 	qDebug() << "All players answered!\n";
 
-	setGameState();
+	setGameWinner();
 }
 void _2PlayersMap::updateBackground()
 {
@@ -305,6 +305,19 @@ void _2PlayersMap::updateGame()
 	qDebug() << currentPlayer.c_str() << loggedInUser.c_str();
 	if (currentPlayer == loggedInUser) {
 		enableButtons();
+	}
+
+	if (Client::getClient()->getGameState() == "waiting_for_question_answer" && Client::getClient()->getMatchPhase() == "MAP_DIVISION_PHASE")
+	{
+		isWindowShowing = true;
+		crow::json::rvalue question = m_client->getCurrentQuestion();
+
+		if (question["type"] == "numeric") {
+			numericQuestion(question["question"].s());
+		}
+		else {
+			multipleQuestion(question);
+		}
 	}
 }
 

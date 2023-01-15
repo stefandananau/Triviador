@@ -675,7 +675,7 @@ crow::response Server::PopCurrentPlayer()
 			if (m_playersInGameOrder.size() == 0) {
 				m_MatchState = matchState::MAP_DIVISION_PHASE;
 				m_GameState = state::waitingForQuestionResponse;
-
+				
 			}
 		}
 	}
@@ -685,7 +685,9 @@ crow::response Server::PopCurrentPlayer()
 			if (m_playersInGameOrder.size() == 1) {
 				m_GameState = state::waitingForQuestionResponse;
 
-				//if(boardfull) se seteaza pentru DUEL_PHASE
+				if (IsBoardFull()) {
+					m_MatchState = matchState::DUEL_PHASE;
+				}
 
 			}
 		}
