@@ -733,7 +733,6 @@ crow::response Server::GetCurrentPlayer()
 	}
 	if (m_MatchState == DUEL_PHASE)
 	{
-		GeneratePermutation();
 		return crow::response(crow::json::wvalue(m_playersPermutations.front()));
 	}
 	return crow::response(crow::json::wvalue("-"));

@@ -350,9 +350,13 @@ void _2PlayersMap::updateGame()
 	if ( Client::getClient()->getMatchPhase() == "DUEL_PHASE")
 	{
 		m_updateTimer->stop();
+		if (Client::getClient()->getDuelState() == "pick_oponent")
+		{
+			Client::getClient()->nextPermutation();
+		}
 		crow::json::rvalue question = m_client->getCurrentQuestion();
 
-		if (Client::getClient()->getDuelState() == "duel")
+		else if (Client::getClient()->getDuelState() == "duel")
 		{
 			multipleQuestion(question);
 		}
