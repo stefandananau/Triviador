@@ -158,7 +158,9 @@ bool Server::AllAnswersAreGiven()
 			ok = false;
 			break;
 		}
+
 	}
+
 	return ok;
 }
 
@@ -689,7 +691,9 @@ crow::response Server::PopCurrentPlayer()
 	///if cu division
 	if (m_MatchState == MAP_BASE_PHASE) {
 		if (m_playersInGameOrder.size() > 0) {
+			m_PlayersInGame[m_playersInGameOrder[0]].SetAnswer("");
 			m_playersInGameOrder.erase(m_playersInGameOrder.begin());
+			
 			if (m_playersInGameOrder.size() == 0) {
 				m_MatchState = matchState::MAP_DIVISION_PHASE;
 				m_GameState = state::waitingForQuestionResponse;
@@ -699,8 +703,12 @@ crow::response Server::PopCurrentPlayer()
 	}
 	else if (m_MatchState == MAP_DIVISION_PHASE) {
 		if (m_playersInGameOrder.size() > 1) {
+			m_PlayersInGame[m_playersInGameOrder[0]].SetAnswer("");
 			m_playersInGameOrder.erase(m_playersInGameOrder.begin());
 			if (m_playersInGameOrder.size() == 1) {
+
+				m_PlayersInGame[m_playersInGameOrder[0]].SetAnswer("");
+				m_playersInGameOrder.erase(m_playersInGameOrder.begin());
 				m_GameState = state::waitingForQuestionResponse;
 
 				if (IsBoardFull()) {
@@ -814,7 +822,8 @@ crow::response Server::AddQuestionAnswerToUser(const crow::request& req) {
 	m_PlayersInGame[userName].SetAnswer(answer,timer);
 	if (AllAnswersAreGiven()) {
 		m_GameState = state::showAnswers;
-		m_MatchState = matchState::MAP_BASE_PHASE;
+		if(m_MatchState == matchState::FIRST_QUESTION_PHASE)
+			m_MatchState = matchState::MAP_BASE_PHASE;
 	}
 	return crow::response(200); //ok
 }

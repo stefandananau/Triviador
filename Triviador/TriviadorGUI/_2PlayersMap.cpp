@@ -235,6 +235,9 @@ void _2PlayersMap::sendNumericAnswerToServer() {
 	{
 		Sleep(1000);
 		gameState = m_client->getGameState();
+		if (gameState == "show_answers") {
+			m_updateTimer->start(1000);
+		}
 	}
 
 	qDebug() << "All players answered!\n";
@@ -309,7 +312,7 @@ void _2PlayersMap::updateGame()
 
 	if (Client::getClient()->getGameState() == "waiting_for_question_answer" && Client::getClient()->getMatchPhase() == "MAP_DIVISION_PHASE")
 	{
-		isWindowShowing = true;
+		m_updateTimer->stop();
 		crow::json::rvalue question = m_client->getCurrentQuestion();
 
 		if (question["type"] == "numeric") {
