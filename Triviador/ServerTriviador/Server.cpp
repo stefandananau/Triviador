@@ -544,11 +544,31 @@ crow::response Server::AttackIsland(const crow::request& req)
 		return crow::response(404);
 	}
 	else
-	{
+	{	
 		auto width = int(req.url_params.get("width"));
 		auto height = int(req.url_params.get("height"));
 		auto attacker = req.url_params.get("attacker");
-		m_Board.SetAttacker(height, width, m_PlayersInGame[attacker]);
+		if (m_MatchState = MAP_BASE_PHASE)
+		{
+
+			m_Board.SetAttacker(height, width, m_PlayersInGame[attacker]);
+			m_Board.ChangeOwner(height, width);
+			m_Board.SetScoreTo300(height, width);
+		}
+		if (m_MatchState = MAP_DIVISION_PHASE)
+		{
+			m_Board.SetAttacker(height, width, m_PlayersInGame[attacker]);
+			m_Board.ChangeOwner(height, width);
+		}
+		if (m_MatchState = DUEL_PHASE)
+		{
+			m_Board.SetAttacker(height, width, m_PlayersInGame[attacker]);
+			m_attack.height = height;
+			m_attack.width = width;
+			m_attack.attaker = attacker;
+		}
+
+		
 		return crow::response(200);
 	}
 }

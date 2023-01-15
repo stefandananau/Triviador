@@ -42,6 +42,11 @@ const size_t Board::GetWidth() const
 	return m_width;
 }
 
+void Board::SetScoreTo300(const size_t& height, const size_t& width)
+{
+	m_Board[height][width].SetIslandScore(300);
+}
+
 void Board::SetAttacker(const size_t& height,const size_t& width, const Player& attacker)
 {
 	m_Board[height][width].SetAttacker(attacker);

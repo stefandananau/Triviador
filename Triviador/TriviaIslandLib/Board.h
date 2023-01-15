@@ -11,6 +11,7 @@ public:
 	const size_t GetHeight() const;
 	const size_t GetWidth() const;
 	
+	void SetScoreTo300(const size_t& height, const size_t& width);
 	void SetAttacker(const size_t& height, const size_t& width, const Player& attacker);
 	void ChangeOwner(const size_t& height, const size_t& width);
 

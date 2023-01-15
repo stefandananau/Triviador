@@ -45,6 +45,11 @@ void Island::AttackerWon()
 	m_Owner = std::move(m_Attacker);
 }
 
+void Island::AttakerLost()
+{
+	IncreaseScore();
+}
+
 void Island::IncreaseScore()
 {
 	m_IslandScore += 100;

@@ -17,7 +17,8 @@ public:
 	const Player& GetAttacker() const;
 
 	void AttackerWon();
-	
+	void AttakerLost();
+
 	void IncreaseScore();
 	void DecreaseScore();
 

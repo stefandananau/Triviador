@@ -50,7 +50,11 @@ protected:
 	//game logic
 	
 	Board m_Board;
-	
+	struct attack {
+		std::string attaker;
+		size_t width;
+		size_t height;
+	} m_attack;
 	//state m_GameState;
 	questionType m_CurrentQuestionType;
 	std::map<std::string, Player> m_PlayersInGame;
@@ -70,7 +74,7 @@ protected:
 	std::default_random_engine m_Generator;
 	std::map<std::string,bool> m_Lobby;
 	std::vector<std::pair<std::string, int>> m_firstQuestionAnswerOrderAndWinner;
-
+	
 	uint16_t m_roundCounter;
 
 	//Game m_Game;
