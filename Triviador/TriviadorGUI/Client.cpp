@@ -130,6 +130,11 @@ void Client::popCurrentPlayer()
 	cpr::Response numberOfPlayersResponse = cpr::Get(cpr::Url("http://localhost/game/popCurrentPlayer"));
 }
 
+void Client::swapToGameInProgress()
+{
+	cpr::Response swap = cpr::Get(cpr::Url("http://localhost/game/swapGameInProgress"));
+}
+
 
 int Client::getNumberOfPlayersInLobby()
 {

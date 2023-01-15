@@ -31,6 +31,7 @@ public:
 	std::vector<std::pair<std::string, int>> getIslands();
 	std::string getCurrentPlayer();
 	void popCurrentPlayer();
+	void swapToGameInProgress();
 	int getNumberOfPlayersInLobby();
 	void setLoggedInUser(const std::string email);
 	const std::string getLoggedInUser();

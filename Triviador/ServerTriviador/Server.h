@@ -32,7 +32,8 @@ public:
 		waitingForPlayers,
 		gameInProgress,
 		waitingForQuestionResponse,
-		showAnswers
+		showAnswers,
+		
 	};
 	enum questionType {
 		NUMERIC,
@@ -96,6 +97,7 @@ protected:
 	crow::response AttackIsland(const crow::request& req);
 	crow::response OwnerIsland(const crow::request& req);
 	crow::response IslandMap();
+	crow::response SwapToGameInProgress();
 	crow::response GetCurrentPlayer();
 	crow::response PopCurrentPlayer();
 	crow::json::wvalue ReturnReadyUsersInLobby();

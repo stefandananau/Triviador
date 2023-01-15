@@ -653,6 +653,12 @@ crow::response Server::IslandMap()
 	
 }
 
+crow::response Server::SwapToGameInProgress()
+{
+	m_GameState = gameInProgress;
+	return crow::response(200);
+}
+
 crow::response Server::GetCurrentPlayer()
 {
 	if (m_MatchState == MAP_BASE_PHASE)
@@ -941,6 +947,9 @@ void Server::SetupServer() {
 		});
 	CROW_ROUTE(m_crowApp, "/game/matchPhase")([this]() {
 		return GetCurrentMatchPhase();
+		});
+	CROW_ROUTE(m_crowApp, "/game/swapGameInProgress")([this]() {
+		return SwapToGameInProgress();
 		});
 
 	m_crowApp.port(80);
