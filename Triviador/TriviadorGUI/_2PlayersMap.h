@@ -34,7 +34,9 @@ private:
 	int height = 3;
 	int width = 3;
 	void getMap();
-
+	bool islandMine(int i , int j);
+	void disableButtons();
+	void enableButtons();
 	void numericQuestion(std::string Question);
 	void multipleQuestion(crow::json::rvalue question);
 

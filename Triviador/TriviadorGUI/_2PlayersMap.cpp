@@ -29,9 +29,49 @@ void _2PlayersMap::getMap()
 	}
 }
 
+bool _2PlayersMap::islandMine(int i, int j) {
+	std::string buttonText = islandButtons[i][j]->text().toUtf8().constData();
+	if (buttonText.find(Client::getClient()->getLoggedInUser()) != std::string::npos) {
+		return true;
+	}
+	return false;
+}
+
+void _2PlayersMap::disableButtons()
+{
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			islandButtons[i][j]->setEnabled(false);
+		}
+	}
+}
+
+void _2PlayersMap::enableButtons() {
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			if (!islandMine(i, j)) {
+				if (i > 0 && islandMine(i - 1, j)) {
+					islandButtons[i][j]->setEnabled(true);
+				}
+				else if (j > 0 && islandMine(i, j - 1)) {
+					islandButtons[i][j]->setEnabled(true);
+				}
+				else if (i < height - 1 && islandMine(i + 1, j)) {
+					islandButtons[i][j]->setEnabled(true);
+				}
+				else if (j < width - 1 && islandMine(i, j + 1)) {
+					islandButtons[i][j]->setEnabled(true);
+				}
+			
+
+			}
+		}
+	}
+}
+
 void _2PlayersMap::numericQuestion(std::string Question) {
 	//numeric widget
-	m_nad = new numericAnswerDialog(nullptr, Question+m_client->getCurrentUser());
+	m_nad = new numericAnswerDialog(nullptr, Question+m_client->getLoggedInUser());
 
 	//m_nad communitcates with game loop through following connect(calls sendAnswerToServer on answer button press)
 
@@ -43,6 +83,8 @@ void _2PlayersMap::numericQuestion(std::string Question) {
 	//with exec, it waits for the dialog to close 
 }
 
+void 
+
 _2PlayersMap::_2PlayersMap(QWidget *parent)
 	: QDialog(parent)
 {
@@ -52,19 +94,20 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 	connect(m_timer, SIGNAL(timeout()), this, SLOT(updateBackground()));
 	m_timer->start(1000);
 
-	islandButtons.resize(3);
-	islandButtons[0].resize(3);
-	islandButtons[1].resize(3);
-	islandButtons[2].resize(3);
+	islandButtons.resize(height);
+	islandButtons[0].resize(width);
+	islandButtons[1].resize(width);
+	islandButtons[2].resize(width);
 	std::string island = "island";
 	for (QObject* push : this->children()) {
 		std::string name = push->objectName().toUtf8().constData();
 		if (name.find(island) != std::string::npos) {
 			int pos1 = name[name.length() - 2] - '0';
 			int pos2 = name[name.length() - 1] - '0';
-			islandButtons[pos1][pos2] = (QPushButton*)push;
+			islandButtons[pos1][pos2] = ((QPushButton*)push);
 		}
 	}
+	
 	m_client = Client::getClient();
 	getMap();
 	//this is where match script will go, 
@@ -105,7 +148,7 @@ void _2PlayersMap::setGameState(){
 
 void _2PlayersMap::sendNumericAnswerToServer() {
 	QString answer;
-	std::string thisClientEmail = m_client->getCurrentUser();
+	std::string thisClientEmail = m_client->getLoggedInUser();
 
 	answer = m_nad->getAnswer();
 	qDebug() << answer;
@@ -137,7 +180,7 @@ void _2PlayersMap::sendNumericAnswerToServer() {
 
 void _2PlayersMap::sendMultipleAnswerToServer() {
 	QString answer;
-	std::string thisClientEmail = m_client->getCurrentUser();
+	std::string thisClientEmail = m_client->getLoggedInUser();
 
 	answer = m_nad->getAnswer();
 	qDebug() << answer;

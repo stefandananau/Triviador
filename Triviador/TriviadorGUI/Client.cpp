@@ -37,11 +37,11 @@ std::string Client::userUnreadyInLobby()
 	return serverReadySetResponse.text;
 }
 
-void Client::setCurrentUser(const std::string email) {
+void Client::setLoggedInUser(const std::string email) {
 	m_userEmail = email;
 }
 
-const std::string Client::getCurrentUser() {
+const std::string Client::getLoggedInUser() {
 	return m_userEmail;
 }
 
