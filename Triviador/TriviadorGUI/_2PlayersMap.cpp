@@ -290,7 +290,10 @@ void _2PlayersMap::sendMultipleAnswerToServer() {
 	qDebug() << "All players answered!\n";
 	if (Client::getClient()->multipleWinners())
 	{
-		if()
+		if (m_client->getMatchPhase() == "DUEL_PHASE")
+		{
+			m_client->changeState();
+		}
 
 	}
 	setGameWinner();

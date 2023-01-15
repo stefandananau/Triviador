@@ -564,29 +564,13 @@ crow::response Server::NextPermutation()
 {
 	crow::json::wvalue res;
 	int index = 0;
-	if (m_playersPermutations.empty())
-	{
-		
-		
-		for (auto& elem : m_PlayersInGame)
-		{
-			m_playersPermutations.push_back(elem.first);
-			res[index] = { m_playersPermutations[index] };
-			index++;
-			
-			
-		}
-
-	}
-	else
-	{
-		std::next_permutation(m_playersPermutations.begin(), m_playersPermutations.end());
+	GeneratePermutation();
 		for (auto& elem : m_playersPermutations)
 		{
 			res[index] = { m_playersPermutations[index] };
 			index++;
 		}
-	}
+	
 	return crow::response(res);
 }
 
@@ -749,7 +733,8 @@ crow::response Server::GetCurrentPlayer()
 	}
 	if (m_MatchState == DUEL_PHASE)
 	{
-
+		GeneratePermutation();
+		return crow::response(crow::json::wvalue(m_playersPermutations.front()));
 	}
 	return crow::response(crow::json::wvalue("-"));
 }

@@ -166,6 +166,13 @@ bool Client::multipleWinners() {
 	return true;
 }
 
+void Client::changeState()
+{
+	cpr::Response state = cpr::Get(cpr::Url("http://localhost/game/changeState"));
+
+
+}
+
 void Client::waitGameState(std::string state) {
 	std::string currentState = getGameState();
 	while (currentState != state) {

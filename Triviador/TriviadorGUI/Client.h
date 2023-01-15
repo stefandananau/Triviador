@@ -45,4 +45,6 @@ public:
 	std::vector<std::string> nextPermutation();
 	void makePermutation();
 	bool multipleWinners();
+	void changeState();
+
 };
