@@ -347,6 +347,18 @@ crow::response Server::ReturnRandomQuestionRoute(const crow::request& req, std::
 	return crow::response(405);
 }
 
+void Server::RandomQuestion(std::string type, std::default_random_engine& generator)
+{	
+	if (type == "Multiple")
+	{
+	m_CurrentMultipleChoiceQuestion = RandomMultipleChoice(generator);
+	}
+	if (type == "Numeric")
+	{
+		m_CurrentNumericQuestion = RandomNumeric(generator);
+	}
+}
+
 crow::response Server::AuthenticationRoute(const crow::request& req)
 {
 	std::vector<UserRecord> pulledUser = m_DataBase->GetUsers();

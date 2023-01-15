@@ -83,6 +83,7 @@ protected:
 	
 	crow::response DataBaseRoute(const crow::request& req);
 	crow::response ReturnRandomQuestionRoute(const crow::request& req, std::default_random_engine& generator);
+	void RandomQuestion(std::string type,std::default_random_engine& generator);
 	crow::response AuthenticationRoute(const crow::request& req);
 	crow::response AddUserToLobbyRoute(const crow::request& req);
 	crow::response RemoveUserFromLobbyRoute(const crow::request& req);
@@ -103,6 +104,9 @@ protected:
 	crow::json::wvalue CheckGameState();
 	crow::json::wvalue CurrentQuestionToJson();
 	crow::json::wvalue GetCurrentMatchPhase();
+
+	
+
 
 	bool IsBoardFull();
 
