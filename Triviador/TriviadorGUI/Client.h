@@ -27,6 +27,7 @@ public:
 	std::string userUnreadyInLobby();
 	std::string getGameState();
 	void attackIsland(int height, int width);
+	bool isPermutationMade();
 	std::pair <std::string, std::string> getUserStats(const std::string& email);
 	std::vector<std::pair<std::string, int>> getIslands();
 	std::string getCurrentPlayer();

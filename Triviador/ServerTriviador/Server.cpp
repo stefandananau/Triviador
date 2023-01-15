@@ -685,6 +685,11 @@ crow::response Server::IslandMap()
 	
 }
 
+crow::response Server::PermutationMade()
+{
+	return crow::response(m_permutationMade);
+}
+
 crow::response Server::SwapToGameInProgress()
 {
 	m_GameState = gameInProgress;
@@ -996,6 +1001,9 @@ void Server::SetupServer() {
 		});
 	CROW_ROUTE(m_crowApp, "/game/nextPermutation")([this]() {
 		return NextPermutation();
+		});
+	CROW_ROUTE(m_crowApp, "/game/permutationMade")([this]() {
+		return PermutationMade();
 		});
 	m_crowApp.port(80);
 	m_crowApp.multithreaded();

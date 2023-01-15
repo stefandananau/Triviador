@@ -82,6 +82,13 @@ void Client::attackIsland(int height, int width)
 	
 }
 
+bool Client::isPermutationMade()
+{
+	cpr::Response permutatiomMade = cpr::Get(cpr::Url("http://localhost/game/nextPermutation"));
+	auto responseInJson = nlohmann::json::parse(permutatiomMade.text);
+	return responseInJson
+}
+
 std::pair<std::string, std::string> Client::getUserStats(const std::string& email)
 {
 	cpr::Response currentStats = cpr::Get(cpr::Url("http://localhost/database/getStats?email=" + email));

@@ -56,6 +56,8 @@ protected:
 		size_t width;
 		size_t height;
 	} m_attack;
+	bool m_attackInProgress;
+	bool m_permutationMade;
 	//state m_GameState;
 	questionType m_CurrentQuestionType;
 	std::map<std::string, Player> m_PlayersInGame;
@@ -99,6 +101,7 @@ protected:
 	crow::response AttackIsland(const crow::request& req);
 	crow::response OwnerIsland(const crow::request& req);
 	crow::response IslandMap();
+	crow::response PermutationMade();
 	crow::response SwapToGameInProgress();
 	crow::response GetCurrentPlayer();
 	crow::response PopCurrentPlayer();
