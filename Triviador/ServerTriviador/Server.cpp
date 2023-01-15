@@ -652,18 +652,25 @@ crow::response Server::GetCurrentPlayer()
 crow::response Server::PopCurrentPlayer()
 {	
 	///if cu division
-	if (m_MatchState == matchState::MAP_BASE_PHASE)
-	{
-		m_playersInGameOrder.erase(m_playersInGameOrder.begin());
-		if (m_playersInGameOrder.size() == 0) {
-			m_MatchState = matchState::MAP_DIVISION_PHASE;
+	if (m_MatchState == MAP_BASE_PHASE) {
+		if (m_playersInGameOrder.size() > 0) {
+			m_playersInGameOrder.erase(m_playersInGameOrder.begin());
+			if (m_playersInGameOrder.size() == 0) {
+				m_MatchState = matchState::MAP_DIVISION_PHASE;
+				//se seteaza toate chestiile potrivit pentru MAP DIVISION
+			}
 		}
-
 	}
-	
-
-	else if (m_MatchState == matchState::MAP_DIVISION_PHASE) {
-		
+	else if (m_MatchState == MAP_DIVISION_PHASE) {
+		if (m_playersInGameOrder.size() > 1) {
+			m_playersInGameOrder.erase(m_playersInGameOrder.begin());
+			if (m_playersInGameOrder.size() == 1) {
+				//se seteaza toate chestiile potrivit pentru MAP DIVISION
+				//if(boardfull) se seteaza pentru DUEL_PHASE
+			}
+		}
+	}
+	else if (m_MatchState == DUEL_PHASE) {
 
 	}
 	return crow::response(200);
