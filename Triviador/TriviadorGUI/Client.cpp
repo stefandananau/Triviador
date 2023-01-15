@@ -62,10 +62,12 @@ const std::vector<std::pair<std::string, bool>> Client::getLobbyUsers()
 	return lobbyUsers;
 }
 
+
 std::string Client::getGameState()
 {
 	cpr::Response currentState = cpr::Get(cpr::Url("http://localhost/lobby/gameState"));
 	auto responseInJson = nlohmann::json::parse(currentState.text);
+	
 	return responseInJson["state"];
 }
 
@@ -143,8 +145,8 @@ crow::json::rvalue Client::getCurrentQuestion() {
 	return questionJson;
 }
 
-std::string Client::getMatchState() {
-	cpr::Response currentQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/matchState"));
+std::string Client::getMatchPhase() {
+	cpr::Response currentQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/matchPhase"));
 	auto questionJson = nlohmann::json::parse(currentQuestionResponse.text);
 	return questionJson;
 }

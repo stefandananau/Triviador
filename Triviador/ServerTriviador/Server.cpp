@@ -78,7 +78,7 @@ crow::json::wvalue Server::CurrentQuestionToJson() {
 	return crow::json::wvalue(409);
 }
 
-crow::json::wvalue Server::CurrentMatchState()
+crow::json::wvalue Server::GetCurrentMatchPhase()
 {
 	crow::json::wvalue outJson;
 	switch (m_MatchState)
@@ -866,8 +866,8 @@ void Server::SetupServer() {
 	CROW_ROUTE(m_crowApp, "/game/popCurrentPlayer")([this]() {
 		return PopCurrentPlayer();
 		});
-	CROW_ROUTE(m_crowApp, "/game/matchState")([this]() {
-		return CurrentMatchState();
+	CROW_ROUTE(m_crowApp, "/game/matchPhase")([this]() {
+		return GetCurrentMatchPhase();
 		});
 
 	m_crowApp.port(80);

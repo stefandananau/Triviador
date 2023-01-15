@@ -98,7 +98,7 @@ protected:
 	crow::json::wvalue ValidateAnswer();
 	crow::json::wvalue CheckGameState();
 	crow::json::wvalue CurrentQuestionToJson();
-	crow::json::wvalue CurrentMatchState();
+	crow::json::wvalue GetCurrentMatchPhase();
 
 	bool AllAnswersAreGiven();
 	void matchStarted();
