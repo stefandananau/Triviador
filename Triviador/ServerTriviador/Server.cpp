@@ -657,7 +657,8 @@ crow::response Server::PopCurrentPlayer()
 			m_playersInGameOrder.erase(m_playersInGameOrder.begin());
 			if (m_playersInGameOrder.size() == 0) {
 				m_MatchState = matchState::MAP_DIVISION_PHASE;
-				//se seteaza toate chestiile potrivit pentru MAP DIVISION
+				m_GameState = state::waitingForQuestionResponse;
+
 			}
 		}
 	}
