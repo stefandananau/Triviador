@@ -2,7 +2,7 @@
 
 void GameLoop::sendAnswerToServer() {
 	QString answer;
-	std::string thisClientEmail = m_client->getCurrentUser();
+	std::string thisClientEmail = m_client->getLoggedInUser();
 	
 	answer = m_nad->getAnswer();
 	qDebug() << answer;

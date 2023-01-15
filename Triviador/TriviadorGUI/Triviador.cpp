@@ -9,7 +9,7 @@ Triviador::Triviador(QWidget* parent)
     ui->setupUi(this);
     setWindowIcon(QIcon(":/new/prefix1/images/ship2.png"));
 
-    ui->label_3->setText(Client::getClient()->getCurrentUser().c_str());
+    ui->label_3->setText(Client::getClient()->getLoggedInUser().c_str());
     
     this->updateThread = new UpdateThread(this);
 }

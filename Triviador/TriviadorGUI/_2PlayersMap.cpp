@@ -62,8 +62,6 @@ void _2PlayersMap::enableButtons() {
 				else if (j < width - 1 && islandMine(i, j + 1)) {
 					islandButtons[i][j]->setEnabled(true);
 				}
-			
-
 			}
 		}
 	}
@@ -83,7 +81,6 @@ void _2PlayersMap::numericQuestion(std::string Question) {
 	//with exec, it waits for the dialog to close 
 }
 
-void 
 
 _2PlayersMap::_2PlayersMap(QWidget *parent)
 	: QDialog(parent)

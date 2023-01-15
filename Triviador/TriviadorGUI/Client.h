@@ -29,8 +29,8 @@ public:
 	std::pair <std::string, std::string> getUserStats(const std::string& email);
 	std::vector<std::pair<std::string, int>> getIslands();
 	int getNumberOfPlayersInLobby();
-	void setCurrentUser(const std::string email);
-	const std::string getCurrentUser();
+	void setLoggedInUser(const std::string email);
+	const std::string getLoggedInUser();
 	const std::vector<std::pair<std::string, bool>> getLobbyUsers();
 	std::string getRoundWinner();
 	void waitGameState(std::string state);

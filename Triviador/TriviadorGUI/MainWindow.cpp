@@ -36,7 +36,7 @@ void MainWindow::on_pushButton_2_clicked()
         return;
     }
     if (response == "login succesful") {
-        Client::getClient()->setCurrentUser(email);
+        Client::getClient()->setLoggedInUser(email);
         QApplication::processEvents();
         triv = new Triviador(this);
         connect(triv, SIGNAL(TriviadorClosed()), this, SLOT(TriviadorClosed()));
