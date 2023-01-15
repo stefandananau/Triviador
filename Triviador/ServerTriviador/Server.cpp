@@ -549,21 +549,30 @@ crow::response Server::IslandMap()
 	auto board = m_Board.GetBoard();
 	
 
-	crow::json::wvalue::list islands;
+	crow::json::wvalue islands;
 
-	for (const auto& row : board)
-	{	
-		for (const auto& island : row)
+	//for (const auto& row : board)
+	//{	
+	//	for (const auto& island : row)
+	//	{
+	//		islands.push_back(crow::json::wvalue({
+	//				{ "owner",island.GetOwner().GetUser() },
+	//				{"points",island.GetIslandScore()}
+	//			})
+	//		);
+	//			
+	//	}
+	//}
+	for (int i = 0; i < heigth; i++)
+	{
+		for (int j = 0; j < width; j++)
 		{
-			islands.push_back(crow::json::wvalue({
-					{ "owner",island.GetOwner().GetUser() },
-					{"points",island.GetIslandScore()}
-				})
-			);
-				
+			islands[i][j][0] = board[i][j].GetOwner().GetUser();
+			islands[i][j][1] = board[i][j].GetIslandScore();
+
 		}
 	}
-	return crow::response(crow::json::wvalue(islands));
+	return crow::response(std::move(islands));
 	
 }
 

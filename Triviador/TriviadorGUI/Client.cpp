@@ -82,11 +82,16 @@ std::vector<std::pair<std::string, int>> Client::getIslands()
 	cpr::Response IslandsResponse = cpr::Get(cpr::Url("http://localhost/game/islandMap"));
 	auto responseInJson = nlohmann::json::parse(IslandsResponse.text);
 	std::vector<std::pair<std::string, int>> islands;
-	for (auto& j : responseInJson) {
-		std::string po = j["points"];
-		std::string owner = j["owner"];
-		int points = std::stoi(po);
+
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+		std::string owner = responseInJson[i][j][0];
+		int points = responseInJson[i][j][1].get<int>();
+		
 		std::pair<std::string, int> p = std::make_pair(owner, points);	
+		}
 	}
 	return islands;
 }
