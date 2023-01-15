@@ -110,6 +110,7 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 	
 	m_client = Client::getClient();
 	getMap();
+
 	//this is where match script will go, 
 	//TO DO: Make methods out of bare code.
 	//		 Create second dialog for multiple choice questions

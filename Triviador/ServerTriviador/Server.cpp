@@ -1,12 +1,10 @@
 #include "Server.h"
 #include <regex>
 
-#define numberOfRequiredPlayers 2 //this is for debugging purposes
 
 Server::Server() {
 	m_DataBase = DataBase::GetInstance();
 	m_DataBase->Sync();
-	m_MatchState = matchState::NOT_STARTED;
 
 	/*wipeUsers();
 	wipeQuestions();*/
@@ -96,6 +94,9 @@ crow::json::wvalue Server::CurrentMatchState()
 		break;
 	case Server::NOT_STARTED:
 		outJson = "NOT_STARTED";
+		break;
+	case Server::MAP_BASE_PHASE:
+		outJson = "MAP_BASE_PHASE";
 		break;
 	default:
 		outJson = crow::json::wvalue(500);
@@ -452,6 +453,7 @@ crow::response Server::SetUserToReadyInLobbyRoute(const crow::request& req) {
 		}
 		if ((numberOfReadyUsers >= 2) && (numberOfReadyUsers == m_Lobby.size())) {
 			this->m_GameState = state::gameInProgress;
+			this->m_MatchState = matchState::FIRST_QUESTION_PHASE;
 			std::cout << "Game started!\n";
 			//first random num question should be set here
 			matchStarted();
@@ -604,11 +606,11 @@ crow::response Server::IslandMap()
 
 crow::response Server::GetCurrentPlayer()
 {
-	if (m_MatchState == FIRST_QUESTION_PHASE)
+	if (m_MatchState == MAP_BASE_PHASE)
 	{
 		return crow::response(crow::json::wvalue(m_playersInGameOrder.front()));
 	}
-	else if (m_MatchState != FIRST_QUESTION_PHASE)
+	else if (m_MatchState == MAP_DIVISION_PHASE)
 	{
 		if (m_playersInGameOrder.size() != 1)
 		{
@@ -620,8 +622,15 @@ crow::response Server::GetCurrentPlayer()
 }
 
 crow::response Server::PopCurrentPlayer()
-{	
-	m_playersInGameOrder.erase(m_playersInGameOrder.begin());
+{
+	if (m_MatchState == matchState::MAP_BASE_PHASE && m_playersInGameOrder.size() > 0) {
+		m_playersInGameOrder.erase(m_playersInGameOrder.begin());
+		
+	}
+	else {
+		m_MatchState = matchState::MAP_DIVISION_PHASE;
+		//call method to mapDivisionPhase???
+	}
 	return crow::response(200);
 }
 
@@ -721,8 +730,10 @@ crow::response Server::AddQuestionAnswerToUser(const crow::request& req) {
 	}
 	//m_Game.PlayerSetAnswer(userName, answer);
 	m_PlayersInGame[userName].SetAnswer(answer,timer);
-	if (AllAnswersAreGiven())
+	if (AllAnswersAreGiven()) {
 		m_GameState = state::showAnswers;
+		m_MatchState = matchState::MAP_BASE_PHASE;
+	}
 	return crow::response(200); //ok
 }
 
