@@ -26,6 +26,7 @@ public:
 	std::string userReadyInLobby();
 	std::string userUnreadyInLobby();
 	std::string getGameState();
+	void attackIsland(int height, int width);
 	std::pair <std::string, std::string> getUserStats(const std::string& email);
 	std::vector<std::pair<std::string, int>> getIslands();
 	std::string getCurrentPlayer();
@@ -39,6 +40,6 @@ public:
 	crow::json::rvalue getCurrentQuestion();
 	static Client* getClient();
 	std::string getMatchPhase();
-
+	
 
 };

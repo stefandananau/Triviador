@@ -545,8 +545,8 @@ crow::response Server::AttackIsland(const crow::request& req)
 	}
 	else
 	{	
-		auto width = int(req.url_params.get("width"));
-		auto height = int(req.url_params.get("height"));
+		auto width = std::stoi(req.url_params.get("width"));
+		auto height = std::stoi(req.url_params.get("height"));
 		auto attacker = req.url_params.get("attacker");
 		if (m_MatchState = MAP_BASE_PHASE)
 		{
@@ -628,7 +628,11 @@ crow::response Server::GetCurrentPlayer()
 {
 	if (m_MatchState == MAP_BASE_PHASE)
 	{
-		return crow::response(crow::json::wvalue(m_playersInGameOrder.front()));
+		if (m_playersInGameOrder.size() != 0) {
+			return crow::response(crow::json::wvalue(m_playersInGameOrder.front()));
+		}
+		else
+			return crow::response(crow::json::wvalue("-"));
 	}
 	else if (m_MatchState == MAP_DIVISION_PHASE)
 	{
@@ -637,8 +641,9 @@ crow::response Server::GetCurrentPlayer()
 			return crow::response(crow::json::wvalue(m_playersInGameOrder.front()));
 		}
 		else
-			return crow::response("205");//Reset Content / Last Player
+			return crow::response(crow::json::wvalue("-"));//Reset Content / Last Player
 	}
+	return crow::response(crow::json::wvalue("-"));
 }
 
 crow::response Server::PopCurrentPlayer()

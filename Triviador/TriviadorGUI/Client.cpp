@@ -71,6 +71,17 @@ std::string Client::getGameState()
 	return responseInJson["state"];
 }
 
+void Client::attackIsland(int height, int width)
+{
+	std::string widthS = "&width=" + std::to_string(width);
+	std::string heightS = "height=" + std::to_string(height);
+	std::string attacker = "&attacker=" + m_userEmail;
+	std::string str;
+	str = "http://localhost/game/attacker?" + heightS + widthS + attacker;
+	cpr::Response response = cpr::Get(cpr::Url(str));
+	
+}
+
 std::pair<std::string, std::string> Client::getUserStats(const std::string& email)
 {
 	cpr::Response currentStats = cpr::Get(cpr::Url("http://localhost/database/getStats?email=" + email));
@@ -102,9 +113,11 @@ std::vector<std::pair<std::string, int>> Client::getIslands()
 std::string Client::getCurrentPlayer()
 {
 	cpr::Response currentPlayer = cpr::Get(cpr::Url("http://localhost/game/getCurrentPlayer"));
+
+	auto responseInJson = nlohmann::json::parse(currentPlayer.text);
 	if (currentPlayer.status_code != 205)
 	{
-		return currentPlayer.text;
+		return responseInJson;
 	}
 	else
 	{

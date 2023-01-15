@@ -58,7 +58,7 @@ void _2PlayersMap::disableButtons()
 }
 
 void _2PlayersMap::enableButtons() {
-	std::string matchState = Client::getClient()->getMatchState();
+	std::string matchState = Client::getClient()->getMatchPhase();
 	if (matchState == "DUEL_PHASE") {
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
@@ -82,7 +82,7 @@ void _2PlayersMap::enableButtons() {
 	else if (matchState == "MAP_BASE_PHASE") {
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
-				if (islandUnowned(i, j)) {
+				/*if (islandUnowned(i, j)) {
 					islandButtons[i][j]->setEnabled(true);
 					if (i > 0 && !islandUnowned(i - 1, j)) {
 						islandButtons[i][j]->setEnabled(false);
@@ -97,6 +97,8 @@ void _2PlayersMap::enableButtons() {
 						islandButtons[i][j]->setEnabled(false);
 					}
 				}
+				*/
+				islandButtons[i][j]->setEnabled(true);
 			}
 		}
 	}
@@ -148,7 +150,7 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 
 	m_updateTimer = new QTimer(this);
 	connect(m_updateTimer, SIGNAL(timeout()), this, SLOT(updateGame()));
-	m_timer->start(1000);
+	m_updateTimer->start(1000);
 
 	for (QPushButton* button : findChildren<QPushButton*>())
 	{
@@ -167,6 +169,7 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 			islandButtons[pos1][pos2] = ((QPushButton*)push);
 		}
 	}
+	disableButtons();
 	
 	m_client = Client::getClient();
 	getMap();
@@ -281,17 +284,27 @@ void _2PlayersMap::updateBackground()
 
 
 }
-void _2PlayersMap::on_island00_clicked()
-{
-	std::string error = "server is offline";
-	QMessageBox::warning(this, "ERROR", error.c_str());
-}
 
 void _2PlayersMap::pressedButton(const QString& name)
 {
-	QMessageBox msgBox(this);
-	msgBox.setText(name);
-	msgBox.exec();
+	disableButtons();
+	std::string bName = name.toUtf8().constData();
+	int hei = bName[bName.length() - 2] - '0';
+	int wid = bName[bName.length() - 1] - '0';
+	Client::getClient()->attackIsland(hei, wid);
+	getMap();
+	Client::getClient()->popCurrentPlayer();
+}
+
+void _2PlayersMap::updateGame()
+{
+	getMap();
+	std::string currentPlayer = Client::getClient()->getCurrentPlayer();
+	std::string loggedInUser = Client::getClient()->getLoggedInUser();
+	qDebug() << currentPlayer.c_str() << loggedInUser.c_str();
+	if (currentPlayer == loggedInUser) {
+		enableButtons();
+	}
 }
 
 _2PlayersMap::~_2PlayersMap()

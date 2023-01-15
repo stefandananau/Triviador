@@ -20,12 +20,8 @@ private slots:
 	void sendNumericAnswerToServer();
 	void sendMultipleAnswerToServer();
 	void updateBackground();
-	void on_island00_clicked();
 	void pressedButton(const QString& name);
-	void updateGame()
-	{
-		getMap();
-	}
+	void updateGame();
 private:
 	Ui::_2PlayersMapClass ui;
 	numericAnswerDialog* m_nad;
