@@ -36,6 +36,7 @@ private:
 	int width = 3;
 	void getMap();
 	bool islandMine(int i , int j);
+	bool islandUnowned(int i, int j);
 	void disableButtons();
 	void enableButtons();
 	void numericQuestion(std::string Question);
