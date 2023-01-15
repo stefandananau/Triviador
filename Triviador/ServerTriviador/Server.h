@@ -65,7 +65,7 @@ protected:
 	QuestionNumericRecord m_CurrentNumericQuestion;
 
 	void drawBoard();
-	//
+	
 
 	DataBase* m_DataBase;
 	

@@ -697,7 +697,7 @@ crow::response Server::PopCurrentPlayer()
 			if (m_playersInGameOrder.size() == 0) {
 				m_MatchState = matchState::MAP_DIVISION_PHASE;
 				m_GameState = state::waitingForQuestionResponse;
-				
+				RandomQuestion("Numeric", m_Generator);
 			}
 		}
 	}
@@ -710,9 +710,11 @@ crow::response Server::PopCurrentPlayer()
 				m_PlayersInGame[m_playersInGameOrder[0]].SetAnswer("");
 				m_playersInGameOrder.erase(m_playersInGameOrder.begin());
 				m_GameState = state::waitingForQuestionResponse;
+				RandomQuestion("Numeric", m_Generator);
 
 				if (IsBoardFull()) {
 					m_MatchState = matchState::DUEL_PHASE;
+					RandomQuestion("Multiple", m_Generator);
 				}
 
 			}
