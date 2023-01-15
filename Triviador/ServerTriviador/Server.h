@@ -111,6 +111,8 @@ protected:
 	crow::json::wvalue CheckGameState();
 	crow::json::wvalue CurrentQuestionToJson();
 	crow::json::wvalue GetCurrentMatchPhase();
+	crow::response MakePermutation();
+
 
 	
 

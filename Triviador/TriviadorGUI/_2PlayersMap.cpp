@@ -2,17 +2,14 @@
 #include <QDateTime>
 #include <sstream>
 void _2PlayersMap::multipleQuestion(crow::json::rvalue Question) {
-	//numeric widget
-	m_mad = new multipleAnswerDialog(nullptr, Question["question"].s(), Question["answer"].s(), Question["wrong_answer1"].s(), Question["wrong_answer2"].s(), Question["wrong_answer3"].s());
+	std::string questionStr = Question["question"].s();
+	toUTF8(questionStr);
 
-	//m_nad communitcates with game loop through following connect(calls sendAnswerToServer on answer button press)
+	m_mad = new multipleAnswerDialog(nullptr, Question["question"].s(), Question["answer"].s(), Question["wrong_answer1"].s(), Question["wrong_answer2"].s(), Question["wrong_answer3"].s());
 
 	connect(m_mad, SIGNAL(dialogShouldClose()), this, SLOT(sendMultipleAnswerToServer()));
 	m_mad->show();
 	qDebug() << "In game loop";
-
-	//with show, it runs multithreaded
-	//with exec, it waits for the dialog to close 
 }
 
 void _2PlayersMap::getMap()
@@ -21,7 +18,7 @@ void _2PlayersMap::getMap()
 	int n = 0;
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
-			
+
 			std::string str = std::to_string(islands[n].second) + "\n" + islands[n].first;
 			islandButtons[i][j]->setText(str.c_str());
 			n++;
@@ -97,15 +94,15 @@ void _2PlayersMap::enableButtons() {
 						islandButtons[i][j]->setEnabled(false);
 					}
 				}
-			
-			
+
+
 			}
 		}
 	}
 	else if (matchState == "MAP_DIVISION_PHASE") {
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
-				if (islandUnowned(i,j)) {
+				if (islandUnowned(i, j)) {
 					if (i > 0 && islandMine(i - 1, j)) {
 						islandButtons[i][j]->setEnabled(true);
 					}
@@ -126,7 +123,8 @@ void _2PlayersMap::enableButtons() {
 
 void _2PlayersMap::numericQuestion(std::string Question) {
 	//numeric widget
-	m_nad = new numericAnswerDialog(nullptr, Question+m_client->getLoggedInUser());
+	toUTF8(Question);
+	m_nad = new numericAnswerDialog(nullptr, Question + m_client->getLoggedInUser());
 
 	//m_nad communitcates with game loop through following connect(calls sendAnswerToServer on answer button press)
 
@@ -139,7 +137,7 @@ void _2PlayersMap::numericQuestion(std::string Question) {
 }
 
 
-_2PlayersMap::_2PlayersMap(QWidget *parent)
+_2PlayersMap::_2PlayersMap(QWidget* parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
@@ -170,7 +168,7 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 		}
 	}
 	disableButtons();
-	
+
 	m_client = Client::getClient();
 	getMap();
 
@@ -196,7 +194,7 @@ _2PlayersMap::_2PlayersMap(QWidget *parent)
 	qDebug() << "Back to main";
 }
 
-void _2PlayersMap::setGameWinner(){
+void _2PlayersMap::setGameWinner() {
 	if (m_client->getGameState() == "show_answers") {
 		QString winner;
 
@@ -225,7 +223,7 @@ void _2PlayersMap::sendNumericAnswerToServer() {
 	uint64_t time = m_nad->getAnswerTime();
 
 	qDebug() << time;
-	cpr::Response answerQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/questionAnswer?email=" + thisClientEmail + "&answer=" + answerToStdString +"&time=" + std::to_string(time)));
+	cpr::Response answerQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/questionAnswer?email=" + thisClientEmail + "&answer=" + answerToStdString + "&time=" + std::to_string(time)));
 
 	//terminate dialog
 	delete m_nad;
@@ -235,7 +233,7 @@ void _2PlayersMap::sendNumericAnswerToServer() {
 	{
 		gameState = m_client->getGameState();
 		Sleep(1000);
-		
+
 	}
 
 	m_updateTimer->start(1000);
@@ -316,6 +314,7 @@ void _2PlayersMap::updateGame()
 		crow::json::rvalue question = m_client->getCurrentQuestion();
 
 		if (question["type"] == "numeric") {
+
 			numericQuestion(question["question"].s());
 		}
 		else {
@@ -323,6 +322,28 @@ void _2PlayersMap::updateGame()
 		}
 	}
 }
+
+int _2PlayersMap::toUTF8(std::string& s) {
+	size_t htmlPos = 0;
+	size_t entries = 0;
+
+	std::map<std::string, char> htmlToUtf8_map;
+	htmlToUtf8_map.insert(std::make_pair("&quot;", '\"'));
+	htmlToUtf8_map.insert(std::make_pair("&#039;", '\''));
+
+
+
+	for (const auto& chr : htmlToUtf8_map) {
+		while (htmlPos = s.find(chr.first) != std::string::npos) {
+			s.replace(s.find(chr.first), chr.first.length(), std::string(1, chr.second));
+			htmlPos += chr.first.length();
+			entries++;
+		}
+
+	}
+	return entries;
+}
+
 
 _2PlayersMap::~_2PlayersMap()
 {}

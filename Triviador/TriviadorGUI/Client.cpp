@@ -86,7 +86,7 @@ bool Client::isPermutationMade()
 {
 	cpr::Response permutatiomMade = cpr::Get(cpr::Url("http://localhost/game/nextPermutation"));
 	auto responseInJson = nlohmann::json::parse(permutatiomMade.text);
-	return responseInJson
+	return responseInJson;
 }
 
 std::pair<std::string, std::string> Client::getUserStats(const std::string& email)
@@ -182,6 +182,10 @@ std::vector<std::string> Client::nextPermutation()
 	cpr::Response currentQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/nextPermutation"));
 	auto playersPermutations = nlohmann::json::parse(currentQuestionResponse.text);
 	return playersPermutations;
+}
+
+void Client::makePermutation() {
+	cpr::Response currentQuestionResponse = cpr::Get(cpr::Url("http://localhost/game/makePermutation"));
 }
 
 Client* Client::getClient()

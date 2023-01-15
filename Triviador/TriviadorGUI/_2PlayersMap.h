@@ -40,6 +40,6 @@ private:
 	void enableButtons();
 	void numericQuestion(std::string Question);
 	void multipleQuestion(crow::json::rvalue question);
-
+	int toUTF8(std::string& s);
 
 };

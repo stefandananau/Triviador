@@ -43,5 +43,5 @@ public:
 	static Client* getClient();
 	std::string getMatchPhase();
 	std::vector<std::string> nextPermutation();
-
+	void makePermutation();
 };

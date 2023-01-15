@@ -685,11 +685,6 @@ crow::response Server::IslandMap()
 	
 }
 
-crow::response Server::PermutationMade()
-{
-	return crow::response(m_permutationMade);
-}
-
 crow::response Server::SwapToGameInProgress()
 {
 	m_GameState = gameInProgress;
@@ -866,6 +861,11 @@ crow::response Server::AddQuestionAnswerToUser(const crow::request& req) {
 }
 
 
+crow::response Server::MakePermutation() {
+	m_permutationMade = true;
+	return crow::response(200);
+}
+
 
 void Server::wipeUsers()
 {
@@ -1002,8 +1002,8 @@ void Server::SetupServer() {
 	CROW_ROUTE(m_crowApp, "/game/nextPermutation")([this]() {
 		return NextPermutation();
 		});
-	CROW_ROUTE(m_crowApp, "/game/permutationMade")([this]() {
-		return PermutationMade();
+	CROW_ROUTE(m_crowApp, "/game/makePermutation")([this]() {
+		return MakePermutation();
 		});
 	m_crowApp.port(80);
 	m_crowApp.multithreaded();
